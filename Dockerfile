@@ -1,7 +1,8 @@
-FROM python:latest
+FROM appium/appium:latest
 
 #Installing dependencies
 RUN apt-get update
+RUN apt-get install -y python3
 RUN apt-get install -y android-tools-adb
 RUN apt-get install -y npm
 
