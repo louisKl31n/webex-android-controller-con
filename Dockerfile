@@ -8,6 +8,7 @@ RUN apt-get install -y npm
 
 # Set environment variables for Android SDK
 ENV ANDROID_HOME="/opt/android-sdk"
+ENV JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
 ENV PATH="${PATH}:${ANDROID_HOME}/cmdline-tools/tools/bin:${ANDROID_HOME}/platform-tools"
 
 # Download and extract Android Command Line Tools
