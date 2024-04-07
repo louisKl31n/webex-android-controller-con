@@ -10,7 +10,7 @@ RUN npm install -g appium
 RUN appium driver install uiautomator2
 
 #Installing Python dependencies
-RUN pip install appium-python-client flask
+RUN pip install appium-python-client flask requests
 
 #Setting working directory
 WORKDIR /app
