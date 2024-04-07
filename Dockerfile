@@ -17,7 +17,5 @@ WORKDIR /app
 
 COPY . .
 
-#Starting appium servers in background
-CMD appium --port 4723 --allow-insecure=Adb-shell &
-CMD appium --port 4724 --allow-insecure=Adb-shell &
+#Starting application
 ENTRYPOINT ["python","api.py"]

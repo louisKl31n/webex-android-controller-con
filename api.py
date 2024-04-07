@@ -1,6 +1,7 @@
 import string
 import random
 from controller import Controller
+from appium.webdriver.appium_service import AppiumService
 from flask import Flask, request,jsonify
 
 app = Flask(__name__)
@@ -232,6 +233,9 @@ def api_decline():
     return resp
 
 if __name__ == '__main__' :
-    app.run(debug=True) 
+    app.run(debug=True)
+    appium_service = AppiumService()
+    appium_service.start(args=['-p 4723','--allow-insecure=Adb-shell'])
+    appium_service.start(args=['-p 4724','--allow-insecure=Adb-shell'])
 
     
