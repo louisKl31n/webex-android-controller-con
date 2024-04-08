@@ -1,0 +1,2 @@
+appium -p 4723 -allow-inscure=Adb-shell &
+appium -p 4724 -allow-inscure=Adb-shell &
