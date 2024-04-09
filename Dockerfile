@@ -2,7 +2,7 @@ FROM python:latest
 
 #Installing dependencies
 RUN apt-get update
-RUN apt-get upgrade
+RUN apt-get upgrade -y
 RUN apt-get install -y python3
 RUN apt-get install -y android-tools-adb
 RUN apt-get install -y npm
