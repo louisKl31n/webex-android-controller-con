@@ -7,7 +7,7 @@ RUN apt-get install -y python3
 RUN apt-get install -y android-tools-adb
 RUN apt-get install -y npm
 RUN apt-get install -y usbutils
-RUN apt-get install -y netools
+RUN apt-get install -y net-tools
 
 # Set environment variables for Android SDK and Java
 ENV ANDROID_HOME="/opt/android-sdk"
