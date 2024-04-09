@@ -1,2 +1,2 @@
-appium -p 4723 --allow-insecure=Adb-shell &
-appium -p 4724 --allow-insecure=Adb-shell &
+appium -p 4723 --allow-insecure=Adb-shell --adb-host 127.0.0.1 --adb-port 5037 &
+appium -p 4724 --allow-insecure=Adb-shell --adb-host 127.0.0.1 --adb-port 5037 &
