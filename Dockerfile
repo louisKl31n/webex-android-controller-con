@@ -44,5 +44,7 @@ WORKDIR /app
 
 COPY . .
 
+
+RUN chmod a+x startAppiumServers
 #Starting application
 ENTRYPOINT ["python","api.py"]
