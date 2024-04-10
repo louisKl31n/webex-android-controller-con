@@ -1,7 +1,7 @@
 FROM python:latest
 
 #Installing dependencies
-RUN apt-get update
+RUN apt-get update -y
 RUN apt-get upgrade -y
 RUN apt-get install -y python3
 RUN apt-get install -y android-tools-adb
@@ -35,6 +35,8 @@ RUN yes | sdkmanager --licenses
 RUN sdkmanager --install "build-tools;31.0.0" platform-tools
 
 #Installing appium 
+RUN apt-get update -y
+RUN apt-get upgrade -y
 RUN npm install -g appium
 RUN appium driver install uiautomator2
 
