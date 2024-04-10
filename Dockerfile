@@ -10,7 +10,7 @@ RUN apt-get install -y usbutils
 RUN apt-get install -y net-tools
 
 # Set environment variables for Android SDK and Java
-ENV ANDROID_HOME="/usr/lib/android-sdk/"
+ENV ANDROID_HOME="/opt/android/"
 ENV JAVA_HOME="/usr/lib/jvm/java-17-openjdk-arm64"
 ENV PATH="${PATH}:${ANDROID_HOME}/cmdline-tools/tools/bin:${ANDROID_HOME}/platform-tools:${JAVA_HOME}/bin"
 
