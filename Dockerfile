@@ -35,6 +35,8 @@ RUN pip install appium-python-client flask requests common-io-python
 #Setting working directory
 WORKDIR /app
 COPY . .
+RUN apt-get update -y
+RUN apt-get upgrade -y
 RUN apt-get install -y android-tools-adb
 RUN chmod a+x startAppiumServers
 #Starting application
