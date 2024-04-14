@@ -1,7 +1,7 @@
 FROM python:latest
 #================================================
 # Set environment variables for Android SDK and Java
-ENV ANDROID_HOME="/opt/android/"
+ENV ANDROID_HOME="/usr/bin/"
 ENV JAVA_HOME="/usr/lib/jvm/java-17-openjdk-arm64"
 ENV PATH="${PATH}:${ANDROID_HOME}/cmdline-tools/tools/bin:${ANDROID_HOME}/platform-tools:${JAVA_HOME}/bin"
 #Installing dependencies
