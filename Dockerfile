@@ -2,7 +2,7 @@ FROM python:latest
 #================================================
 # Set environment variables for Android SDK and Java
 ENV ADB_HOME="/usr/bin/"
-ENV ANDROID_HOME="/opt/android/"
+ENV ANDROID_HOME="/usr/bin/"
 ENV JAVA_HOME="/usr/lib/jvm/java-17-openjdk-arm64"
 ENV PATH="${PATH}:${ANDROID_HOME}/cmdline-tools/tools/bin:${ANDROID_HOME}/platform-tools:${JAVA_HOME}/bin:${ADB_HOME}"
 #Installing dependencies
@@ -27,7 +27,7 @@ RUN wget -q https://dl.google.com/android/repository/commandlinetools-linux-6858
 # Accept Android SDK licenses
 RUN yes | sdkmanager --licenses
 # Install Android SDK components: build-tools and platform-tools
-#RUN sdkmanager --install "build-tools;34.0.0" platform-tools
+RUN sdkmanager --install "build-tools;34.0.0" platform-tools
 #Installing appium 
 RUN npm install -g appium
 RUN appium driver install uiautomator2
