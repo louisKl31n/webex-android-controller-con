@@ -123,6 +123,7 @@ class Controller:
         capabilities = {
             'udid' : self.device_name,
             'automationName' : 'UiAutomator2',
+            'uiautomator2ServerVersion': '7.0.4'
             'platformName' : 'Android',
             'platformVersion' : '13',
             'appPackage': 'com.cisco.wx2.android',
