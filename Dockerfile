@@ -27,7 +27,7 @@ RUN wget -q https://dl.google.com/android/repository/commandlinetools-linux-6858
 # Accept Android SDK licenses
 RUN yes | sdkmanager --licenses
 # Install Android SDK components: build-tools and platform-tools
-RUN sdkmanager --install "build-tools;34.0.0" platform-tools
+#RUN sdkmanager --install "build-tools;34.0.0" platform-tools
 #Installing appium 
 RUN npm install -g appium
 RUN appium driver install uiautomator2
@@ -40,7 +40,7 @@ RUN apt-get update -y
 RUN apt-get upgrade -y
 RUN apt-get install -y android-tools-adb
 RUN chmod a+x startAppiumServers
-RUN mkdir -p /opt/android/platform-tools
-RUN ln -s /usr/bin/adb /opt/android/platform-tools/adb
+#RUN mkdir -p /opt/android/platform-tools
+#RUN ln -s /usr/bin/adb /opt/android/platform-tools/adb
 #Starting application
 ENTRYPOINT ["python","api.py"]
