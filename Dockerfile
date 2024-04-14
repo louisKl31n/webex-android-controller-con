@@ -27,7 +27,7 @@ RUN wget -q https://dl.google.com/android/repository/commandlinetools-linux-6858
 # Accept Android SDK licenses
 RUN yes | sdkmanager --licenses
 # Install Android SDK components: build-tools and platform-tools
-RUN sdkmanager --install build-tools platform-tools
+RUN sdkmanager --install "build-tools;34.0.0" platform-tools
 #Installing appium 
 RUN npm install -g appium
 RUN appium driver install uiautomator2
