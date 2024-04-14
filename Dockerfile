@@ -50,7 +50,5 @@ COPY . .
 
 
 RUN chmod a+x startAppiumServers
-RUN adb start-server
-RUN ./startAppiumServers   
 #Starting application
 ENTRYPOINT ["python","api.py"]
