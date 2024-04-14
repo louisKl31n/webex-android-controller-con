@@ -123,13 +123,12 @@ class Controller:
         capabilities = {
             'udid' : self.device_name,
             'automationName' : 'UiAutomator2',
-            'uiautomator2ServerVersion': '7.0.4',
             'platformName' : 'Android',
             'platformVersion' : '13',
             'appPackage': 'com.cisco.wx2.android',
             'appActivity': 'com.webex.teams.WebexLauncherActivity',
             'autoGrantPermissions': True,
-            'newCommandTimeout': 120
+            'newCommandTimeout': 300
         }
         appium_options = AppiumOptions()
         appium_options.load_capabilities(capabilities)
