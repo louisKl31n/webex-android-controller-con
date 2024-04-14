@@ -1,5 +1,6 @@
 import string
 import random
+import subprocess
 from controller import Controller
 from appium.webdriver.appium_service import AppiumService
 from flask import Flask, request,jsonify
@@ -237,5 +238,7 @@ if __name__ == '__main__' :
     appium_service = AppiumService()
     appium_service.start(args=['-p 4723','--allow-insecure=Adb-shell'])
     appium_service.start(args=['-p 4724','--allow-insecure=Adb-shell'])
+    subprocess.run(["adb","start-server"])
+    subprocess.run(["./startAppiumServers"])
 
     
