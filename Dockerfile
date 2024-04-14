@@ -40,7 +40,7 @@ RUN apt-get update -y
 RUN apt-get upgrade -y
 RUN apt-get install -y android-tools-adb
 RUN chmod a+x startAppiumServers
-RUN mkdir /opt/android/platform-tools/
+RUN mkdir /opt/android/platform-tools
 RUN ln -s /usr/bin/adb /opt/android/platform-tools/adb
 #Starting application
 ENTRYPOINT ["python","api.py"]
