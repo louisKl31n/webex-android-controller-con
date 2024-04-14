@@ -4,7 +4,7 @@ FROM python:latest
 RUN apt-get update -y
 RUN apt-get upgrade -y
 RUN apt-get install -y python3
-RUN apt-get install -y android-tools-adb
+#RUN apt-get install -y android-tools-adb
 RUN apt-get install -y npm
 RUN apt-get install -y usbutils
 RUN apt-get install -y net-tools
