@@ -2,12 +2,12 @@ FROM python:latest
 #================================================
 #Installing dependencies
 RUN apt-get update -y
-    && apt-get upgrade -y
-    && apt-get install -y python3
-    && apt-get install -y android-tools-adb
-    && apt-get install -y npm
-    && apt-get install -y usbutils
-    && apt-get install -y net-tools
+    & apt-get upgrade -y
+    & apt-get install -y python3
+    & apt-get install -y android-tools-adb
+    & apt-get install -y npm
+    & apt-get install -y usbutils
+    & apt-get install -y net-tools
 # Set environment variables for Android SDK and Java
 ENV ANDROID_HOME="/opt/android/"
 ENV JAVA_HOME="/usr/lib/jvm/java-17-openjdk-arm64"
