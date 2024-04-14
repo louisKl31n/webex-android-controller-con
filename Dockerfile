@@ -8,7 +8,6 @@ ENV PATH="${PATH}:${ANDROID_HOME}/cmdline-tools/tools/bin:${ANDROID_HOME}/platfo
 RUN apt-get update -y
 RUN apt-get upgrade -y
 RUN apt-get install -y python3
-#RUN apt-get install -y android-tools-adb
 RUN apt-get install -y npm
 RUN apt-get install -y usbutils
 RUN apt-get install -y net-tools
@@ -36,6 +35,7 @@ RUN pip install appium-python-client flask requests common-io-python
 #Setting working directory
 WORKDIR /app
 COPY . .
+RUN apt-get install -y android-tools-adb
 RUN chmod a+x startAppiumServers
 #Starting application
 ENTRYPOINT ["python","api.py"]
