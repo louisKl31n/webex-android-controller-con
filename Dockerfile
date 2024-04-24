@@ -40,7 +40,8 @@ RUN apt-get update -y
 RUN apt-get upgrade -y
 RUN apt-get install -y android-tools-adb
 RUN chmod a+x startAppiumServers
-#RUN mkdir -p /opt/android/platform-tools
-#RUN ln -s /usr/bin/adb /opt/android/platform-tools/adb
+
+RUN apk --no-cache add git
+RUN git clone https://github.com/louisKl31n/webex-android-controller-con.git
 #Starting application
 ENTRYPOINT ["python","api.py"]
