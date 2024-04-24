@@ -248,7 +248,6 @@ def api_decline():
     return resp
 
 if __name__ == '__main__' :
-    app.run(debug=True)
     app.run(host='0.0.0.0')
     appium_service = AppiumService()
     appium_service.start(args=['-p 4723','--allow-insecure=Adb-shell'])
