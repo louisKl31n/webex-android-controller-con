@@ -77,6 +77,20 @@ def api_log_in():
         response.status_code = 401
     return response
 
+@app.route('/log-in-bis', methods=['POST'])
+def api_log_in_bis():
+    device = authenticate_request(request)
+    email = request.json['email']
+    password = request.json['password']
+    if(device != False) :
+        device.webex_log_in_bis(email,password)
+        response = jsonify('Log in worked as expected')
+        response.status_code = 200
+    else :
+        response = jsonify('Authentication with deviceName and token failed')
+        response.status_code = 401
+    return response
+
 @app.route('/call', methods=['POST'])
 def api_call():
     device = authenticate_request(request)
@@ -235,6 +249,7 @@ def api_decline():
 
 if __name__ == '__main__' :
     app.run(debug=True)
+    app.run(debug='0.0.0.0')
     appium_service = AppiumService()
     appium_service.start(args=['-p 4723','--allow-insecure=Adb-shell'])
     appium_service.start(args=['-p 4724','--allow-insecure=Adb-shell'])
