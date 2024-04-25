@@ -312,3 +312,68 @@ class Controller:
 
     def driver_quit(self) :
         self.driver.quit()
+
+
+
+    def webex_log_in_bis(self,email,password) :
+        """
+        webex_log_in_bis function does the whole process of login in a bis case (TM Qualif Vo-Wi-Fi)
+
+        :param email: is the email used through the process
+        :param password: is the password used through the process
+        """
+        
+        # Connection process inside the Webex application
+        connection_button = self.find_by_XPATH('//android.widget.ScrollView/android.view.View[3]/android.widget.Button')
+        connection_button.click()
+        email_address_field = self.find_by_XPATH('//android.widget.TextView[@text="Adresse électronique"]/../..')
+        email_address_field.send_keys(email)
+        next_button = self.find_by_XPATH('//android.widget.ScrollView/android.view.View/android.widget.Button')
+        next_button.click()
+        # Connection process inside the Orange webview
+        self.wait_until_element_is_displayed('//android.webkit.WebView[@text="Authentication B2B"]',10)
+        orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
+        orange_portal_id = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
+        orange_portal_id.send_keys(email)
+            # in order to have the connection button visible we need swipe
+        self.swipe_vertical(300)
+        orange_portal_next = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Suivant"]')
+        orange_portal_next.click()
+            # wait until the page loads to password view
+        self.wait_until_element_is_displayed('//android.view.View[@text="Saisissez votre mot de passe"]',10)
+        self.swipe_vertical(500)
+        orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
+        orange_portal_password = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
+        orange_portal_password.send_keys(password)
+            # in order to have the connection button visible we need swipe
+        orange_portal_connect = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Se connecter"]')
+        orange_portal_connect.click()
+        
+        
+        time.sleep(3)
+        # Connection process inside the second Orange webview
+        self.wait_until_element_is_displayed('//android.webkit.WebView[@text="Authentication B2B"]',10)
+        orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
+        orange_portal_id = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
+        orange_portal_id.send_keys(email)
+            # in order to have the connection button visible we need swipe
+        self.swipe_vertical(300)
+        orange_portal_next = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Suivant"]')
+        orange_portal_next.click()
+            # wait until the page loads to password view
+        self.wait_until_element_is_displayed('//android.view.View[@text="Saisissez votre mot de passe"]',10)
+        self.swipe_vertical(500)
+        orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
+        orange_portal_password = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
+        orange_portal_password.send_keys(password)
+            # in order to have the connection button visible we need swipe
+        orange_portal_connect = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Se connecter"]')
+        orange_portal_connect.click()
+
+
+        # Check for a toasts from the application and accept it
+        try :   
+            self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',10)
+        except :
+            pass
+        print('=> webex_log_in() success')
