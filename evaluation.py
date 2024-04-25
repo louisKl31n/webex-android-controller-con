@@ -27,7 +27,7 @@ if __name__ == '__main__' :
         
         response = requests.post(web_server+'/connect', json={'deviceName': device_name1})
         token1 = response.json()['token']
-        requests.post(web_server+'/log-in', json={
+        requests.post(web_server+'/log-in-bis', json={
                 'deviceName': device_name1,
                 'email': emails[emailctr%7],
                 'password': '1Sac2billes!',
@@ -36,7 +36,7 @@ if __name__ == '__main__' :
         emailctr = emailctr + 1
         response = requests.post(web_server+'/connect', json={'deviceName': device_name2})
         token2 = response.json()['token']
-        requests.post(web_server+'/log-in', json={
+        requests.post(web_server+'/log-in-bis', json={
             'deviceName': device_name2,
             'email': emails[emailctr%7],
             'password': '1Sac2billes!',
