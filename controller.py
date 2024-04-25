@@ -371,8 +371,8 @@ class Controller:
         orange_portal_connect.click()
 
 
-        self.driver.execute_script('mobile: shell',{'command' : 'input keyevent 4'})
-        self.driver.execute_script('mobile: shell',{'command' : 'input keyevent 4'})
+        self.driver.press_keycode(4)
+        self.driver.press_keycode(4)
         self.swipe_vertical(300)
         orange_portal_next = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Suivant"]')
         orange_portal_next.click()
