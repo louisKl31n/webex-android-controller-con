@@ -370,7 +370,7 @@ class Controller:
         orange_portal_connect = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Se connecter"]')
         orange_portal_connect.click()
 
-
+        time.sleep(5)
         self.driver.press_keycode(4)
         self.driver.press_keycode(4)
         self.swipe_vertical(300)
