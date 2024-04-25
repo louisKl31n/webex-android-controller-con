@@ -370,20 +370,12 @@ class Controller:
         orange_portal_connect = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Se connecter"]')
         orange_portal_connect.click()
 
-
-        self.driver.execute_script('mobile: shell',{'command' : 'input keyevent 4'})
-        self.swipe_vertical(300)
-        orange_portal_next = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Suivant"]')
-        orange_portal_next.click()
-            # wait until the page loads to password view
-        self.wait_until_element_is_displayed('//android.view.View[@text="Saisissez votre mot de passe"]',10)
-        self.swipe_vertical(500)
-        orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
-        orange_portal_password = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
-        orange_portal_password.send_keys(password)
-            # in order to have the connection button visible we need swipe
-        orange_portal_connect = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Se connecter"]')
-        orange_portal_connect.click()
+        webex_activity = {
+            'intentAction':'android.intent.action.MAIN',
+            'intentFlags': ['FLAG_ACTIVITY_CLEAR_TOP','FLAG_ACTIVITY_NEW_TASK'],
+            'component':f'{"com.cisco.wx2.android"}/{"com.webex.teams.TeamsActivity"}'
+        }
+        self.driver.execute_script('mobile:startActivity',webex_activity)
 
 
         # Check for a toasts from the application and accept it
