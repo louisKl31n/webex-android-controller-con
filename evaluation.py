@@ -18,6 +18,8 @@ if __name__ == '__main__' :
         'qren2webex@gmail.com',
         'qren4webex@gmail.com',
     ]
+    email1 = 'qren6webex@gmail.com'
+    email2 = 'qren7webex@gmail.com'
     token1 = 0
     token2 = 0
 
@@ -29,7 +31,7 @@ if __name__ == '__main__' :
         token1 = response.json()['token']
         requests.post(web_server+'/log-in-bis', json={
                 'deviceName': device_name1,
-                'email': emails[emailctr%7],
+                'email': email1,
                 'password': '1Sac2billes!',
                 'token': token1,
         })
@@ -38,7 +40,7 @@ if __name__ == '__main__' :
         token2 = response.json()['token']
         requests.post(web_server+'/log-in-bis', json={
             'deviceName': device_name2,
-            'email': emails[emailctr%7],
+            'email': email2,
             'password': '1Sac2billes!',
             'token': token2,
             })
