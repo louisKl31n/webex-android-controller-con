@@ -56,7 +56,7 @@ if __name__ == '__main__' :
             requests.post(web_server+'/answer', json={
                 'deviceName': device_name2,
                 'token': token2,
-                'incomingNumber': Phonenumberwebexbeta2
+                'incomingNumber': Phonenumberwebexbeta1
                 })
             time.sleep(5)
             requests.post(web_server+'/mute', json={
