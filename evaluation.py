@@ -6,8 +6,8 @@ import time
 
 if __name__ == '__main__' :
     web_server = "http://127.0.0.1:5000"
-    device_name1 = 'krc6nbca4hn7uofi'
-    device_name2 = 'gy95dqpnkfnr99if'
+    device_name1 = 'R3CR405S9DH'
+    device_name2 = 'RFCT111C17X'
     emailctr = 0
     emails=[
         'qren5webex@gmail.com',
@@ -18,12 +18,12 @@ if __name__ == '__main__' :
         'qren2webex@gmail.com',
         'qren4webex@gmail.com',
     ]
-    email1 = 'qlan001webexbeta@gmail.com'
-    email2 = 'qlan002webexbeta@gmail.com'
+    email1 = 'qlan3webex@gmail.com'
+    email2 = 'qren1webex@gmail.com'
     token1 = 0
     token2 = 0
-    Phonenumberwebexbeta1 = '0789182610'
-    Phonenumberwebexbeta2 = '0789182611'
+    Phonenumberwebexbeta1 = '0789182612'
+    Phonenumberwebexbeta2 = '0789182614'
 
     while True:
         current_time = datetime.now().time()
