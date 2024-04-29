@@ -22,8 +22,8 @@ if __name__ == '__main__' :
     email2 = 'qren1webex@gmail.com'
     token1 = 0
     token2 = 0
-    Phonenumberwebexbeta1 = '0789182612'
-    Phonenumberwebexbeta2 = '0789182614'
+    phoneNumberWebexBeta1 = '0789182612'
+    phoneNumberWebexBeta2 = '0789182614'
 
     while True:
         current_time = datetime.now().time()
@@ -50,13 +50,13 @@ if __name__ == '__main__' :
         response =requests.post(web_server+'/call', json={
             'deviceName': device_name1,
             'token': token1,
-            'destinationNumber': Phonenumberwebexbeta2
+            'destinationNumber': phoneNumberWebexBeta2
             })
         if response.status_code == 200 :
             requests.post(web_server+'/answer', json={
                 'deviceName': device_name2,
                 'token': token2,
-                'incomingNumber': Phonenumberwebexbeta1
+                'incomingNumber': phoneNumberWebexBeta1
                 })
             time.sleep(5)
             requests.post(web_server+'/mute', json={
