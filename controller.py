@@ -330,13 +330,13 @@ class Controller:
         email_address_field.send_keys(email)
         next_button = self.find_by_XPATH('//android.widget.ScrollView/android.view.View/android.widget.Button')
         next_button.click()
-        # Connection process inside the Orange webview
+        # Connection process inside the Orange B2B webview
+        self.swipe_vertical(300)
         self.wait_until_element_is_displayed('//android.webkit.WebView[@text="Authentication B2B"]',10)
         orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
         orange_portal_id = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
         orange_portal_id.send_keys(email)
             # in order to have the connection button visible we need swipe
-        self.swipe_vertical(300)
         orange_portal_next = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Suivant"]')
         orange_portal_next.click()
             # wait until the page loads to password view
@@ -345,61 +345,66 @@ class Controller:
         orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
         orange_portal_password = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
         orange_portal_password.send_keys(password)
-            # in order to have the connection button visible we need swipe
         orange_portal_connect = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Se connecter"]')
         orange_portal_connect.click()
-        
-        
+       
         time.sleep(3)
-        # Connection process inside the second Orange webview
-        self.wait_until_element_is_displayed('//android.webkit.WebView[@text="Authentication B2B"]',10)
-        orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
-        orange_portal_id = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
-        orange_portal_id.send_keys(email)
-            # in order to have the connection button visible we need swipe
-        self.swipe_vertical(300)
-        orange_portal_next = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Suivant"]')
-        orange_portal_next.click()
-            # wait until the page loads to password view
-        self.wait_until_element_is_displayed('//android.view.View[@text="Saisissez votre mot de passe"]',10)
-        self.swipe_vertical(500)
-        orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
-        orange_portal_password = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
-        orange_portal_password.send_keys(password)
-            # in order to have the connection button visible we need swipe
-        orange_portal_connect = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Se connecter"]')
-        orange_portal_connect.click()
 
-        time.sleep(5)
-        close_web_form_button = self.find_by_id('com.android.chrome:id/close_button')
-        close_web_form_button.click()
-
-
-        next_button = self.find_by_XPATH('//android.widget.ScrollView/android.view.View/android.widget.Button')
-        next_button.click()
-
-        time.sleep(3)
-        # Connection process inside the second Orange webview
-        self.wait_until_element_is_displayed('//android.webkit.WebView[@text="Authentication B2B"]',10)
-        orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
-        orange_portal_id = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
-        orange_portal_id.send_keys(email)
-            # in order to have the connection button visible we need swipe
-        self.swipe_vertical(300)
-        orange_portal_next = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Suivant"]')
-        orange_portal_next.click()
-            # wait until the page loads to password view
-        self.wait_until_element_is_displayed('//android.view.View[@text="Saisissez votre mot de passe"]',10)
-        self.swipe_vertical(500)
-        orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
-        orange_portal_password = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
-        orange_portal_password.send_keys(password)
-            # in order to have the connection button visible we need swipe
-        orange_portal_connect = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Se connecter"]')
-        orange_portal_connect.click()
-
-        try :   
+        # Todo : Try catch
+        try :
             self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',10)
         except :
-            pass
-        print('=> webex_log_in() success')
+        # First B2B rollback
+            #Handling rollback
+            next_button = self.find_by_XPATH('//android.widget.ScrollView/android.view.View/android.widget.Button')
+            next_button.click()
+                # wait until the page loads to login view
+            self.wait_until_element_is_displayed('//android.webkit.WebView[@text="Authentication B2B"]',10)
+            self.swipe_vertical(300)
+            orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
+            orange_portal_id = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
+            orange_portal_id.send_keys(email)
+            orange_portal_next = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Suivant"]')
+            orange_portal_next.click()
+                # wait until the page loads to password view
+            self.wait_until_element_is_displayed('//android.view.View[@text="Saisissez votre mot de passe"]',10)
+            self.swipe_vertical(500)
+            orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
+            orange_portal_password = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
+            orange_portal_password.send_keys(password)
+            orange_portal_connect = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Se connecter"]')
+            orange_portal_connect.click()
+
+                #Close error page 
+            time.sleep(5)
+            close_web_form_button = self.find_by_id('com.android.chrome:id/close_button')
+            close_web_form_button.click()
+            time.sleep(5)
+
+        # Second B2B rollback
+            #Handling rollback
+            next_button = self.find_by_XPATH('//android.widget.ScrollView/android.view.View/android.widget.Button')
+            next_button.click()
+                # wait until the page loads to login view
+            self.wait_until_element_is_displayed('//android.webkit.WebView[@text="Authentication B2B"]',10)
+            self.swipe_vertical(300)
+            orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
+            orange_portal_id = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
+            orange_portal_id.send_keys(email)
+            orange_portal_next = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Suivant"]')
+            orange_portal_next.click()
+                # wait until the page loads to password view
+            self.wait_until_element_is_displayed('//android.view.View[@text="Saisissez votre mot de passe"]',10)
+            self.swipe_vertical(500)
+            orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
+            orange_portal_password = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
+            orange_portal_password.send_keys(password)
+            orange_portal_connect = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Se connecter"]')
+            orange_portal_connect.click()
+            time.sleep(5)
+            try :   
+                self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',10)
+            except :
+                pass
+            print('=> webex_log_in() success with B2B roll back')
+        print('=> webex_log_in() success in one go ')
