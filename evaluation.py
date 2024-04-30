@@ -18,12 +18,12 @@ if __name__ == '__main__' :
         'qren2webex@gmail.com',
         'qren4webex@gmail.com',
     ]
-    email1 = 'qlan3webex@gmail.com'
-    email2 = 'qren1webex@gmail.com'
+    email1 = 'qlan001webexbeta@gmail.com'
+    email2 = 'qlan002webexbeta@gmail.com'
     token1 = 0
     token2 = 0
-    phoneNumberWebexBeta1 = '0789182612'
-    phoneNumberWebexBeta2 = '0789182614'
+    phoneNumberWebexBeta1 = '0789182610'
+    phoneNumberWebexBeta2 = '0789182611'
 
     while True:
         current_time = datetime.now().time()
