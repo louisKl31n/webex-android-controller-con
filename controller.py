@@ -332,10 +332,10 @@ class Controller:
         next_button.click()
         # Connection process inside the Orange B2B webview
         self.wait_until_element_is_displayed('//android.webkit.WebView[@text="Authentication B2B"]',10)
-        self.swipe_vertical(300)
         orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
         orange_portal_id = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
         orange_portal_id.send_keys(email)
+        self.swipe_vertical(300)
             # in order to have the connection button visible we need swipe
         orange_portal_next = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Suivant"]')
         orange_portal_next.click()
@@ -360,10 +360,10 @@ class Controller:
             next_button.click()
                 # wait until the page loads to login view
             self.wait_until_element_is_displayed('//android.webkit.WebView[@text="Authentication B2B"]',10)
-            self.swipe_vertical(300)
             orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
             orange_portal_id = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
             orange_portal_id.send_keys(email)
+            self.swipe_vertical(300)
             orange_portal_next = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Suivant"]')
             orange_portal_next.click()
                 # wait until the page loads to password view
@@ -387,10 +387,10 @@ class Controller:
             next_button.click()
                 # wait until the page loads to login view
             self.wait_until_element_is_displayed('//android.webkit.WebView[@text="Authentication B2B"]',10)
-            self.swipe_vertical(300)
             orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
             orange_portal_id = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
             orange_portal_id.send_keys(email)
+            self.swipe_vertical(300)
             orange_portal_next = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Suivant"]')
             orange_portal_next.click()
                 # wait until the page loads to password view
