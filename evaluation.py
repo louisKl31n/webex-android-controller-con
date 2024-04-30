@@ -6,8 +6,8 @@ import time
 
 if __name__ == '__main__' :
     web_server = "http://127.0.0.1:5000"
-    device_name1 = 'R3CR405S9DH'
-    device_name2 = 'RFCT111C17X'
+    device_name1 = 'krc6nbca4hn7uofi'
+    device_name2 = 'gy95dqpnkfnr99if'
     emailctr = 0
     emails=[
         'qren5webex@gmail.com',
