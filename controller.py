@@ -352,7 +352,7 @@ class Controller:
 
         # Todo : Try catch
         try :
-            self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',10)
+            self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',5)
         except :
         # First B2B rollback
                 # wait until the page loads to login view
@@ -400,7 +400,7 @@ class Controller:
             orange_portal_connect.click()
             time.sleep(5)
             try :   
-                self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',10)
+                self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',5)
             except :
                 pass
             print('=> webex_log_in() success with B2B roll back')
