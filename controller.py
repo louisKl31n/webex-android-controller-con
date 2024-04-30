@@ -355,9 +355,6 @@ class Controller:
             self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',10)
         except :
         # First B2B rollback
-            #Handling rollback
-            next_button = self.find_by_XPATH('//android.widget.ScrollView/android.view.View/android.widget.Button')
-            next_button.click()
                 # wait until the page loads to login view
             self.wait_until_element_is_displayed('//android.webkit.WebView[@text="Authentication B2B"]',10)
             orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
