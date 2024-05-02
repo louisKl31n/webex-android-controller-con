@@ -331,11 +331,11 @@ class Controller:
         next_button = self.find_by_XPATH('//android.widget.ScrollView/android.view.View/android.widget.Button')
         next_button.click()
         # Connection process inside the Orange B2B webview
-        self.wait_until_element_is_displayed('//android.webkit.WebView[@text="Authentication B2B"]',10)
+        self.wait_until_element_is_displayed('//android.webkit.WebView[@text="Authentication B2B"]',5)
         orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
         orange_portal_id = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
         orange_portal_id.send_keys(email)
-        self.swipe_vertical(300)
+        self.swipe_vertical(500)
             # in order to have the connection button visible we need swipe
         orange_portal_next = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Suivant"]')
         orange_portal_next.click()
@@ -349,12 +349,12 @@ class Controller:
         orange_portal_connect.click()
        
         time.sleep(3)
-
-        # Todo : Try catch
+        #expect login, catch rollback 
         try :
             self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',5)
         except :
         # First B2B rollback
+            print('=> entering B2B rollback handling')
                 # wait until the page loads to login view
             self.wait_until_element_is_displayed('//android.webkit.WebView[@text="Authentication B2B"]',10)
             orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
