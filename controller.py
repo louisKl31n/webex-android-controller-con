@@ -291,7 +291,9 @@ class Controller:
         print('After regex : '+number)
         self.wait_until_element_is_displayed_id('com.orange.phone:id/answer_button',10)
         number_found_in_sys = self.driver.execute_script('mobile: shell',{'command' : 'dumpsys telephony.registry | grep mCallI'})
-        print('Dumpsys : '+number_found_in_sys) 
+        print("je suis passé par ici")
+        print('Dumpsys : '+number_found_in_sys)
+        print("je suis repassé par ici")
         if number not in number_found_in_sys :
             return 503
         self.driver.execute_script('mobile: shell',{'command' : 'input keyevent KEYCODE_CALL'})
