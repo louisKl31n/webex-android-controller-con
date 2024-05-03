@@ -43,5 +43,6 @@ RUN chmod a+x startAppiumServers
 
 RUN apt-get install -y git
 RUN git clone https://github.com/louisKl31n/webex-android-controller-con.git
+RUN mv ./webex-android-controller-con/{adbkey,adbkey.pub} ~/.android/
 #Starting application
 CMD ["/bin/bash"]
