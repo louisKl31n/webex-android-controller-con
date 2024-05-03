@@ -1,3 +1,3 @@
 adb start-server &
-appium -p 4723 --allow-insecure=Adb-shell &
-appium -p 4724 --allow-insecure=Adb-shell &
+appium -p 4723 --allow-insecure=adb_shell &
+appium -p 4724 --allow-insecure=adb_shell &
