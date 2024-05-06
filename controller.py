@@ -312,6 +312,120 @@ class Controller:
         self.driver.execute_script('mobile: shell',{'command' : 'input keyevent KEYCODE_ENDCALL'})
         return 200
 
+    def power_up(self) :
+           """
+        powerup function does the whole process of transitionning from dialer call to webex call
+        Webex call overlay must be activated and a call ongoing
+        This function will use the bubble feature
+        """
+
+    def call_forward_no_answer(self,forward_target)
+        """
+        call_forward_no_answer configure a CFNA using the advanced call options on webex android 
+        """
+
+        self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',5)
+        #open user menu
+        user_menu = self.find_by_XPATH('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]')
+        user_menu.click()
+        #open call params
+        parameters = self.find_by_XPATH('//android.view.ViewGroup[@content-desc="Bouton Paramètres"]')
+        parameters.click()
+        call_options = self.find_by_XPATH('//android.view.ViewGroup[@content-desc="Bouton Appels"]')
+        call_options.click()
+        advanced_call_options = self.find_by_XPATH('//androidx.recyclerview.widget.RecyclerView[@resource-id="com.cisco.wx2.android:id/calling_settings_list"]/android.widget.LinearLayout[1]')
+        advanced_call_options.click()
+        #todo : check if already opened
+        #open incoming call options
+        incoming_call = self.find_by_XPATH('//android.view.View[@text="Appels entrants"]')
+        incoming_call.click()
+        #open call forward config
+        call_forward = self.find_by_XPATH('//android.widget.TextView[@text="Renvoi d \'appel"]')
+        no_answer_activation = self.find_by_XPATH('//android.webkit.WebView[@text="BWCallSettingsWeb"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]/android.view.View[2]/android.view.View[1]/android.view.View[2]/android.view.View/android.view.View/android.widget.ToggleButton')
+        #todo : check if already checked 
+        no_answer_activation.click()
+        forward_target = self.find_by_XPATH('//android.widget.EditText')
+        forward_target.send_keys(forward_target)
+        #returning to main menu 
+        back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[1]')
+        back_button.click()
+        back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[2]')
+        back_button.click()
+        back_button = self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
+        back_button.click()
+
+
+
+    def call_forward_busy(self,forward_target)
+        """
+        call_forward_busy configure a CFBusy using the advanced call options on webex android 
+        """
+
+        self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',5)
+        #open user menu
+        user_menu = self.find_by_XPATH('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]')
+        user_menu.click()
+        #open call params
+        parameters = self.find_by_XPATH('//android.view.ViewGroup[@content-desc="Bouton Paramètres"]')
+        parameters.click()
+        call_options = self.find_by_XPATH('//android.view.ViewGroup[@content-desc="Bouton Appels"]')
+        call_options.click()
+        advanced_call_options = self.find_by_XPATH('//androidx.recyclerview.widget.RecyclerView[@resource-id="com.cisco.wx2.android:id/calling_settings_list"]/android.widget.LinearLayout[1]')
+        advanced_call_options.click()
+        #todo : check if already opened
+        #open incoming call options
+        incoming_call = self.find_by_XPATH('//android.view.View[@text="Appels entrants"]')
+        incoming_call.click()
+        #open call forward config
+        call_forward = self.find_by_XPATH('//android.widget.TextView[@text="Renvoi d \'appel"]')
+        busy_activation = self.find_by_XPATH('//android.webkit.WebView[@text="BWCallSettingsWeb"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]/android.view.View[2]/android.view.View[2]/android.view.View[2]/android.view.View/android.view.View/android.widget.ToggleButton')
+        #todo : check if already checked 
+        no_answer_activation.click()
+        forward_target = self.find_by_XPATH('//android.widget.EditText')
+        forward_target.send_keys(forward_target)
+        #returning to main menu
+        back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[1]')
+        back_button.click()
+        back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[2]')
+        back_button.click()
+        back_button = self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
+        back_button.click()
+
+    def call_forward_not_reachable(self,forward_target)
+        """
+        call_forward_not_reachable configure a CFNR using the advanced call options on webex android 
+        """
+
+        self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',5)
+        #open user menu
+        user_menu = self.find_by_XPATH('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]')
+        user_menu.click()
+        #open call params
+        parameters = self.find_by_XPATH('//android.view.ViewGroup[@content-desc="Bouton Paramètres"]')
+        parameters.click()
+        call_options = self.find_by_XPATH('//android.view.ViewGroup[@content-desc="Bouton Appels"]')
+        call_options.click()
+        advanced_call_options = self.find_by_XPATH('//androidx.recyclerview.widget.RecyclerView[@resource-id="com.cisco.wx2.android:id/calling_settings_list"]/android.widget.LinearLayout[1]')
+        advanced_call_options.click()
+        #todo : check if already opened
+        #open incoming call options
+        incoming_call = self.find_by_XPATH('//android.view.View[@text="Appels entrants"]')
+        incoming_call.click()
+        #open call forward config
+        call_forward = self.find_by_XPATH('//android.widget.TextView[@text="Renvoi d \'appel"]')
+        busy_activation = self.find_by_XPATH('//android.webkit.WebView[@text="BWCallSettingsWeb"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]/android.view.View[2]/android.view.View[4]/android.view.View[2]/android.view.View/android.view.View/android.widget.ToggleButton')
+        #todo : check if already checked 
+        no_answer_activation.click()
+        forward_target = self.find_by_XPATH('//android.widget.EditText')
+        forward_target.send_keys(forward_target)
+        #returning to main menu
+        back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[1]')
+        back_button.click()
+        back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[2]')
+        back_button.click()
+        back_button = self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
+        back_button.click()
+
     def driver_quit(self) :
         self.driver.quit()
 
