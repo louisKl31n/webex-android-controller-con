@@ -247,6 +247,42 @@ def api_decline():
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
 
+@app.route('/configure_CFNA', methods=['POST'])
+def api_cancel():
+    device = authenticate_request(request)
+    forward_target = request.json['forward_target']
+    if(device != False) :
+        try :
+            device.configure_CFNA()
+            resp = response(200,'CFNA configuration function worked as expected')
+        except : resp = response(503,'CFNA configuration function failed')
+    else : resp = response(401,'Authentication with deviceName and token failed')
+    return resp
+
+@app.route('/configure_CFBusy', methods=['POST'])
+def api_cancel():
+    device = authenticate_request(request)
+    forward_target = request.json['forward_target']
+    if(device != False) :
+        try :
+            device.configure_CFBusy()
+            resp = response(200,'CFBusy configuration function worked as expected')
+        except : resp = response(503,'CFBusy configuration function failed')
+    else : resp = response(401,'Authentication with deviceName and token failed')
+    return resp
+
+@app.route('/configure_CFNR', methods=['POST'])
+def api_cancel():
+    device = authenticate_request(request)
+    forward_target = request.json['forward_target']
+    if(device != False) :
+        try :
+            device.webex_cancel()
+            resp = response(200,'CFNR configuration function worked as expected')
+        except : resp = response(503,'CFBusy configuration function failed')
+    else : resp = response(401,'Authentication with deviceName and token failed')
+    return resp
+
 if __name__ == '__main__' :
     app.run(host='0.0.0.0', port=5000)
     appium_service = AppiumService()

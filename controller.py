@@ -319,9 +319,9 @@ class Controller:
         This function will use the bubble feature
         """
 
-    def call_forward_no_answer(self,forward_target)
+    def configure_CFNA(self,forward_target)
         """
-        call_forward_no_answer configure a CFNA using the advanced call options on webex android 
+        configure_CFNA configure a call forward no answer using the advanced call options on webex android 
         """
 
         self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',5)
@@ -356,9 +356,9 @@ class Controller:
 
 
 
-    def call_forward_busy(self,forward_target)
+    def configure_CFBusy(self,forward_target)
         """
-        call_forward_busy configure a CFBusy using the advanced call options on webex android 
+         configure_CFBusy configure a call forward busy using the advanced call options on webex android 
         """
 
         self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',5)
@@ -391,9 +391,9 @@ class Controller:
         back_button = self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
         back_button.click()
 
-    def call_forward_not_reachable(self,forward_target)
+    def configure_CFNR(self,forward_target)
         """
-        call_forward_not_reachable configure a CFNR using the advanced call options on webex android 
+        configure_CFNR configure a call forward not reachable using the advanced call options on webex android 
         """
 
         self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',5)
