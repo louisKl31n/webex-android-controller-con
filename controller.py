@@ -313,11 +313,58 @@ class Controller:
         return 200
 
     def power_up(self) :
-           """
+        """
         powerup function does the whole process of transitionning from dialer call to webex call
         Webex call overlay must be activated and a call ongoing
-        This function will use the bubble feature
+        This function will use the notification feature
         """
+        self.driver.openNotification()
+        webex_notification = self.find_by_XPATH('//android.widget.TextView[@resource-id="android:id/title" and @text="Gérer cet appel avec Webex"]')
+        webex_notification.click()
+
+    def blind_transfert(self,transfert_target)
+        """
+        blind_transfert does the whole process of blind transfering the call to target number 
+        This function needs the power up state 
+        """
+        #Open transfert menu
+        transfert_button = self.find_by_XPATH('//android.view.View[@content-desc="Transfert"]')
+        transfert_button.click()
+        #Specify target number
+        target= self.find_by_XPATH('//android.widget.EditText[@resource-id="com.cisco.wx2.android:id/recipients"]')
+        target.send_keys(transfert_target)
+        #Initiate transfert
+        call= self.find_by_XPATH('//android.widget.ImageView[@content-desc="Appeler directement"]')
+        call.click()
+        #chose blind transfert
+        blind_transfert= self.find_by_XPATH('//android.widget.TextView[@text="Transfert"]')
+        blind_transfert.click()
+    
+    def supervised_transfert(self,transfert_target)
+        """
+        supervised_transfert does the whole process of doing a supervised transfert to target number 
+        This function needs the power up state 
+        """
+        #Open transfert menu
+        transfert_button = self.find_by_XPATH('//android.view.View[@content-desc="Transfert"]')
+        transfert_button.click()
+        #Specify target number
+        target= self.find_by_XPATH('//android.widget.EditText[@resource-id="com.cisco.wx2.android:id/recipients"]')
+        target.send_keys(transfert_target)
+        #Initiate transfert
+        call= self.find_by_XPATH('//android.widget.ImageView[@content-desc="Appeler directement"]')
+        call.click()
+        #chose supervised transfert
+        blind_transfert= self.find_by_XPATH('//android.widget.TextView[@text="Consulter en premier"]')
+        blind_transfert.click()
+        #start call to transfert 
+        call= self.find_by_XPATH('//android.widget.ImageButton[@content-desc="Appeler"]')
+        call.click()
+        #wait pick up then power up the temp call
+        power_up(self)
+        #finish transfert
+        transfert_button= self.find_by_XPATH('//android.widget.TextView[@text="Transfert"]')
+        transfert_button.click()       
 
     def configure_CFNA(self,forward_target) :
         """
