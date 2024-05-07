@@ -337,6 +337,7 @@ class Controller:
         advanced_call_options.click()
         #todo : check if already opened
         #open incoming call options
+        self.wait_until_element_is_displayed('//android.view.View[@text="Appels entrants"]',10)
         incoming_call = self.find_by_XPATH('//android.view.View[@text="Appels entrants"]')
         incoming_call.click()
         #open call forward config
