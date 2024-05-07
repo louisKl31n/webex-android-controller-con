@@ -288,7 +288,7 @@ def api_powerup():
     device = authenticate_request(request)
     if(device != False) :
         try :
-            device.webx_power_up()
+            device.webex_power_up()
             resp = response(200,'Powerup function worked as expected')
         except : resp = response(503,'Powerup function failed')
     else : resp = response(401,'Authentication with deviceName and token failed')
