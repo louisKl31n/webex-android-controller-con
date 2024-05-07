@@ -295,7 +295,7 @@ def api_powerup():
     return resp
 
 @app.route('/blind-transfert', methods=['POST'])
-def api_call():
+def api_BTF():
     device = authenticate_request(request)
     transfert_target= request.json['transfertTarget']
     if(device != False) :
@@ -316,7 +316,7 @@ def api_call():
     return response
 
 @app.route('/supervised-transfert', methods=['POST'])
-def api_call():
+def api_STF():
     device = authenticate_request(request)
     transfert_target= request.json['transfertTarget']
     if(device != False) :
