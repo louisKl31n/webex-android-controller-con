@@ -322,7 +322,7 @@ class Controller:
         webex_notification = self.find_by_XPATH('//android.widget.TextView[@resource-id="android:id/title" and @text="Gérer cet appel avec Webex"]')
         webex_notification.click()
 
-    def blind_transfert(self,transfert_target)
+    def blind_transfert(self,transfert_target) :
         """
         blind_transfert does the whole process of blind transfering the call to target number 
         This function needs the power up state 
@@ -340,7 +340,7 @@ class Controller:
         blind_transfert= self.find_by_XPATH('//android.widget.TextView[@text="Transfert"]')
         blind_transfert.click()
     
-    def supervised_transfert(self,transfert_target)
+    def supervised_transfert(self,transfert_target) :
         """
         supervised_transfert does the whole process of doing a supervised transfert to target number 
         This function needs the power up state 
