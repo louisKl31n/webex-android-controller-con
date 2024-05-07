@@ -342,6 +342,7 @@ class Controller:
         incoming_call.click()
         #open call forward config
         call_forward = self.find_by_XPATH('//android.widget.TextView[@text="Renvoi d \'appel"]')
+        call_forward.click()
         no_answer_activation = self.find_by_XPATH('//android.webkit.WebView[@text="BWCallSettingsWeb"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]/android.view.View[2]/android.view.View[1]/android.view.View[2]/android.view.View/android.view.View/android.widget.ToggleButton')
         #todo : check if already checked 
         no_answer_activation.click()
