@@ -319,7 +319,7 @@ class Controller:
         This function will use the notification feature
         """
         print('=> opening notification bar')
-        self.driver.openNotifications()
+        self.openNotifications()
         print('=> notification bar opened')
         webex_notification = self.find_by_XPATH('//android.widget.TextView[@resource-id="android:id/title" and @text="Gérer cet appel avec Webex"]')
         webex_notification.click()
