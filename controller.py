@@ -347,8 +347,13 @@ class Controller:
         #todo : check if already checked 
         no_answer_activation.click()
         forward_section= self.find_by_XPATH('//android.webkit.WebView[@text="BWCallSettingsWeb"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]/android.view.View[2]/android.view.View[2]/android.view.View/android.view.View[1]')
-        forward_number= self.find_by_XPATH_inside_parent(forward_section,'//android.widget.EditText')
+        forward_number= self.find_by_XPATH_inside_parent(forward_section'//android.widget.EditText')
         forward_number.send_keys(forward_target)
+        try: 
+            error= self.find_by_XPATH_inside_parent(forward_section,'//android.view.View[@text="Impossible de mettre à jour les données. Réessayez ou contactez l\'administrateur. Code: (400)"]')
+            return 400
+        except:
+            pass
         #returning to main menu 
         back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[1]')
         back_button.click()
@@ -383,9 +388,15 @@ class Controller:
         call_forward = self.find_by_XPATH('//android.widget.TextView[@text="Renvoi d \'appel"]')
         busy_activation = self.find_by_XPATH('//android.webkit.WebView[@text="BWCallSettingsWeb"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]/android.view.View[2]/android.view.View[2]/android.view.View[2]/android.view.View/android.view.View/android.widget.ToggleButton')
         #todo : check if already checked 
-        no_answer_activation.click()
-        forward_target = self.find_by_XPATH('//android.widget.EditText')
-        forward_target.send_keys(forward_target)
+        busy_activation.click()
+        forward_section= self.find_by_XPATH('//android.webkit.WebView[@text="BWCallSettingsWeb"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]/android.view.View[2]/android.view.View[3]/android.view.View')
+        forward_number= self.find_by_XPATH_inside_parent(forward_section'//android.widget.EditText')
+        forward_number.send_keys(forward_target)
+        try: 
+            error= self.find_by_XPATH_inside_parent(forward_section,'//android.view.View[@text="Impossible de mettre à jour les données. Réessayez ou contactez l\'administrateur. Code: (400)"]')
+            return 400
+        except:
+            pass
         #returning to main menu
         back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[1]')
         back_button.click()
@@ -416,11 +427,17 @@ class Controller:
         incoming_call.click()
         #open call forward config
         call_forward = self.find_by_XPATH('//android.widget.TextView[@text="Renvoi d \'appel"]')
-        busy_activation = self.find_by_XPATH('//android.webkit.WebView[@text="BWCallSettingsWeb"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]/android.view.View[2]/android.view.View[4]/android.view.View[2]/android.view.View/android.view.View/android.widget.ToggleButton')
+        not_reachable_activation = self.find_by_XPATH('//android.webkit.WebView[@text="BWCallSettingsWeb"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]/android.view.View[2]/android.view.View[4]/android.view.View[2]/android.view.View/android.view.View/android.widget.ToggleButton')
         #todo : check if already checked 
-        no_answer_activation.click()
-        forward_target = self.find_by_XPATH('//android.widget.EditText')
-        forward_target.send_keys(forward_target)
+        not_reachable_activation
+        forward_section= self.find_by_XPATH('//android.webkit.WebView[@text="BWCallSettingsWeb"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]/android.view.View[2]/android.view.View[4]/android.view.View')
+        forward_number= self.find_by_XPATH_inside_parent(forward_section'//android.widget.EditText')
+        forward_number.send_keys(forward_target)
+        try: 
+            error= self.find_by_XPATH_inside_parent(forward_section,'//android.view.View[@text="Impossible de mettre à jour les données. Réessayez ou contactez l\'administrateur. Code: (400)"]')
+            return 400
+        except:
+            pass
         #returning to main menu
         back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[1]')
         back_button.click()

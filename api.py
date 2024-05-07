@@ -253,8 +253,8 @@ def api_cfna():
     forward_target = request.json['forward_target']
     if(device != False) :
         try :
-            device.configure_CFNA(forward_target)
-            resp = response(200,'CFNA configuration function worked as expected')
+            if device.configure_CFNA(forward_target) == 200 : resp = response(200,'CFNA configuration function worked as expected')
+            else : resp = response(400, 'Impossible to update data')            
         except : resp = response(503,'CFNA configuration function failed')
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
@@ -265,8 +265,8 @@ def api_cfbusy():
     forward_target = request.json['forward_target']
     if(device != False) :
         try :
-            device.configure_CFBusy(forward_target)
-            resp = response(200,'CFBusy configuration function worked as expected')
+            if device.configure_CFBusy(forward_target) == 200 : resp = response(200,'CFNA configuration function worked as expected')
+            else : resp = response(400, 'Impossible to update data')   
         except : resp = response(503,'CFBusy configuration function failed')
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
@@ -277,8 +277,8 @@ def api_cfnr():
     forward_target = request.json['forward_target']
     if(device != False) :
         try :
-            device.webex_cancel(forward_target)
-            resp = response(200,'CFNR configuration function worked as expected')
+            if device.configure_CFNR(forward_target) == 200 : resp = response(200,'CFNA configuration function worked as expected')
+            else : resp = response(400, 'Impossible to update data')   
         except : resp = response(503,'CFBusy configuration function failed')
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
