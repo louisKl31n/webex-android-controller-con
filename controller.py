@@ -318,7 +318,7 @@ class Controller:
         Webex call overlay must be activated and a call ongoing
         This function will use the notification feature
         """
-        self.driver.openNotification()
+        self.driver.openNotifications()
         webex_notification = self.find_by_XPATH('//android.widget.TextView[@resource-id="android:id/title" and @text="Gérer cet appel avec Webex"]')
         webex_notification.click()
 
