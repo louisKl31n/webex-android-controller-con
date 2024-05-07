@@ -247,41 +247,94 @@ def api_decline():
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
 
-@app.route('/configure_CFNA', methods=['POST'])
+@app.route('/configure-CFNA', methods=['POST'])
 def api_cfna():
     device = authenticate_request(request)
-    forward_target = request.json['forward_target']
+    forward_target = request.json['forwardTarget']
     if(device != False) :
         try :
-            if device.configure_CFNA(forward_target) == 200 : resp = response(200,'CFNA configuration function worked as expected')
+            if device.webex_configure_CFNA(forward_target) == 200 : resp = response(200,'CFNA configuration function worked as expected')
             else : resp = response(400, 'Impossible to update data')            
         except : resp = response(503,'CFNA configuration function failed')
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
 
-@app.route('/configure_CFBusy', methods=['POST'])
+@app.route('/configure-CFBusy', methods=['POST'])
 def api_cfbusy():
     device = authenticate_request(request)
-    forward_target = request.json['forward_target']
+    forward_target = request.json['forwardTarget']
     if(device != False) :
         try :
-            if device.configure_CFBusy(forward_target) == 200 : resp = response(200,'CFNA configuration function worked as expected')
+            if device.webex_configure_CFBusy(forward_target) == 200 : resp = response(200,'CFNA configuration function worked as expected')
             else : resp = response(400, 'Impossible to update data')   
         except : resp = response(503,'CFBusy configuration function failed')
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
 
-@app.route('/configure_CFNR', methods=['POST'])
+@app.route('/configure-CFNR', methods=['POST'])
 def api_cfnr():
     device = authenticate_request(request)
-    forward_target = request.json['forward_target']
+    forward_target = request.json['forwardTarget']
     if(device != False) :
         try :
-            if device.configure_CFNR(forward_target) == 200 : resp = response(200,'CFNA configuration function worked as expected')
+            if device.webex_configure_CFNR(forward_target) == 200 : resp = response(200,'CFNA configuration function worked as expected')
             else : resp = response(400, 'Impossible to update data')   
         except : resp = response(503,'CFBusy configuration function failed')
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
+
+@app.route('/power-up', methods=['POST'])
+def api_powerup():
+    device = authenticate_request(request)
+    if(device != False) :
+        try :
+            device.webx_power_up()
+            resp = response(200,'Powerup function worked as expected')
+        except : resp = response(503,'Powerup function failed')
+    else : resp = response(401,'Authentication with deviceName and token failed')
+    return resp
+
+@app.route('/blind-transfert', methods=['POST'])
+def api_call():
+    device = authenticate_request(request)
+    transfert_target= request.json['transfertTarget']
+    if(device != False) :
+        try :
+            if (device.webex_blind_transfert(transfert_target) == 503) :
+                response = jsonify('Webex telephony services unavailable')
+                response.status_code = 503
+            else :
+                response = jsonify('Blind transfert worked as expected')
+                response.status_code = 200
+        except :
+            response = jsonify('Blind transfert function failed')
+            response.status_code = 503
+        
+    else :
+        response = jsonify('Authentication with deviceName and token failed')
+        response.status_code = 401
+    return response
+
+@app.route('/supervised-transfert', methods=['POST'])
+def api_call():
+    device = authenticate_request(request)
+    transfert_target= request.json['transfertTarget']
+    if(device != False) :
+        try :
+            if (device.webex_supervised_transfert(transfert_target) == 503) :
+                response = jsonify('Webex telephony services unavailable')
+                response.status_code = 503
+            else :
+                response = jsonify('Supervised transfert worked as expected')
+                response.status_code = 200
+        except :
+            response = jsonify('Supervised transfert function failed')
+            response.status_code = 503
+        
+    else :
+        response = jsonify('Authentication with deviceName and token failed')
+        response.status_code = 401
+    return response
 
 if __name__ == '__main__' :
     app.run(host='0.0.0.0', port=5000)

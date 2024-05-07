@@ -312,7 +312,7 @@ class Controller:
         self.driver.execute_script('mobile: shell',{'command' : 'input keyevent KEYCODE_ENDCALL'})
         return 200
 
-    def power_up(self) :
+    def webex_power_up(self) :
         """
         powerup function does the whole process of transitionning from dialer call to webex call
         Webex call overlay must be activated and a call ongoing
@@ -322,7 +322,7 @@ class Controller:
         webex_notification = self.find_by_XPATH('//android.widget.TextView[@resource-id="android:id/title" and @text="Gérer cet appel avec Webex"]')
         webex_notification.click()
 
-    def blind_transfert(self,transfert_target) :
+    def webex_blind_transfert(self,transfert_target) :
         """
         blind_transfert does the whole process of blind transfering the call to target number 
         This function needs the power up state 
@@ -340,7 +340,7 @@ class Controller:
         blind_transfert= self.find_by_XPATH('//android.widget.TextView[@text="Transfert"]')
         blind_transfert.click()
     
-    def supervised_transfert(self,transfert_target) :
+    def webex_supervised_transfert(self,transfert_target) :
         """
         supervised_transfert does the whole process of doing a supervised transfert to target number 
         This function needs the power up state 
@@ -361,12 +361,14 @@ class Controller:
         call= self.find_by_XPATH('//android.widget.ImageButton[@content-desc="Appeler"]')
         call.click()
         #wait pick up then power up the temp call
+        #todo : multhread to pick up during this function 
+        time.sleep(5)
         power_up(self)
         #finish transfert
         transfert_button= self.find_by_XPATH('//android.widget.TextView[@text="Transfert"]')
         transfert_button.click()       
 
-    def configure_CFNA(self,forward_target) :
+    def webex_configure_CFNA(self,forward_target) :
         """
         configure_CFNA configure a call forward no answer using the advanced call options on webex android 
         """
@@ -411,7 +413,7 @@ class Controller:
 
 
 
-    def configure_CFBusy(self,forward_target) :
+    def webex_configure_CFBusy(self,forward_target) :
         """
          configure_CFBusy configure a call forward busy using the advanced call options on webex android 
         """
@@ -453,7 +455,7 @@ class Controller:
         back_button = self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
         back_button.click()
 
-    def configure_CFNR(self,forward_target) :
+    def webex_configure_CFNR(self,forward_target) :
         """
         configure_CFNR configure a call forward not reachable using the advanced call options on webex android 
         """
