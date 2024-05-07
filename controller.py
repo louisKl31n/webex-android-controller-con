@@ -346,7 +346,8 @@ class Controller:
         no_answer_activation = self.find_by_XPATH('//android.webkit.WebView[@text="BWCallSettingsWeb"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]/android.view.View[2]/android.view.View[1]/android.view.View[2]/android.view.View/android.view.View/android.widget.ToggleButton')
         #todo : check if already checked 
         no_answer_activation.click()
-        forward_number= self.find_by_XPATH('//android.widget.EditText')
+        forward_section= self.find_by_XPATH('//android.webkit.WebView[@text="BWCallSettingsWeb"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]/android.view.View[2]/android.view.View[2]/android.view.View/android.view.View[1]')
+        forward_number= self.find_by_XPATH_inside_parent(forward_section,'//android.widget.EditText')
         forward_number.send_keys(forward_target)
         #returning to main menu 
         back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[1]')
