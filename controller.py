@@ -319,9 +319,9 @@ class Controller:
         This function will use the notification feature
         """
         print('=> opening notification bar')
-        self.openNotifications()
+        self.driver.open_notifications()
         print('=> notification bar opened')
-        webex_notification = self.find_by_XPATH('//android.widget.TextView[@resource-id="android:id/title" and @text="Gérer cet appel avec Webex"]')
+        webex_notification= self.find_by_XPATH('//android.widget.TextView[@resource-id="android:id/title" and @text="Gérer cet appel avec Webex"]')
         webex_notification.click()
 
     def webex_blind_transfert(self,transfert_target) :
