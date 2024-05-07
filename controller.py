@@ -319,7 +319,7 @@ class Controller:
         This function will use the bubble feature
         """
 
-    def configure_CFNA(self,forward_target)
+    def configure_CFNA(self,forward_target) :
         """
         configure_CFNA configure a call forward no answer using the advanced call options on webex android 
         """
@@ -356,7 +356,7 @@ class Controller:
 
 
 
-    def configure_CFBusy(self,forward_target)
+    def configure_CFBusy(self,forward_target) :
         """
          configure_CFBusy configure a call forward busy using the advanced call options on webex android 
         """
@@ -391,7 +391,7 @@ class Controller:
         back_button = self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
         back_button.click()
 
-    def configure_CFNR(self,forward_target)
+    def configure_CFNR(self,forward_target) :
         """
         configure_CFNR configure a call forward not reachable using the advanced call options on webex android 
         """

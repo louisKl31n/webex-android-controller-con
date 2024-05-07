@@ -248,7 +248,7 @@ def api_decline():
     return resp
 
 @app.route('/configure_CFNA', methods=['POST'])
-def api_cancel():
+def api_cfna():
     device = authenticate_request(request)
     forward_target = request.json['forward_target']
     if(device != False) :
@@ -260,7 +260,7 @@ def api_cancel():
     return resp
 
 @app.route('/configure_CFBusy', methods=['POST'])
-def api_cancel():
+def api_cfbusy():
     device = authenticate_request(request)
     forward_target = request.json['forward_target']
     if(device != False) :
@@ -272,7 +272,7 @@ def api_cancel():
     return resp
 
 @app.route('/configure_CFNR', methods=['POST'])
-def api_cancel():
+def api_cfnr():
     device = authenticate_request(request)
     forward_target = request.json['forward_target']
     if(device != False) :
