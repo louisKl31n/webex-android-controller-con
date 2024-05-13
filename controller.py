@@ -364,9 +364,9 @@ class Controller:
         call.click()
         #wait pick up then power up the temp call
         #todo : multhread to pick up during this function 
-        time.sleep(5)
+        time.sleep(10)
         print("=> powering up temp call")
-        power_up(self)
+        webex_power_up(self)
         #finish transfert
         transfert_button= self.find_by_XPATH('//android.widget.TextView[@text="Transfert"]')
         transfert_button.click()       
