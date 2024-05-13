@@ -364,7 +364,7 @@ class Controller:
         call.click()
         #wait pick up then power up the temp call
         #todo : multhread to pick up during this function 
-        time.sleep(10)
+        time.sleep(20)
         print("=> powering up temp call")
         webex_power_up(self)
         #finish transfert
