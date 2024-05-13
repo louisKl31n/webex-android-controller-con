@@ -366,7 +366,7 @@ class Controller:
         #todo : multhread to pick up during this function 
         time.sleep(20)
         print("=> powering up temp call")
-        webex_power_up(self)
+        self.webex_power_up()
         #finish transfert
         transfert_button= self.find_by_XPATH('//android.widget.TextView[@text="Transfert"]')
         transfert_button.click()       
