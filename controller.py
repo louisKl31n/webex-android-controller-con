@@ -291,9 +291,7 @@ class Controller:
         print('After regex : '+number)
         self.wait_until_element_is_displayed_id('com.orange.phone:id/answer_button',10)
         number_found_in_sys = self.driver.execute_script('mobile: shell',{'command' : 'dumpsys telephony.registry | grep mCallI'})
-        print("je suis passé par ici")
         print('Dumpsys : '+number_found_in_sys)
-        print("je suis repassé par ici")
         if number not in number_found_in_sys :
             return 503
         self.driver.execute_script('mobile: shell',{'command' : 'input keyevent KEYCODE_CALL'})
@@ -366,10 +364,7 @@ class Controller:
         #todo : multhread to pick up during this function 
         time.sleep(20)
         print("=> powering up temp call")
-        #self.webex_power_up()
-        self.driver.open_notifications()
-        webex_notification= self.find_by_XPATH('//android.widget.TextView[@resource-id="android:id/title" and @text="Gérer cet appel avec Webex"]')
-        webex_notification.click()
+        self.webex_power_up()
         #finish transfert
         transfert_button= self.find_by_XPATH('//android.widget.TextView[@text="Transfert"]')
         transfert_button.click()       
@@ -405,10 +400,13 @@ class Controller:
         forward_number= self.find_by_XPATH_inside_parent(forward_section,'//android.widget.EditText')
         forward_number.send_keys(forward_target)
         try: 
-            error= self.find_by_XPATH_inside_parent(forward_section,'//android.view.View[@text="Impossible de mettre à jour les données. Réessayez ou contactez l\'administrateur. Code: (400)"]')
-            return 400
-        except:
-            pass
+            activation= self.find_by_XPATH('//android.widget.TextView[@text="Activé"]')
+        except :
+            try: 
+                error= self.find_by_XPATH_inside_parent(forward_section,'//android.view.View[@text="Impossible de mettre à jour les données. Réessayez ou contactez l\'administrateur. Code: (400)"]')
+                return 400
+            except:
+                pass
         #returning to main menu 
         back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[1]')
         back_button.click()
@@ -449,10 +447,13 @@ class Controller:
         forward_number= self.find_by_XPATH_inside_parent(forward_section,'//android.widget.EditText')
         forward_number.send_keys(forward_target)
         try: 
-            error= self.find_by_XPATH_inside_parent(forward_section,'//android.view.View[@text="Impossible de mettre à jour les données. Réessayez ou contactez l\'administrateur. Code: (400)"]')
-            return 400
-        except:
-            pass
+            activation= self.find_by_XPATH('//android.widget.TextView[@text="Activé"]')
+        except :
+            try: 
+                error= self.find_by_XPATH_inside_parent(forward_section,'//android.view.View[@text="Impossible de mettre à jour les données. Réessayez ou contactez l\'administrateur. Code: (400)"]')
+                return 400
+            except:
+                pass
         #returning to main menu
         back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[1]')
         back_button.click()
@@ -491,10 +492,13 @@ class Controller:
         forward_number= self.find_by_XPATH_inside_parent(forward_section,'//android.widget.EditText')
         forward_number.send_keys(forward_target)
         try: 
-            error= self.find_by_XPATH_inside_parent(forward_section,'//android.view.View[@text="Impossible de mettre à jour les données. Réessayez ou contactez l\'administrateur. Code: (400)"]')
-            return 400
-        except:
-            pass
+            activation= self.find_by_XPATH('//android.widget.TextView[@text="Activé"]')
+        except :
+            try: 
+                error= self.find_by_XPATH_inside_parent(forward_section,'//android.view.View[@text="Impossible de mettre à jour les données. Réessayez ou contactez l\'administrateur. Code: (400)"]')
+                return 400
+            except:
+                pass
         #returning to main menu
         back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[1]')
         back_button.click()
