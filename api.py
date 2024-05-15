@@ -349,7 +349,7 @@ def api_IM():
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
 
-@app.route('/send-im', methods=['POST'])
+@app.route('/send-gim', methods=['POST'])
 def api_GIM():
     device = authenticate_request(request)
     group_name = request.json['groupName']
