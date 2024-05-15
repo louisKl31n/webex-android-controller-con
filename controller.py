@@ -25,6 +25,12 @@ class Controller:
         print(device_name)
 
     def swipe_vertical(self,px) :
+        """
+        swipe_vertical swipes the screen up the given number of pixel
+
+        :param px: number of pixel to swipe        
+        """
+
         actions = ActionChains(self.driver)
         actions.w3c_actions = ActionBuilder(self.driver, mouse=PointerInput(interaction.POINTER_TOUCH, "touch"))
         actions.w3c_actions.pointer_action.move_to_location(500, 1000)
@@ -38,6 +44,12 @@ class Controller:
             print(str)
 
     def find_by_XPATH(self,XPATH) :
+        """
+        find_by_od function detects specified element with its XPATH. if element isn't found , throws an excpetion
+
+        :param XPATH: appium XPATH of the element to search        
+        """
+        
         self.print_log('find_by_XPATH : '+XPATH)
         local_timer = self.timer_until_detection_timeout
         element =""
@@ -55,6 +67,12 @@ class Controller:
                 return element
             
     def find_by_id(self,id) :
+        """
+        find_by_od function detects specified element with its id. if element isn't found , throws an excpetion
+
+        :param id: appium id of the element to search        
+        """
+        
         self.print_log('find_by_id : '+id)
         local_timer = self.timer_until_detection_timeout
         element =""
@@ -72,6 +90,13 @@ class Controller:
                 return element
             
     def find_by_XPATH_inside_parent(self,parent,XPATH) :
+        """
+        find_by_XPATH_inside_parent function detects specified element with its XPATH in the specified parent context. If element isn't found , throws an excpetion
+
+        :param parent: appium parent to search in
+        :param XPATH: appium XPATH of the element to search        
+        """
+        
         self.print_log('find_by_XPATH_inside_parent : '+XPATH)
         local_timer = self.timer_until_detection_timeout
         element =""
@@ -89,6 +114,12 @@ class Controller:
                 return element
         
     def wait_until_element_is_displayed(self,XPATH,timeout) :
+        """
+        wait_until_element_is_displayed function waits until specified element with its XPATH is displayed before specified timeout. If element isn't found , throws an excpetion
+
+        :param XPATH: appium XPATH of the element to search
+        :param timeout: time period before throwing an exception        
+        """ 
         self.print_log('wait_until_element_is_displayed : '+XPATH)
         while True:
             try :
@@ -104,6 +135,13 @@ class Controller:
                 return
             
     def wait_until_element_is_displayed_id(self,id,timeout) :
+        """
+        wait_until_element_is_displayed_id function waits until specified element with its XPATH is displayed before specified timeout. If element isn't found , throws an excpetion
+
+        :param id: appium id of the element to search
+        :param timeout: time period before throwing an exception        
+        """
+
         self.print_log('wait_until_element_is_displayed : '+id)
         while True:
             try :
@@ -119,6 +157,10 @@ class Controller:
                 return
 
     def webex_launch_app(self,appium_server) :
+        """
+        launch_app launches a fresh inctance of the webex app
+        """
+
         self.appium_server_ip = appium_server
         capabilities = {
             'udid' : self.device_name,
@@ -177,6 +219,10 @@ class Controller:
         print('=> webex_log_in() success')
 
     def webex_log_out(self) :
+        """
+        log_out function logs out current user
+        """
+
         webex_activity = {
             'intentAction':'android.intent.action.MAIN',
             'intentFlags': ['FLAG_ACTIVITY_CLEAR_TOP','FLAG_ACTIVITY_NEW_TASK'],
@@ -199,6 +245,12 @@ class Controller:
         print('=> webex_log_out() success')
 
     def webex_call(self,destinationNumber) :
+        """
+        call function calls specified Number
+        
+        :param destinationNumber: the phone number to call
+        """
+
         webex_activity = {
             'intentAction':'android.intent.action.MAIN',
             'intentFlags': ['FLAG_ACTIVITY_CLEAR_TOP','FLAG_ACTIVITY_NEW_TASK'],
@@ -224,16 +276,30 @@ class Controller:
         return 200
 
     def webex_cancel(self) :
+        """
+        cancel function refuses incomming call
+        """
+
         end_call_action_button = self.find_by_id('com.orange.phone:id/floating_end_call_action_button')
         end_call_action_button.click()
         print('=> webex_cancel() success')
     
     def webex_hang_up(self) :
+        """
+        hang_up function hangs up current call
+        """
+
         end_call_action_button = self.find_by_id('com.orange.phone:id/floating_end_call_action_button')
         end_call_action_button.click()
         print('=> webex_hang_up() success')
 
     def webex_dtmf(self,dtmf_sequence):
+        """
+        dtmf function plays a dtmf sequence during a call 
+        
+        :param dtmf_sequence: the dtmf sequence to play during the call 
+        """
+
         diaplpad_button = self.find_by_id('com.orange.phone:id/dialpadButton')
         diaplpad_button.click()
         dtmf_elements_id = {
@@ -265,26 +331,48 @@ class Controller:
         diaplpad_button.click()
 
     def webex_hold(self):
+        """
+        hold function puts on hold a call
+        """
+
         more_button = self.find_by_id('com.orange.phone:id/call_screen_more_id')
         more_button.click()
         hold_button = self.find_by_XPATH('(//android.widget.LinearLayout[@resource-id="com.orange.phone:id/content"])[1]')
         hold_button.click()
 
     def webex_resume(self):
+        """
+        resume function resumes a call put on hold 
+        """
+
         more_button = self.find_by_id('com.orange.phone:id/call_screen_more_id')
         more_button.click()
         hold_button = self.find_by_XPATH('(//android.widget.LinearLayout[@resource-id="com.orange.phone:id/content"])[1]')
         hold_button.click()
 
     def webex_mute(self):
+        """
+        mute function mutes the microphone during a call
+        """
+        
         mute_button = self.find_by_id('com.orange.phone:id/muteButton')
         mute_button.click()
 
     def webex_unmute(self):
+        """
+        unmute function unmutes the microphone during a call
+        """
+
         unmute_button = self.find_by_id('com.orange.phone:id/muteButton')
         unmute_button.click()
 
     def webex_answer(self, incoming_number):
+        """
+        answer function answers the call from the incoming_number
+        
+        :param incoming_number: phone number of the caller
+        """
+
         print('Before regex : '+incoming_number)
         regex = r'((\+\d{1,3})|(0)(?P<number>\d+))'
         number = re.search(regex, incoming_number).group('number')
@@ -298,6 +386,12 @@ class Controller:
         return 200
 
     def webex_decline(self, incoming_number):
+        """
+        decline function declines the call from the incoming_number
+        
+        :param incoming_number: phone number of the caller
+        """
+
         print('Before regex : '+incoming_number)
         regex = r'((\+\d{1,3})|(0)(?P<number>\d+))'
         number = re.search(regex, incoming_number).group('number')
@@ -309,6 +403,74 @@ class Controller:
             return 503
         self.driver.execute_script('mobile: shell',{'command' : 'input keyevent KEYCODE_ENDCALL'})
         return 200
+
+    def webex_send_im(self, target_mail, instant_message) :
+        """
+        send_im function creates a conv with the target_mail user and sends an instant message
+
+        :param target_mail: the mail to use to retreive the member to add
+        :param instant_message: the instant message to send
+        """
+         #Go to instant message creation menu
+        messages_menu = self.find_by_id('com.cisco.wx2.android:id/fab_menu_button')
+        messages_menu.click()
+        instant_message = self.find_by_id('com.cisco.wx2.android:id/send_message_menu_item')
+        instant_message.click()
+        #Go to select person menu 
+        add_person =  self.find_by_id('com.cisco.wx2.android:id/addPersonText')
+        search_person= self.find_by_id('com.cisco.wx2.android:id/recipients')
+        search_person.send_keys(target_mail)
+        #try to create conversation (only works if target_mail user is found )
+        try :
+            create_conversation = self.find_by_XPATH('//android.widget.Button[@resource-id="com.cisco.wx2.android:id/createSpaceButton"]')
+            create_conversation.click()
+        except : 
+            print('=> user not found ')
+            return 404
+        #send instant message in conv 
+        message_text = self.find_by_XPATH('//android.widget.EditText[@resource-id="com.cisco.wx2.android:id/message"]')
+        message_text.send_keys(instant_message)
+        send_button = self.find_by_id('com.cisco.wx2.android:id/send')
+        send_button.click()
+
+    def webex_send_group_im(self, group_name, target_mail, instant_message) :
+        """
+        send_group_im function creates a group conv with the target_mail user and sends an group message
+        
+        :param group_name: the name of the group conversation
+        :param target_mail: the mail to use to retreive the member to add
+        :param instant_message: the instant message to send 
+        """
+        #Go to group message creation menu
+        messages_menu = self.find_by_id('com.cisco.wx2.android:id/fab_menu_button')
+        messages_menu.click()
+        instant_message = self.find_by_id('com.cisco.wx2.android:id/create_space_menu_item')
+        instant_message.click()
+        #Go to adding person menu 
+        add_person =  self.find_by_id('com.cisco.wx2.android:id/add_person_text')
+        search_person= self.find_by_id('com.cisco.wx2.android:id/recipients')
+        search_person.send_keys(target_mail)
+        #try to search and add target_mail user
+        try :
+            select_person= self.find_by_id('com.cisco.wx2.android:id/addPeopleRow')
+            select_person.click()
+            confirm_button = self.find_by_id('com.cisco.wx2.android:id/ok')
+            confirm_button.click()
+        except : 
+            print('=> user not found ')
+            return 404
+        #name the group 
+        name_group = self.find_by_XPATH('//android.widget.EditText')
+        name_group.send_keys(group_name)
+        #create the conv
+        create_conversation = self.find_by_id('com.cisco.wx2.android:id/createSpaceButton')
+        create_conversation.click()
+        #send instant_message in conv 
+        message_text = self.find_by_XPATH('//android.widget.EditText[@resource-id="com.cisco.wx2.android:id/message"]')
+        message_text.send_keys(instant_message)
+        send_button = self.find_by_id('com.cisco.wx2.android:id/send')
+        send_button.click()
+
 
     def webex_power_up(self) :
         """
@@ -326,6 +488,8 @@ class Controller:
         """
         blind_transfert does the whole process of blind transfering the call to target number 
         This function needs the power up state 
+        
+        :param transfert_target: the phone number the call should be transferted to
         """
         #Open transfert menu
         transfert_button = self.find_by_XPATH('//android.view.View[@content-desc="Transfert"]')
@@ -344,6 +508,8 @@ class Controller:
         """
         supervised_transfert does the whole process of doing a supervised transfert to target number 
         This function needs the power up state 
+        
+        :param transfert_target: the phone number the call should be transferted to 
         """
         #Open transfert menu
         transfert_button = self.find_by_XPATH('//android.view.View[@content-desc="Transfert"]')
@@ -371,7 +537,9 @@ class Controller:
 
     def webex_configure_CFNA(self,forward_target) :
         """
-        configure_CFNA configure a call forward no answer using the advanced call options on webex android 
+        configure_CFNA configures a call forward no answer using the advanced call options on webex android 
+        
+        :param forward_target: the phone number to which calls should be forwarded
         """
 
         self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',5)
@@ -419,7 +587,9 @@ class Controller:
 
     def webex_configure_CFBusy(self,forward_target) :
         """
-         configure_CFBusy configure a call forward busy using the advanced call options on webex android 
+         configure_CFBusy configures a call forward busy using the advanced call options on webex android 
+        
+        :param forward_target: the phone number to which calls should be forwarded
         """
 
         self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',5)
@@ -465,6 +635,8 @@ class Controller:
     def webex_configure_CFNR(self,forward_target) :
         """
         configure_CFNR configure a call forward not reachable using the advanced call options on webex android 
+        
+        :param forward_target: the phone number to which calls should be forwarded
         """
 
         self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',5)
