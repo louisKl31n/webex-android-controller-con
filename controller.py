@@ -422,6 +422,8 @@ class Controller:
         search_person.send_keys(target_mail)
         #try to create conversation (only works if target_mail user is found )
         try :
+            select_person= self.find_by_id('com.cisco.wx2.android:id/addPeopleRow')
+            select_person.click()
             create_conversation = self.find_by_XPATH('//android.widget.Button[@resource-id="com.cisco.wx2.android:id/createSpaceButton"]')
             create_conversation.click()
         except : 
