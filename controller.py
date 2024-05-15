@@ -430,8 +430,9 @@ class Controller:
         except : 
             print('=> user not found ')
             return 404
-        #send instant message in conv 
-        message_text = self.find_by_XPATH('//android.widget.EditText[@resource-id="com.cisco.wx2.android:id/message"]')
+        #send instant message in conv
+        print('=> trying to write')
+        message_text = self.find_by_id('com.cisco.wx2.android:id/message')
         message_text.send_keys(instant_message)
         send_button = self.find_by_id('com.cisco.wx2.android:id/send')
         send_button.click()
