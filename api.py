@@ -336,6 +336,33 @@ def api_STF():
         response.status_code = 401
     return response
 
+@app.route('/send-im', methods=['POST'])
+def api_IM():
+    device = authenticate_request(request)
+    target_mail = request.json['targetMail']
+    instant_message = request.json['instantMessage']
+    if(device != False) :
+        try :
+            if device.webex_send_im(target_mail,instant_message) == 200 : resp = response(200,'send IM function worked as expected')
+            else : resp = response(404, 'target user not found')            
+        except : resp = response(503,'send IM function failed')
+    else : resp = response(401,'Authentication with deviceName and token failed')
+    return resp
+
+@app.route('/send-im', methods=['POST'])
+def api_GIM():
+    device = authenticate_request(request)
+    group_name = request.json['groupName']
+    target_mail = request.json['targetMail']
+    instant_message = request.json['instantMessage']
+    if(device != False) :
+        try :
+            if device.webex_send_group_im(group_name,target_mail,instant_message) == 200 : resp = response(200,'send IM function worked as expected')
+            else : resp = response(404, 'target user not found')            
+        except : resp = response(503,'send IM function failed')
+    else : resp = response(401,'Authentication with deviceName and token failed')
+    return resp
+
 if __name__ == '__main__' :
     app.run(host='0.0.0.0', port=5000)
     appium_service = AppiumService()
