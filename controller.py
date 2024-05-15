@@ -418,6 +418,7 @@ class Controller:
         instant_message.click()
         #Go to select person menu 
         add_person =  self.find_by_id('com.cisco.wx2.android:id/addPersonText')
+        add_person.click()
         search_person= self.find_by_id('com.cisco.wx2.android:id/recipients')
         search_person.send_keys(target_mail)
         #try to create conversation (only works if target_mail user is found )
@@ -450,6 +451,7 @@ class Controller:
         instant_message.click()
         #Go to adding person menu 
         add_person =  self.find_by_id('com.cisco.wx2.android:id/add_person_text')
+        add_person.click()
         search_person= self.find_by_id('com.cisco.wx2.android:id/recipients')
         search_person.send_keys(target_mail)
         #try to search and add target_mail user
