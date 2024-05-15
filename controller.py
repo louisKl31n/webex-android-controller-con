@@ -432,6 +432,7 @@ class Controller:
             return 404
         #send instant message in conv
         print('=> trying to write')
+        self.wait_until_element_is_displayed_id('com.cisco.wx2.android:id/message',5)
         message_text = self.find_by_id('com.cisco.wx2.android:id/message')
         message_text.send_keys(instant_message)
         send_button = self.find_by_id('com.cisco.wx2.android:id/send')
