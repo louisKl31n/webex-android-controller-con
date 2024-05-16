@@ -436,6 +436,7 @@ class Controller:
         message_text.send_keys(message)
         send_button = self.find_by_id('com.cisco.wx2.android:id/send')
         send_button.click()
+        return 200
 
     def webex_send_group_im(self, group_name, target_mail, message) :
         """
@@ -475,7 +476,7 @@ class Controller:
         message_text.send_keys(message)
         send_button = self.find_by_id('com.cisco.wx2.android:id/send')
         send_button.click()
-
+        return 200
 
     def webex_power_up(self) :
         """
