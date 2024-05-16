@@ -344,8 +344,7 @@ def api_IM():
     if(device != False) :
         try :
             if device.webex_send_im(target_mail,instant_message) == 200 : resp = response(200,'send IM function worked as expected')
-            else :
-                if device.webex_send_im(target_mail,instant_message) == 404 : resp = response(404, 'target user not found')            
+            else : resp = response(404, 'target user not found')            
         except : resp = response(503,'send IM function failed')
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
