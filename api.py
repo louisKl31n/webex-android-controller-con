@@ -354,10 +354,10 @@ def api_GIM():
     device = authenticate_request(request)
     group_name = request.json['groupName']
     target_mail = request.json['targetMail']
-    instant_message = request.json['instantMessage']
+    message = request.json['instantMessage']
     if(device != False) :
         try :
-            if device.webex_send_group_im(group_name,target_mail,instant_message) == 200 : resp = response(200,'send IM function worked as expected')
+            if device.webex_send_group_im(group_name,target_mail,message) == 200 : resp = response(200,'send IM function worked as expected')
             else : resp = response(404, 'target user not found')            
         except : resp = response(503,'send IM function failed')
     else : resp = response(401,'Authentication with deviceName and token failed')

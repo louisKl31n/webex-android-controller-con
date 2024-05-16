@@ -404,7 +404,7 @@ class Controller:
         self.driver.execute_script('mobile: shell',{'command' : 'input keyevent KEYCODE_ENDCALL'})
         return 200
 
-    def webex_send_im(self, target_mail, instant_message) :
+    def webex_send_im(self, target_mail, message) :
         """
         send_im function creates a conv with the target_mail user and sends an instant message
 
@@ -432,15 +432,12 @@ class Controller:
             return 404
         #send instant message in conv
         print('=> trying to write')
-        message_context = self.find_by_id('com.cisco.wx2.android:id/sendMessageLayoutContainer')
-        print('=> context found')
-        message_text = self.find_by_XPATH_inside_parent(message_context,'//android.widget.EditText[@resource-id="com.cisco.wx2.android:id/message"]')
-        print('=> textfield found')
-        message_text.send_keys(instant_message)
+        message_text = self.find_by_id('//android.widget.EditText[@resource-id="com.cisco.wx2.android:id/message"]')
+        message_text.send_keys(message)
         send_button = self.find_by_id('com.cisco.wx2.android:id/send')
         send_button.click()
 
-    def webex_send_group_im(self, group_name, target_mail, instant_message) :
+    def webex_send_group_im(self, group_name, target_mail, message) :
         """
         send_group_im function creates a group conv with the target_mail user and sends an group message
         
@@ -474,8 +471,8 @@ class Controller:
         create_conversation = self.find_by_id('com.cisco.wx2.android:id/createSpaceButton')
         create_conversation.click()
         #send instant_message in conv 
-        message_text = self.find_by_XPATH('//android.widget.EditText[@resource-id="com.cisco.wx2.android:id/message"]')
-        message_text.send_keys(instant_message)
+        message_text = self.find_by_id('//android.widget.EditText[@resource-id="com.cisco.wx2.android:id/message"]')
+        message_text.send_keys(message)
         send_button = self.find_by_id('com.cisco.wx2.android:id/send')
         send_button.click()
 
