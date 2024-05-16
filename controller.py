@@ -464,21 +464,21 @@ class Controller:
             select_person.click()
             confirm_button = self.find_by_id('com.cisco.wx2.android:id/ok')
             confirm_button.click()
+            #name the group 
+            name_group = self.find_by_XPATH('//android.widget.EditText')
+            name_group.send_keys(group_name)
+            #create the conv
+            create_conversation = self.find_by_id('com.cisco.wx2.android:id/createSpaceButton')
+            create_conversation.click()
+            #send instant_message in conv 
+            message_text = self.find_by_id('com.cisco.wx2.android:id/message')
+            message_text.send_keys(message)
+            send_button = self.find_by_id('com.cisco.wx2.android:id/send')
+            send_button.click()
+            return 200
         except : 
             print('=> user not found ')
             return 404
-        #name the group 
-        name_group = self.find_by_XPATH('//android.widget.EditText')
-        name_group.send_keys(group_name)
-        #create the conv
-        create_conversation = self.find_by_id('com.cisco.wx2.android:id/createSpaceButton')
-        create_conversation.click()
-        #send instant_message in conv 
-        message_text = self.find_by_id('//android.widget.EditText[@resource-id="com.cisco.wx2.android:id/message"]')
-        message_text.send_keys(message)
-        send_button = self.find_by_id('com.cisco.wx2.android:id/send')
-        send_button.click()
-        return 200
 
     def webex_power_up(self) :
         """
