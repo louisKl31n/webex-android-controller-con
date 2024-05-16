@@ -433,6 +433,8 @@ class Controller:
             message_text.send_keys(message)
             send_button = self.find_by_id('com.cisco.wx2.android:id/send')
             send_button.click()
+            back_button = self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
+            back_button.click()
             return 200
         except : 
             print('=> user not found ')
@@ -475,6 +477,8 @@ class Controller:
             message_text.send_keys(message)
             send_button = self.find_by_id('com.cisco.wx2.android:id/send')
             send_button.click()
+            back_button = self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
+            back_button.click()
             return 200
         except : 
             print('=> user not found ')
