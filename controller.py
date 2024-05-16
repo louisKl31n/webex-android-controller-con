@@ -433,6 +433,7 @@ class Controller:
         #send instant message in conv
         print('=> trying to write')
         message_context = self.find_by_id('com.cisco.wx2.android:id/sendMessageLayoutContainer')
+        print('=> context found')
         message_text = self.find_by_XPATH_inside_parent(message_context,'//android.widget.EditText[@resource-id="com.cisco.wx2.android:id/message"]')
         message_text.send_keys(instant_message)
         send_button = self.find_by_id('com.cisco.wx2.android:id/send')
