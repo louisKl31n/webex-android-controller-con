@@ -496,6 +496,15 @@ class Controller:
         webex_notification= self.find_by_XPATH('//android.widget.TextView[@resource-id="android:id/title" and @text="Gérer cet appel avec Webex"]')
         webex_notification.click()
 
+    def webex_video_call(self) :
+        """
+        video_call function does the process of transitionning from powered up call to webex video call
+        The call must be ongoing and powered up (on both sides)
+        """
+        
+        video_call = self.find_by_XPATH('//androidx.compose.ui.platform.ComposeView[@resource-id="com.cisco.wx2.android:id/call_control_view"]/android.view.View/android.view.View/android.view.View[4]/android.widget.Button')
+        video_call.click()
+
     def webex_blind_transfert(self,transfert_target) :
         """
         blind_transfert does the whole process of blind transfering the call to target number 
