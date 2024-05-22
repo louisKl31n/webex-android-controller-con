@@ -363,6 +363,18 @@ def api_GIM():
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
 
+@app.route('/video-call', methods=['POST'])
+def api_videocall():
+    device = authenticate_request(request)
+    if (device != False) : 
+        try :
+            device.webex_video_call()
+            resp = response(200,'Video call function worked as expected')
+        except : resp = response(503,'Video call function failed')
+    else : resp = response(401,'Authentication with deviceName and token failed')
+    return resp
+
+
 if __name__ == '__main__' :
     app.run(host='0.0.0.0', port=5000)
     appium_service = AppiumService()
