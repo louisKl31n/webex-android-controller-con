@@ -374,6 +374,27 @@ def api_videocall():
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
 
+@app.route('/join-CallCenter', methods=['POST'])
+def api_joinCallCenter():
+    device = authenticate_request(request)
+    if (device != False) : 
+        try :
+            device.webex_join_callcenter()
+            resp = response(200,'Video call function worked as expected')
+        except : resp = response(503,'Video call function failed')
+    else : resp = response(401,'Authentication with deviceName and token failed')
+    return resp
+
+@app.route('/leave-CallCenter', methods=['POST'])
+def api_leaveCallCenter():
+    device = authenticate_request(request)
+    if (device != False) : 
+        try :
+            device.webex_leave_callcenter()
+            resp = response(200,'Video call function worked as expected')
+        except : resp = response(503,'Video call function failed')
+    else : resp = response(401,'Authentication with deviceName and token failed')
+    return resp
 
 if __name__ == '__main__' :
     app.run(host='0.0.0.0', port=5000)

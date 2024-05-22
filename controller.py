@@ -700,9 +700,49 @@ class Controller:
         back_button = self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
         back_button.click()
 
+    def webex_join_callcenter(self) :
+        # Open menu 
+        self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',5)
+        menu = self.find_by_XPATH('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]')
+        menu.click()
+        # Open call center settings
+        ccSettings = self.find_by_XPATH('//android.widget.TextView[@resource-id="com.cisco.wx2.android:id/settingLabel" and @text="Files d’attente d’appels"]')
+        ccSettings.click()
+        # Change agent status
+        status = self.find_by_XPATH('//android.widget.TextView[@resource-id="com.cisco.wx2.android:id/agentStatus"]')
+        status.click()
+        # Select "Available"
+        available = self.find_by_XPATH('//android.widget.TextView[@resource-id="com.cisco.wx2.android:id/acd_status_title" and @text="Disponible(s)"]')
+        available.click()
+        #back to main screen
+        back_button= self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
+        back_button.click()
+        back_button= self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
+        back_button.click()
+
+    def webex_leave_callcenter(self) :
+        # Open menu 
+        self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',5)
+        menu = self.find_by_XPATH('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]')
+        menu.click()
+        # Open call center settings
+        ccSettings = self.find_by_XPATH('//android.widget.TextView[@resource-id="com.cisco.wx2.android:id/settingLabel" and @text="Files d’attente d’appels"]')
+        ccSettings.click()
+        # Change agent status
+        status = self.find_by_XPATH('//android.widget.TextView[@resource-id="com.cisco.wx2.android:id/agentStatus"]')
+        status.click()
+        # Select "Available"
+        disconnected = self.find_by_XPATH('//android.widget.TextView[@resource-id="com.cisco.wx2.android:id/acd_status_title" and @text="Déconnecté"]')
+        disconnected.click()
+        #back to main screen
+        back_button= self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
+        back_button.click()
+        back_button= self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
+        back_button.click()
+
+
     def driver_quit(self) :
         self.driver.quit()
-
 
 
     def webex_log_in_bis(self,email,password) :
