@@ -265,8 +265,8 @@ def api_cfbusy():
     forward_target = request.json['forwardTarget']
     if(device != False) :
         try :
-            if device.webex_configure_CFBusy(forward_target) == 200 : resp = response(200,'CFNA configuration function worked as expected')
-            else : resp = response(400, 'Impossible to update data')   
+            if device.webex_configure_CFBusy(forward_target) == 400 : resp = response(400, 'Impossible to update data') 
+            else : resp = response(200,'CFNA configuration function worked as expected')  
         except : resp = response(503,'CFBusy configuration function failed')
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
