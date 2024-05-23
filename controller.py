@@ -657,8 +657,10 @@ class Controller:
             back_button.click()
             return 200
         except :
+            print('=> Aïe')
             try: 
                 error= self.find_by_XPATH_inside_parent(forward_section,'//android.view.View[@text="Impossible de mettre à jour les données. Réessayez ou contactez l\'administrateur. Code: (400)"]')
+                print('=> Oula')
                 return 400
             except:
                 pass
