@@ -637,8 +637,9 @@ class Controller:
         forward_section= self.find_by_XPATH('//android.webkit.WebView[@text="BWCallSettingsWeb"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]/android.view.View[2]/android.view.View[3]/android.view.View')
         forward_number= self.find_by_XPATH_inside_parent(forward_section,'//android.widget.EditText')
         forward_number.send_keys(forward_target)
-        try:
-            time.sleep(2) 
+        time.sleep(2)
+        try: 
+            print('=> checking if activation worked')
             activation= self.find_by_XPATH('//android.widget.TextView[@text="Activé"]')
         except :
             try: 
