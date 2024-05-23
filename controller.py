@@ -588,21 +588,26 @@ class Controller:
         forward_section= self.find_by_XPATH('//android.webkit.WebView[@text="BWCallSettingsWeb"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]/android.view.View[2]/android.view.View[2]/android.view.View/android.view.View[1]')
         forward_number= self.find_by_XPATH_inside_parent(forward_section,'//android.widget.EditText')
         forward_number.send_keys(forward_target)
+        forward_number.click()
+        self.driver.press_keycode(66)
+        time.sleep(2)
         try: 
+            print('=> checking if activation worked')
             activation= self.find_by_XPATH('//android.widget.TextView[@text="Activé"]')
+            #returning to main menu
+            back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[1]')
+            back_button.click()
+            back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[2]')
+            back_button.click()
+            back_button = self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
+            back_button.click()
+            return 200
         except :
             try: 
                 error= self.find_by_XPATH_inside_parent(forward_section,'//android.view.View[@text="Impossible de mettre à jour les données. Réessayez ou contactez l\'administrateur. Code: (400)"]')
                 return 400
             except:
                 pass
-        #returning to main menu 
-        back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[1]')
-        back_button.click()
-        back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[2]')
-        back_button.click()
-        back_button = self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
-        back_button.click()
 
 
 
@@ -643,19 +648,21 @@ class Controller:
         try: 
             print('=> checking if activation worked')
             activation= self.find_by_XPATH('//android.widget.TextView[@text="Activé"]')
+            #returning to main menu
+            back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[1]')
+            back_button.click()
+            back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[2]')
+            back_button.click()
+            back_button = self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
+            back_button.click()
+            return 200
         except :
             try: 
                 error= self.find_by_XPATH_inside_parent(forward_section,'//android.view.View[@text="Impossible de mettre à jour les données. Réessayez ou contactez l\'administrateur. Code: (400)"]')
                 return 400
             except:
                 pass
-        #returning to main menu
-        back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[1]')
-        back_button.click()
-        back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[2]')
-        back_button.click()
-        back_button = self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
-        back_button.click()
+        
 
     def webex_configure_CFNR(self,forward_target) :
         """
@@ -688,21 +695,26 @@ class Controller:
         forward_section= self.find_by_XPATH('//android.webkit.WebView[@text="BWCallSettingsWeb"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]/android.view.View[2]/android.view.View[4]/android.view.View')
         forward_number= self.find_by_XPATH_inside_parent(forward_section,'//android.widget.EditText')
         forward_number.send_keys(forward_target)
+        forward_number.click()
+        self.driver.press_keycode(66)
+        time.sleep(2)
         try: 
+            print('=> checking if activation worked')
             activation= self.find_by_XPATH('//android.widget.TextView[@text="Activé"]')
+            #returning to main menu
+            back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[1]')
+            back_button.click()
+            back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[2]')
+            back_button.click()
+            back_button = self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
+            back_button.click()
+            return 200
         except :
             try: 
                 error= self.find_by_XPATH_inside_parent(forward_section,'//android.view.View[@text="Impossible de mettre à jour les données. Réessayez ou contactez l\'administrateur. Code: (400)"]')
                 return 400
             except:
                 pass
-        #returning to main menu
-        back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[1]')
-        back_button.click()
-        back_button = self.find_by_XPATH('(//android.widget.ImageButton[@content-desc="retour"])[2]')
-        back_button.click()
-        back_button = self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
-        back_button.click()
 
     def webex_join_callcenter(self) :
         # Open menu 
