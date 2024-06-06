@@ -390,7 +390,7 @@ class Controller:
         """
         This function plays an audio file to simulate a conversation during a call. Call should be ongoing before using this function
         """
-        os.system('adb shell am start -a android.intent.action.VIEW -d file:///Stockage interne/Music/Appium/Monologue.mp3 -t audio/mp3')
+        os.system('adb shell am start -a android.intent.action.VIEW -d "file:///Stockage interne/Music/Appium/Monologue.mp3" -t audio/mp3')
 
     def webex_decline(self, incoming_number):
         """
