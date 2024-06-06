@@ -11,6 +11,7 @@ from selenium.webdriver.common.actions.action_builder import ActionBuilder
 from selenium.webdriver.common.actions.pointer_input import PointerInput
 import time
 import re
+import os
 
 class Controller:
     device_name = 'default'
@@ -385,6 +386,12 @@ class Controller:
         self.driver.execute_script('mobile: shell',{'command' : 'input keyevent KEYCODE_CALL'})
         return 200
 
+    def webex_play_audio(self) :
+        """
+        This function plays an audio file to simulate a conversation during a call. Call should be ongoing before using this function
+        """
+        os.system('adb shell am start -a android.intent.action.VIEW -d file:///Stockage interne/Music/Appium/Monologue.mp3 -t audio/mp3')
+
     def webex_decline(self, incoming_number):
         """
         decline function declines the call from the incoming_number
@@ -728,15 +735,20 @@ class Controller:
         ccSettings.click()
         # Change agent status
         status = self.find_by_XPATH('//android.widget.TextView[@resource-id="com.cisco.wx2.android:id/agentStatus"]')
-        status.click()
-        # Select "Available"
-        available = self.find_by_XPATH('//android.widget.TextView[@resource-id="com.cisco.wx2.android:id/acd_status_title" and @text="Disponible(s)"]')
-        available.click()
-        #back to main screen
-        back_button= self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
-        back_button.click()
-        back_button= self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
-        back_button.click()
+        if status.get_attribute('text') != "Disponible(s)" :
+            status.click()
+            # Select "Available"
+            available = self.find_by_XPATH('//android.widget.TextView[@resource-id="com.cisco.wx2.android:id/acd_status_title" and @text="Disponible(s)"]')
+            available.click()
+            #back to main screen
+            back_button= self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
+            back_button.click()
+            back_button= self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
+            back_button.click()
+        else :
+            back_button= self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
+            back_button.click()
+            
 
     def webex_leave_callcenter(self) :
         # Open menu 

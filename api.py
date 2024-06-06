@@ -396,6 +396,17 @@ def api_leaveCallCenter():
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
 
+@app.route('/play-audio', methods=['POST'])
+def api_leaveCallCenter():
+    device = authenticate_request(request)
+    if (device != False) : 
+        try :
+            device.webex_play_audio()
+            resp = response(200,'audio function worked as expected')
+        except : resp = response(503,'audio call function failed')
+    else : resp = response(401,'Authentication with deviceName and token failed')
+    return resp
+
 if __name__ == '__main__' :
     app.run(host='0.0.0.0', port=5000)
     appium_service = AppiumService()
