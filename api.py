@@ -397,7 +397,7 @@ def api_leaveCallCenter():
     return resp
 
 @app.route('/play-audio', methods=['POST'])
-def api_leaveCallCenter():
+def api_playAudio():
     device = authenticate_request(request)
     if (device != False) : 
         try :
