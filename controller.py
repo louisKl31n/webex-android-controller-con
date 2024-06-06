@@ -391,7 +391,7 @@ class Controller:
         This function plays an audio file to simulate a conversation during a call. Call should be ongoing before using this function
         """
         escaped_path = "/Stockage interne/Music/Samsung/Over_the_Horizon.m4a"
-        os.system('adb shell am start -a android.intent.action.VIEW -d "file://{escaped_path}" -t audio/m4a')
+        os.system('adb shell am broadcast -a android.intent.action.MEDIA_BUTTON -d "file://{escaped_path}"')
 
     def webex_decline(self, incoming_number):
         """
