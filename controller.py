@@ -773,6 +773,15 @@ class Controller:
         back_button= self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
         back_button.click()
 
+    def webex_open_widget(self) :
+        widget = self.find_by_XPATH('//android.appwidget.AppWidgetHostView[@content-desc="Paramètres d’appel"]')
+        open_settings = self.find_by_XPATH_inside_parent(widget,'//android.widget.ImageView[@content-desc="Paramètres"]')
+        open_settings.click()
+        try :
+            self.find_by_id('com.cisco.wx2.android:id/teams_activity_first_pane')
+            return 200
+        except
+            return 404
 
     def driver_quit(self) :
         self.driver.quit()

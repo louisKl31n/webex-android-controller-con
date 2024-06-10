@@ -396,6 +396,17 @@ def api_leaveCallCenter():
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
 
+@app.route('/opne-widget', methods=['POST'])
+def api_openWidget():
+    device = authenticate_request(request)
+    if (device != False) : 
+        try :
+            if device.webex_open_widget() == 200 : resp = response(200,'widget function worked as expected')
+            else : resp = response(404,'webex didnt open')
+        except : resp = response(503,'widget function failed')
+    else : resp = response(401,'Authentication with deviceName and token failed')
+    return resp
+
 @app.route('/play-audio', methods=['POST'])
 def api_playAudio():
     device = authenticate_request(request)
