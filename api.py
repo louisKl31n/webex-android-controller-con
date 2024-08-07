@@ -408,7 +408,7 @@ def api_openWidget():
     return resp
 
 @app.route('/delete-im', methods=['POST'])
-def api_openWidget():
+def api_deleteIM():
     device = authenticate_request(request)
     if (device != False) : 
         try :
