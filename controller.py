@@ -454,15 +454,15 @@ class Controller:
         self.wait_until_element_is_displayed('//android.view.View[@content-desc="1 élément non lu"]"',3)
         message_tab = self.find_by_XPATH('//androidx.compose.ui.platform.ComposeView[@resource-id="com.cisco.wx2.android:id/navigation_bar"]/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[3]')
         message_tab.click()
-        new_message = self.find_by_XPATH('//android.widget.ImageView[@content-desc="Nouveaux messages"]')
+        new_message = self.find_by_XPATH('//android.widget.LinearLayout[@content-desc="qRen001 webex, ,Nouveaux messages"]')
         new_message.click()
         back_button = self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
         back_button.click()
 
     def webex_delete_im(self) :
-        action = ActionChains(self.driver)
+        actions = ActionChains(self.driver)
         message = self.find_by_XPATH('//android.widget.LinearLayout[@content-desc="qRen001 webex, ,"]')
-        action.click_and_hold(message).pause(2).release().perform()
+        actions.click_and_hold(message).pause(2).release().perform()
         # delete_button = self.find_by_XPATH('//android.widget.TextView[@content-desc="bouton Quitter"]')
         # delete_button.click()
 
