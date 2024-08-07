@@ -450,7 +450,18 @@ class Controller:
             print('=> user not found ')
             return 404
        
-        
+    def webex_check_if_im_received(self) :
+        self.wait_until_element_is_displayed('//android.view.View[@content-desc="1 élément non lu"]"',3)
+        message_tab = self.find_by_XPATH('//androidx.compose.ui.platform.ComposeView[@resource-id="com.cisco.wx2.android:id/navigation_bar"]/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[3]')
+        message_tab.click()
+        new_message = self.find_by_XPATH('//android.widget.ImageView[@content-desc="Nouveaux messages"]')
+        new_message.click()
+        back_button = self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
+        back_button.click()
+
+    def webex_delete_im(self) :
+        message = self.find_by_XPATH('//android.widget.LinearLayout[@content-desc="qRen001 webex, ,"]')
+        message.click_and_hold()
 
     def webex_send_group_im(self, group_name, target_mail, message) :
         """
