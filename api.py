@@ -408,7 +408,7 @@ def api_openWidget():
     return resp
 
 @app.route('/check-new-im', methods=['POST'])
-def api_deleteIM():
+def api_checkNewIM():
     device = authenticate_request(request)
     if (device != False) : 
         try :
