@@ -780,7 +780,7 @@ class Controller:
         try :
             self.find_by_id('com.cisco.wx2.android:id/teams_activity_first_pane')
             return 200
-        except
+        except :
             return 404
 
     def driver_quit(self) :
