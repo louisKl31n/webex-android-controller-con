@@ -461,7 +461,7 @@ class Controller:
 
     def webex_delete_im(self) :
         message = self.find_by_XPATH('//android.widget.LinearLayout[@content-desc="qRen001 webex, ,"]')
-        message.click_and_hold()
+        message.click()
 
     def webex_send_group_im(self, group_name, target_mail, message) :
         """
