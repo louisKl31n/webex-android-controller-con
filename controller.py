@@ -1,6 +1,5 @@
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
-from appium.webdriver.common.touch_action import TouchAction
 from appium.options.common import AppiumOptions
 from selenium.webdriver.common.actions.action_builder import ActionBuilder
 from selenium.webdriver.common.actions.pointer_input import PointerInput
@@ -461,9 +460,9 @@ class Controller:
         back_button.click()
 
     def webex_delete_im(self) :
-        touch_action = TouchAction(self.driver)
+        action = ActionChains(self.driver)
         message = self.find_by_XPATH('//android.widget.LinearLayout[@content-desc="qRen001 webex, ,"]')
-        touch_action.long_press(message).release().perform()
+        action.click_and_hold(message).pause(2).release().perform()
 
     def webex_send_group_im(self, group_name, target_mail, message) :
         """
