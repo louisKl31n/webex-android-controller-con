@@ -407,6 +407,17 @@ def api_openWidget():
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
 
+@app.route('/check-new-im', methods=['POST'])
+def api_deleteIM():
+    device = authenticate_request(request)
+    if (device != False) : 
+        try :
+            if device.webex_check_if_im_received() == 200 : resp = response(200,'new im detection function worked as expected')
+            else : resp = response(404,'message was not detected')
+        except : resp = response(503,'new message detection function failed')
+    else : resp = response(401,'Authentication with deviceName and token failed')
+    return resp
+
 @app.route('/delete-im', methods=['POST'])
 def api_deleteIM():
     device = authenticate_request(request)
