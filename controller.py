@@ -451,8 +451,8 @@ class Controller:
             return 404
        
     def webex_check_if_im_received(self) :
-        self.wait_until_element_is_displayed('//android.view.View[@content-desc="1 élément non lu"]"',3)
-        message_tab = self.find_by_XPATH('//androidx.compose.ui.platform.ComposeView[@resource-id="com.cisco.wx2.android:id/navigation_bar"]/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[3]')
+        self.wait_until_element_is_displayed('//android.widget.LinearLayout[@content-desc="qRen001 webex, ,Nouveaux messages"]',3)
+        message_tab = self.find_by_XPATH('//android.widget.TextView[@text="Messages"]')
         message_tab.click()
         new_message = self.find_by_XPATH('//android.widget.LinearLayout[@content-desc="qRen001 webex, ,Nouveaux messages"]')
         new_message.click()
