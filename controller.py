@@ -451,7 +451,7 @@ class Controller:
             return 404
        
     def webex_check_if_im_received(self) :
-        self.wait_until_element_is_displayed('//android.widget.LinearLayout[@content-desc="qRen001 webex, ,Nouveaux messages"]',3)
+        #self.wait_until_element_is_displayed('//android.widget.LinearLayout[@content-desc="qRen001 webex, ,Nouveaux messages"]',3)
         message_tab = self.find_by_XPATH('//android.widget.TextView[@text="Messages"]')
         message_tab.click()
         new_message = self.find_by_XPATH('//android.widget.LinearLayout[@content-desc="qRen001 webex, ,Nouveaux messages"]')
@@ -465,6 +465,7 @@ class Controller:
         actions.click_and_hold(message).pause(2).release().perform()
         delete_button = self.find_by_XPATH('//android.widget.TextView[@content-desc="bouton Quitter"]')
         delete_button.click()
+        return 200
 
 
     def webex_send_group_im(self, group_name, target_mail, message) :
