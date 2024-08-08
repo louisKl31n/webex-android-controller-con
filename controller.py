@@ -460,13 +460,15 @@ class Controller:
         back_button.click()
 
     def webex_delete_im(self) :
-        actions = ActionChains(self.driver)
-        message = self.find_by_XPATH('//android.widget.LinearLayout[@content-desc="qRen001 webex, ,"]')
-        actions.click_and_hold(message).pause(2).release().perform()
-        delete_button = self.find_by_XPATH('//android.widget.TextView[@content-desc="bouton Quitter"]')
-        delete_button.click()
-        return 200
-
+        try : 
+            actions = ActionChains(self.driver)
+            message = self.find_by_XPATH('//android.widget.LinearLayout[@content-desc="qRen001 webex, ,"]')
+            actions.click_and_hold(message).pause(2).release().perform()
+            delete_button = self.find_by_XPATH('//android.widget.TextView[@content-desc="bouton Quitter"]')
+            delete_button.click()
+            return 200
+        except :
+            return 503
 
     def webex_send_group_im(self, group_name, target_mail, message) :
         """
