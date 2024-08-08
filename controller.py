@@ -463,8 +463,8 @@ class Controller:
         actions = ActionChains(self.driver)
         message = self.find_by_XPATH('//android.widget.LinearLayout[@content-desc="qRen001 webex, ,"]')
         actions.click_and_hold(message).pause(2).release().perform()
-        # delete_button = self.find_by_XPATH('//android.widget.TextView[@content-desc="bouton Quitter"]')
-        # delete_button.click()
+        delete_button = self.find_by_XPATH('//android.widget.TextView[@content-desc="bouton Quitter"]')
+        delete_button.click()
 
 
     def webex_send_group_im(self, group_name, target_mail, message) :
