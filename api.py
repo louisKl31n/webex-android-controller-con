@@ -454,6 +454,17 @@ def api_deleteAllCall():
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
 
+@app.route('/call-from-logs', methods=['POST'])
+def api_callFromLogs():
+    device = authenticate_request(request)
+    if (device != False) : 
+        try :
+            if device.webex_call_from_logs() == 200 : resp = response(200,'calling from logs function worked as expected')
+            else : resp = response(404,'no old calls can be found ')
+        except : resp = response(503,'calling from logs function failed')
+    else : resp = response(401,'Authentication with deviceName and token failed')
+    return resp
+
 @app.route('/play-audio', methods=['POST'])
 def api_playAudio():
     device = authenticate_request(request)

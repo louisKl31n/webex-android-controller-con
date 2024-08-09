@@ -277,7 +277,7 @@ class Controller:
         print('=> webex_call() success')
         return 200
 
-    def wbex_call_from_logs(self) :
+    def webex_call_from_logs(self) :
         webex_activity = {
             'intentAction':'android.intent.action.MAIN',
             'intentFlags': ['FLAG_ACTIVITY_CLEAR_TOP','FLAG_ACTIVITY_NEW_TASK'],
