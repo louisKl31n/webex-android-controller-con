@@ -431,6 +431,29 @@ def api_deleteIM():
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
 
+
+@app.route('/delete-call', methods=['POST'])
+def api_deleteCall():
+    device = authenticate_request(request)
+    if (device != False) : 
+        try :
+            if device.webex_delete_call == 200 : resp = response(200,'im deletion function worked as expected')
+            else : resp = response(404,'message was not deleted')
+        except : resp = response(503,'im deletation function failed')
+    else : resp = response(401,'Authentication with deviceName and token failed')
+    return resp
+
+@app.route('/delete-all-call', methods=['POST'])
+def api_deleteAllCall():
+    device = authenticate_request(request)
+    if (device != False) : 
+        try :
+            if device.webex_delete_all_call == 200 : resp = response(200,'im deletion function worked as expected')
+            else : resp = response(404,'message was not deleted')
+        except : resp = response(503,'im deletation function failed')
+    else : resp = response(401,'Authentication with deviceName and token failed')
+    return resp
+
 @app.route('/play-audio', methods=['POST'])
 def api_playAudio():
     device = authenticate_request(request)
@@ -441,6 +464,8 @@ def api_playAudio():
         except : resp = response(503,'audio call function failed')
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
+
+
 
 if __name__ == '__main__' :
     app.run(host='0.0.0.0', port=5000)

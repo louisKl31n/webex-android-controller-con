@@ -838,7 +838,7 @@ class Controller:
         except :
             return 503
 
-    def webex_delete_call(self) :
+    def webex_delete_all_call(self) :
         try : 
             actions = ActionChains(self.driver)
             message_tab = self.find_by_XPATH('//android.widget.TextView[@text="Appels"]')
