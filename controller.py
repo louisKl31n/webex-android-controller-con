@@ -277,6 +277,24 @@ class Controller:
         print('=> webex_call() success')
         return 200
 
+    def wbex_call_from_logs(self) :
+        webex_activity = {
+            'intentAction':'android.intent.action.MAIN',
+            'intentFlags': ['FLAG_ACTIVITY_CLEAR_TOP','FLAG_ACTIVITY_NEW_TASK'],
+            'component':f'{"com.cisco.wx2.android"}/{"com.webex.teams.TeamsActivity"}'
+        }
+        self.driver.execute_script('mobile:startActivity',webex_activity)
+        calls = self.find_by_XPATH('//android.widget.TextView[@text="Appels"]')
+        calls.click()
+        call_parent = self.find_by_XPATH('//androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]')
+        call_icon = self.find_by_XPATH_inside_parent(call_parent,'//androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.widget.Button')
+        call_icon.click()
+        orange_phone_call_button = self.find_by_id('com.orange.phone:id/dialpad_floating_action_button')
+        orange_phone_call_button.click()
+        print('=> webex_call() success')
+        return 200
+
+
     def webex_cancel(self) :
         """
         cancel function refuses incomming call
@@ -450,22 +468,15 @@ class Controller:
             print('=> user not found ')
             return 404
        
-    def webex_check_if_im_received(self) :
+    def webex_check_if_im_received(self, conv_name) :
+        try :
         #self.wait_until_element_is_displayed('//android.widget.LinearLayout[@content-desc="qRen001 webex, ,Nouveaux messages"]',3)
-        message_tab = self.find_by_XPATH('//android.widget.TextView[@text="Messages"]')
-        message_tab.click()
-        new_message = self.find_by_XPATH('//android.widget.LinearLayout[@content-desc="qRen001 webex, ,Nouveaux messages"]')
-        new_message.click()
-        back_button = self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
-        back_button.click()
-
-    def webex_delete_im(self) :
-        try : 
-            actions = ActionChains(self.driver)
-            message = self.find_by_XPATH('//android.widget.LinearLayout[@content-desc="qRen001 webex, ,"]')
-            actions.click_and_hold(message).pause(2).release().perform()
-            delete_button = self.find_by_XPATH('//android.widget.TextView[@content-desc="bouton Quitter"]')
-            delete_button.click()
+            message_tab = self.find_by_XPATH('//android.widget.TextView[@text="Messages"]')
+            message_tab.click()
+            new_message = self.find_by_XPATH('//android.widget.LinearLayout[@content-desc="' + conv_name + ', ,Nouveaux messages"]')
+            new_message.click()
+            back_button = self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
+            back_button.click()
             return 200
         except :
             return 503
@@ -476,7 +487,7 @@ class Controller:
         
         :param group_name: the name of the group conversation
         :param target_mail: the mail to use to retreive the member to add
-        :param instant_message: the instant message to send 
+        :param message: the instant message to send 
         """
         #Go to group message creation menu
         messages_menu = self.find_by_id('com.cisco.wx2.android:id/fab_menu_button')
@@ -637,8 +648,6 @@ class Controller:
             except:
                 pass
 
-
-
     def webex_configure_CFBusy(self,forward_target) :
         """
          configure_CFBusy configures a call forward busy using the advanced call options on webex android 
@@ -693,7 +702,6 @@ class Controller:
             except:
                 pass
         
-
     def webex_configure_CFNR(self,forward_target) :
         """
         configure_CFNR configure a call forward not reachable using the advanced call options on webex android 
@@ -768,8 +776,7 @@ class Controller:
             back_button.click()
         else :
             back_button= self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
-            back_button.click()
-            
+            back_button.click()     
 
     def webex_leave_callcenter(self) :
         # Open menu 
@@ -804,6 +811,49 @@ class Controller:
     def driver_quit(self) :
         self.driver.quit()
 
+
+    def webex_delete_im(self, conv_name) :
+        try : 
+            actions = ActionChains(self.driver)
+            message_tab = self.find_by_XPATH('//android.widget.TextView[@text="Messages"]')
+            message_tab.click()
+            message = self.find_by_XPATH('//android.widget.LinearLayout[@content-desc="'+ conv_name + ', ,"]')
+            actions.click_and_hold(message).pause(2).release().perform()
+            delete_button = self.find_by_XPATH('//android.widget.TextView[@content-desc="bouton Quitter"]')
+            delete_button.click()
+            return 200
+        except :
+            return 503
+        
+    def webex_delete_call(self) :
+        try : 
+            actions = ActionChains(self.driver)
+            message_tab = self.find_by_XPATH('//android.widget.TextView[@text="Appels"]')
+            message_tab.click()
+            call = self.find_by_XPATH('//androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]')
+            actions.click_and_hold(call).pause(2).release().perform()
+            delete_button = self.find_by_XPATH('//android.widget.TextView[@resource-id="com.cisco.wx2.android:id/primary_text" and @text="Supprimer"]')
+            delete_button.click()
+            return 200
+        except :
+            return 503
+
+    def webex_delete_call(self) :
+        try : 
+            actions = ActionChains(self.driver)
+            message_tab = self.find_by_XPATH('//android.widget.TextView[@text="Appels"]')
+            message_tab.click()
+            call = self.find_by_XPATH('//androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]')
+            actions.click_and_hold(call).pause(2).release().perform()
+            selectPlus_button = self.find_by_XPATH('//android.widget.TextView[@resource-id="com.cisco.wx2.android:id/primary_text" and @text="Sélectionner plus"]')
+            selectPlus_button.click()
+            selectAll_button = self.find_by_XPATH('//android.widget.TextView[@text="Tout sélectionner"]')
+            selectAll_button.click()
+            delete_button = self.find_by_XPATH('//android.widget.TextView[@text="Supprimer"]')
+            delete_button.click()
+            return 200
+        except :
+            return 503k
 
     def webex_log_in_bis(self,email,password) :
         """
