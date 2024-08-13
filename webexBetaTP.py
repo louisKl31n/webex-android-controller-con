@@ -171,7 +171,7 @@ class Tests :
         time.sleep(5)
         step3 = requests.post(web_server+'/blind-transfert', json={
             'deviceName': deviceName2,
-            'token': token2
+            'token': token2,
             'transfertTarget' : transfertTarget
             })
         step4 = requests.post(web_server+'/hang-up', json={
