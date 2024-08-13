@@ -202,13 +202,13 @@ if __name__ == '__main__' :
     token2 = response.json()['token']
 
     """ MNCQUALIF-10996 """
-    
+    Tests.MNCQUALIF_10966_out(deviceName1, email1, token1)
     # if Tests.MNCQUALIF_10966_in(deviceName1,) :
     #     sheet.append(("MNCQUALIF-10996 login", "OK"))
     # else :
     #     sheet.append(("MNCQUALIF-10996 login", "KO"))
 
-    if Tests.MNCQUALIF_10966_out() :
+    if Tests.MNCQUALIF_10966_out(deviceName1, token1) :
         sheet.append(("MNCQUALIF-10996 logout", "OK"))
     else :
         sheet.append(("MNCQUALIF-10996 logout", "KO"))
