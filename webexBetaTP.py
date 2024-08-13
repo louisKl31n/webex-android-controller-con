@@ -192,7 +192,7 @@ class Tests :
 if __name__ == '__main__' :
 
     currentTime = datetime.now().time()
-    filename = "CampagneBeta-"+currentTime+".xlsx"
+    filename = "CampagneBeta-"+str(currentTime)+".xlsx"
     wb = Workbook()
     sheet = wb.active
 
