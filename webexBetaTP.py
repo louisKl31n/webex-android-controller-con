@@ -183,7 +183,7 @@ class Tests :
     def MNCQUALIF_11014() :
         step1 = requests.post(web_server+'/supervised-transfert', json={
             'deviceName': deviceName1,
-            'token': token1
+            'token': token1,
             'transfertTarget' : transfertTarget
             })
         return(step1.status_code == 200)
