@@ -192,6 +192,7 @@ class Tests :
 if __name__ == '__main__' :
 
     currentTime = datetime.now().time()
+    filename = "CampagneBeta-"+currentTime+".xlsx"
     wb = Workbook()
     sheet = wb.active
 
@@ -212,5 +213,4 @@ if __name__ == '__main__' :
     else :
         sheet.append(("MNCQUALIF-10996 logout", "KO"))
 
-    
-    
+    wb.save(filename=filename)
