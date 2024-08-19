@@ -20,6 +20,7 @@ redFill = PatternFill(start_color= "FF0000", end_color= "FF0000", fill_type="sol
 greenFill = PatternFill(start_color= "00FF00", end_color= "00FF00", fill_type="solid")
 
 class Tests :
+    #login
     def MNCQUALIF_10966_in(deviceName,email,token) :
         step1 = requests.post(web_server+'/log-in-bis', json={
             'deviceName': deviceName,
@@ -29,6 +30,7 @@ class Tests :
             })
         return step1.status_code == 200
 
+    #logout
     def MNCQUALIF_10966_out(deviceName,token) :
         step1 = requests.post(web_server+'/log-out', json={
             'deviceName': deviceName,
@@ -36,6 +38,7 @@ class Tests :
             })
         return step1.status_code == 200 
 
+    #check new IM
     def MNCQUALIF_10998() :
         step1 = requests.post(web_server+'/send-im', json={
         "deviceName" : deviceName2,
@@ -51,6 +54,7 @@ class Tests :
         })
         return (step1.status_code == 200 and step2.status_code == 200)
 
+    #check new GIM
     def MNCQUALIF_10999() :
         step1 = requests.post(web_server+'/send-gim', json={
             "deviceName" : deviceName2,
@@ -66,7 +70,8 @@ class Tests :
             'convName': "Test 10999"
             })
         return (step1.status_code == 200 and step2.status_code == 200)
-    
+
+    #delete IM  
     def MNCQUALIF_11000() :
         step1 = requests.post(web_server+'/delete-im', json={
             'deviceName': deviceName1,
@@ -75,14 +80,16 @@ class Tests :
             })
         return(step1.status_code == 200)
     
+    #delete GIM
     def MNCQUALIF_11001() :
-        step1 = requests.post(web_server+'/delete-im', json={
+        step1 = requests.post(web_server+'/delete-gim', json={
             'deviceName': deviceName1,
             'token': token1,
             'convName': "Test 10999"
             })
         return(step1.status_code == 200)
     
+    #delete call
     def MNCQUALIF_11004_a() :
         step1 = requests.post(web_server+'/delete-call', json={
             'deviceName': deviceName1,
@@ -90,6 +97,7 @@ class Tests :
             })
         return(step1.status_code == 200)
     
+    #delete all call
     def MNCQUALIF_11004_b() :
         step1 = requests.post(web_server+'/delete-all-call', json={
             'deviceName': deviceName1,
@@ -97,6 +105,7 @@ class Tests :
             })
         return(step1.status_code == 200)
 
+    #call from logs
     def MNCQUALIF_11005() :
         step1 = requests.post(web_server+'/call-from-logs', json={
             'deviceName': deviceName1,
@@ -115,6 +124,7 @@ class Tests :
             })
         return(step1.status_code == 200 and step2.status_code == 200 and step3.status_code == 200)
 
+    #call normally
     def MNCQUALIF_11009() :    
         step1 = requests.post(web_server+'/call', json={
             'deviceName': deviceName1,
@@ -134,6 +144,7 @@ class Tests :
             })
         return (step1.status_code == 200 and step2.status_code == 200 and step3.status_code == 200)
 
+    #call on hold
     def MNCQUALIF_11011() :
         step1 = requests.post(web_server+'/call', json={
         'deviceName': deviceName1,
@@ -163,6 +174,7 @@ class Tests :
             })
         return (step1.status_code == 200 and step2.status_code == 200 and step3.status_code == 200 and step4.status_code == 200 and step5.status_code == 200)
 
+    #video call
     def MNCQUALIF_11012() :
         step1 = requests.post(web_server+'/call', json={
         'deviceName': deviceName1,
@@ -183,6 +195,7 @@ class Tests :
             })
         return(step1.status_code == 200)
 
+    #blind transfer
     def MNCQUALIF_11013() :
         step1 = requests.post(web_server+'/call', json={
             'deviceName': deviceName1,
@@ -207,13 +220,29 @@ class Tests :
             })
         return(step1.status_code == 200 and step2.status_code == 200 and step3.status_code == 200 and step4.status_code == 200)
 
+    #supervised transfer
     def MNCQUALIF_11014() :
-        step1 = requests.post(web_server+'/supervised-transfert', json={
+        step1 = requests.post(web_server+'/call', json={
             'deviceName': deviceName1,
             'token': token1,
+            'incomingNumber': phoneNumberWebexBeta2
+            })
+        step2 = requests.post(web_server+'/answer', json={
+            'deviceName': deviceName2,
+            'token': token2,
+            'incomingNumber': phoneNumberWebexBeta1
+            })
+        time.sleep(5)
+        step3 = requests.post(web_server+'/supervised-transfert', json={
+            'deviceName': deviceName2,
+            'token': token2,
             'transfertTarget' : transfertTarget
             })
-        return(step1.status_code == 200)
+        step4 = requests.post(web_server+'/hang-up', json={
+            'deviceName': deviceName1,
+            'token': token1,
+            })
+        return(step1.status_code == 200 and step2.status_code == 200 and step3.status_code == 200 and step4.status_code == 200)
 
 
 if __name__ == '__main__' :
