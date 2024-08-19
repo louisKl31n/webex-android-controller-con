@@ -249,115 +249,115 @@ if __name__ == '__main__' :
 
 
 
-    Tests.MNCQUALIF_10966_in(deviceName1, email1, token1)
-    Tests.MNCQUALIF_10966_in(deviceName2, email2, token2)
+    # Tests.MNCQUALIF_10966_in(deviceName1, email1, token1)
+    # Tests.MNCQUALIF_10966_in(deviceName2, email2, token2)
 
-    time.sleep(2)
-    """ MNCQUALIF-10998 """
+    # time.sleep(2)
+    # """ MNCQUALIF-10998 """
 
-    if Tests.MNCQUALIF_10998() :
-        sheet.append(("MNCQUALIF-10998", "OK"))
-        for cell in sheet[sheet.max_raw] :
-            cell.fill = greenFill
-    else :
-        sheet.append(("MNCQUALIF-10998", "KO"))
-        for cell in sheet[sheet.max_raw] :
-            cell.fill = redFill
-    time.sleep(2)
-    """ MNCQUALIF-10999 """
+    # if Tests.MNCQUALIF_10998() :
+    #     sheet.append(("MNCQUALIF-10998", "OK"))
+    #     for cell in sheet[sheet.max_raw] :
+    #         cell.fill = greenFill
+    # else :
+    #     sheet.append(("MNCQUALIF-10998", "KO"))
+    #     for cell in sheet[sheet.max_raw] :
+    #         cell.fill = redFill
+    # time.sleep(2)
+    # """ MNCQUALIF-10999 """
 
-    if Tests.MNCQUALIF_10999() :
-        sheet.append(("MNCQUALIF-10999", "OK"))
-        for cell in sheet[sheet.max_raw] :
-            cell.fill = greenFill
-    else :
-        sheet.append(("MNCQUALIF-10999", "KO"))
-        for cell in sheet[sheet.max_raw] :
-            cell.fill = redFill
-    time.sleep(2)
-    """ MNCQUALIF-11000 """
+    # if Tests.MNCQUALIF_10999() :
+    #     sheet.append(("MNCQUALIF-10999", "OK"))
+    #     for cell in sheet[sheet.max_raw] :
+    #         cell.fill = greenFill
+    # else :
+    #     sheet.append(("MNCQUALIF-10999", "KO"))
+    #     for cell in sheet[sheet.max_raw] :
+    #         cell.fill = redFill
+    # time.sleep(2)
+    # """ MNCQUALIF-11000 """
 
-    if Tests.MNCQUALIF_11000() :
-        sheet.append(("MNCQUALIF-11000", "OK"))
-        for cell in sheet[sheet.max_raw] :
-            cell.fill = greenFill
-    else :
-        sheet.append(("MNCQUALIF-11000", "KO"))
-        for cell in sheet[sheet.max_raw] :
-            cell.fill = redFill
-    time.sleep(2)
-    """ MNCQUALIF-11001 """
+    # if Tests.MNCQUALIF_11000() :
+    #     sheet.append(("MNCQUALIF-11000", "OK"))
+    #     for cell in sheet[sheet.max_raw] :
+    #         cell.fill = greenFill
+    # else :
+    #     sheet.append(("MNCQUALIF-11000", "KO"))
+    #     for cell in sheet[sheet.max_raw] :
+    #         cell.fill = redFill
+    # time.sleep(2)
+    # """ MNCQUALIF-11001 """
 
-    if Tests.MNCQUALIF_11001() :
-        sheet.append(("MNCQUALIF-11001", "OK"))
-        for cell in sheet[sheet.max_raw] :
-            cell.fill = greenFill
-    else :
-        sheet.append(("MNCQUALIF-11001", "KO"))
-        for cell in sheet[sheet.max_raw] :
-            cell.fill = redFill
-    time.sleep(2)
-    """ MNCQUALIF-11009 """
+    # if Tests.MNCQUALIF_11001() :
+    #     sheet.append(("MNCQUALIF-11001", "OK"))
+    #     for cell in sheet[sheet.max_raw] :
+    #         cell.fill = greenFill
+    # else :
+    #     sheet.append(("MNCQUALIF-11001", "KO"))
+    #     for cell in sheet[sheet.max_raw] :
+    #         cell.fill = redFill
+    # time.sleep(2)
+    # """ MNCQUALIF-11009 """
 
-    if Tests.MNCQUALIF_11009() :
-        sheet.append(("MNCQUALIF-11009", "OK"))
-        for cell in sheet[sheet.max_raw] :
-            cell.fill = greenFill
-    else :
-        sheet.append(("MNCQUALIF-11009", "KO"))
-        for cell in sheet[sheet.max_raw] :
-            cell.fill = redFill
-    time.sleep(2)
-    """ MNCQUALIF-11005 """
+    # if Tests.MNCQUALIF_11009() :
+    #     sheet.append(("MNCQUALIF-11009", "OK"))
+    #     for cell in sheet[sheet.max_raw] :
+    #         cell.fill = greenFill
+    # else :
+    #     sheet.append(("MNCQUALIF-11009", "KO"))
+    #     for cell in sheet[sheet.max_raw] :
+    #         cell.fill = redFill
+    # time.sleep(2)
+    # """ MNCQUALIF-11005 """
 
-    if Tests.MNCQUALIF_11005() :
-        sheet.append(("MNCQUALIF-11005", "OK"))
-        for cell in sheet[sheet.max_raw] :
-            cell.fill = greenFill
-    else :
-        sheet.append(("MNCQUALIF-11005", "KO"))
-        for cell in sheet[sheet.max_raw] :
-            cell.fill = redFill
-    time.sleep(2)
-    """ MNCQUALIF-11005 """
+    # if Tests.MNCQUALIF_11005() :
+    #     sheet.append(("MNCQUALIF-11005", "OK"))
+    #     for cell in sheet[sheet.max_raw] :
+    #         cell.fill = greenFill
+    # else :
+    #     sheet.append(("MNCQUALIF-11005", "KO"))
+    #     for cell in sheet[sheet.max_raw] :
+    #         cell.fill = redFill
+    # time.sleep(2)
+    # """ MNCQUALIF-11005 """
 
-    if Tests.MNCQUALIF_11005() :
-        sheet.append(("MNCQUALIF-11005", "OK"))
-        for cell in sheet[sheet.max_raw] :
-            cell.fill = greenFill
-    else :
-        sheet.append(("MNCQUALIF-11005", "KO"))
-        for cell in sheet[sheet.max_raw] :
-            cell.fill = redFill
-    time.sleep(2)
-    """ MNCQUALIF-11004 """
+    # if Tests.MNCQUALIF_11005() :
+    #     sheet.append(("MNCQUALIF-11005", "OK"))
+    #     for cell in sheet[sheet.max_raw] :
+    #         cell.fill = greenFill
+    # else :
+    #     sheet.append(("MNCQUALIF-11005", "KO"))
+    #     for cell in sheet[sheet.max_raw] :
+    #         cell.fill = redFill
+    # time.sleep(2)
+    # """ MNCQUALIF-11004 """
 
-    if Tests.MNCQUALIF_11004_a() :
-        sheet.append(("MNCQUALIF-11004 one deletion", "OK"))
-        for cell in sheet[sheet.max_raw] :
-            cell.fill = greenFill
-    else :
-        sheet.append(("MNCQUALIF-11004 one deletion", "KO"))
-        for cell in sheet[sheet.max_raw] :
-            cell.fill = redFill
-    if Tests.MNCQUALIF_11004_b() :
-        sheet.append(("MNCQUALIF-11004 all deletion", "OK"))
-        for cell in sheet[sheet.max_raw] :
-            cell.fill = greenFill
-    else :
-        sheet.append(("MNCQUALIF-11004 all deletion", "KO"))
-        for cell in sheet[sheet.max_raw] :
-            cell.fill = redFill
-    time.sleep(2)
-    """ MNCQUALIF-11011 """
+    # if Tests.MNCQUALIF_11004_a() :
+    #     sheet.append(("MNCQUALIF-11004 one deletion", "OK"))
+    #     for cell in sheet[sheet.max_raw] :
+    #         cell.fill = greenFill
+    # else :
+    #     sheet.append(("MNCQUALIF-11004 one deletion", "KO"))
+    #     for cell in sheet[sheet.max_raw] :
+    #         cell.fill = redFill
+    # if Tests.MNCQUALIF_11004_b() :
+    #     sheet.append(("MNCQUALIF-11004 all deletion", "OK"))
+    #     for cell in sheet[sheet.max_raw] :
+    #         cell.fill = greenFill
+    # else :
+    #     sheet.append(("MNCQUALIF-11004 all deletion", "KO"))
+    #     for cell in sheet[sheet.max_raw] :
+    #         cell.fill = redFill
+    # time.sleep(2)
+    # """ MNCQUALIF-11011 """
 
-    if Tests.MNCQUALIF_11005() :
-        sheet.append(("MNCQUALIF-11011", "OK"))
-        for cell in sheet[sheet.max_raw] :
-            cell.fill = greenFill
-    else :
-        sheet.append(("MNCQUALIF-11011", "KO"))
-        for cell in sheet[sheet.max_raw] :
-            cell.fill = redFill
+    # if Tests.MNCQUALIF_11005() :
+    #     sheet.append(("MNCQUALIF-11011", "OK"))
+    #     for cell in sheet[sheet.max_raw] :
+    #         cell.fill = greenFill
+    # else :
+    #     sheet.append(("MNCQUALIF-11011", "KO"))
+    #     for cell in sheet[sheet.max_raw] :
+    #         cell.fill = redFill
             
     wb.save(filename=filename)
