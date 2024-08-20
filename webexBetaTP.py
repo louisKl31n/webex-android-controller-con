@@ -278,44 +278,44 @@ if __name__ == '__main__' :
 
 
 
-    # Tests.MNCQUALIF_10966_in(deviceName1, email1, token1)
-    # Tests.MNCQUALIF_10966_in(deviceName2, email2, token2)
+    Tests.MNCQUALIF_10966_in(deviceName1, email1, token1)
+    Tests.MNCQUALIF_10966_in(deviceName2, email2, token2)
 
-    # time.sleep(2)
-    # """ MNCQUALIF-10998 """
+    time.sleep(2)
+    """ MNCQUALIF-10998 """
 
-    # if Tests.MNCQUALIF_10998() :
-    #     sheet.append(("MNCQUALIF-10998", "OK"))
-    #     for cell in sheet[sheet.max_row] :
-    #         cell.fill = greenFill
-    # else :
-    #     sheet.append(("MNCQUALIF-10998", "KO"))
-    #     for cell in sheet[sheet.max_row] :
-    #         cell.fill = redFill
-    # time.sleep(2)
-    # """ MNCQUALIF-10999 """
+    if Tests.MNCQUALIF_10998() :
+        sheet.append(("MNCQUALIF-10998", "OK"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = greenFill
+    else :
+        sheet.append(("MNCQUALIF-10998", "KO"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = redFill
+    time.sleep(2)
+    """ MNCQUALIF-10999 """
 
-    # if Tests.MNCQUALIF_10999() :
-    #     sheet.append(("MNCQUALIF-10999", "OK"))
-    #     for cell in sheet[sheet.max_row] :
-    #         cell.fill = greenFill
-    # else :
-    #     sheet.append(("MNCQUALIF-10999", "KO"))
-    #     for cell in sheet[sheet.max_row] :
-    #         cell.fill = redFill
-    # time.sleep(2)
-    # """ MNCQUALIF-11000 """
+    if Tests.MNCQUALIF_10999() :
+        sheet.append(("MNCQUALIF-10999", "OK"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = greenFill
+    else :
+        sheet.append(("MNCQUALIF-10999", "KO"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = redFill
+    time.sleep(2)
+    """ MNCQUALIF-11000 """
 
-    # if Tests.MNCQUALIF_11000() :
-    #     sheet.append(("MNCQUALIF-11000", "OK"))
-    #     for cell in sheet[sheet.max_row] :
-    #         cell.fill = greenFill
-    # else :
-    #     sheet.append(("MNCQUALIF-11000", "KO"))
-    #     for cell in sheet[sheet.max_row] :
-    #         cell.fill = redFill
-    # time.sleep(2)
-    # """ MNCQUALIF-11001 """
+    if Tests.MNCQUALIF_11000() :
+        sheet.append(("MNCQUALIF-11000", "OK"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = greenFill
+    else :
+        sheet.append(("MNCQUALIF-11000", "KO"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = redFill
+    time.sleep(2)
+    """ MNCQUALIF-11001 """
 
     # if Tests.MNCQUALIF_11001() :
     #     sheet.append(("MNCQUALIF-11001", "OK"))
