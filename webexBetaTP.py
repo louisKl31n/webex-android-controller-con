@@ -48,8 +48,8 @@ class Tests :
         })
         time.sleep(10)
         step2 = requests.post(web_server+'/check-new-im', json={
-        'deviceName': deviceName2,
-        'token': token2,
+        'deviceName': deviceName1,
+        'token': token1,
         'convName': "qRen001 webex"
         })
         return (step1.status_code == 200 and step2.status_code == 200)
@@ -65,8 +65,8 @@ class Tests :
             })
         time.sleep(10)
         step2 = requests.post(web_server+'/check-new-im', json={
-            'deviceName': deviceName2,
-            'token': token2,
+            'deviceName': deviceName1,
+            'token': token1,
             'convName': "Test 10999"
             })
         return (step1.status_code == 200 and step2.status_code == 200)
@@ -317,16 +317,16 @@ if __name__ == '__main__' :
     time.sleep(2)
     """ MNCQUALIF-11001 """
 
-    # if Tests.MNCQUALIF_11001() :
-    #     sheet.append(("MNCQUALIF-11001", "OK"))
-    #     for cell in sheet[sheet.max_row] :
-    #         cell.fill = greenFill
-    # else :
-    #     sheet.append(("MNCQUALIF-11001", "KO"))
-    #     for cell in sheet[sheet.max_row] :
-    #         cell.fill = redFill
-    # time.sleep(2)
-    # """ MNCQUALIF-11009 """
+    if Tests.MNCQUALIF_11001() :
+        sheet.append(("MNCQUALIF-11001", "OK"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = greenFill
+    else :
+        sheet.append(("MNCQUALIF-11001", "KO"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = redFill
+    time.sleep(2)
+    """ MNCQUALIF-11009 """
 
     # if Tests.MNCQUALIF_11009() :
     #     sheet.append(("MNCQUALIF-11009", "OK"))
