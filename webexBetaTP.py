@@ -257,7 +257,7 @@ if __name__ == '__main__' :
     response = requests.post(web_server+'/connect', json={'deviceName': deviceName2})
     token2 = response.json()['token']
 
-    """ MNCQUALIF-10996 """
+    """ MNCQUALIF-10996 login/out"""
 
     if Tests.MNCQUALIF_10966_in(deviceName2, email2, token2) :
         sheet.append(("MNCQUALIF-10996 login", "OK"))
@@ -282,7 +282,7 @@ if __name__ == '__main__' :
     Tests.MNCQUALIF_10966_in(deviceName2, email2, token2)
 
     time.sleep(2)
-    """ MNCQUALIF-10998 """
+    """ MNCQUALIF-10998 check new IM """
 
     if Tests.MNCQUALIF_10998() :
         sheet.append(("MNCQUALIF-10998", "OK"))
@@ -293,7 +293,7 @@ if __name__ == '__main__' :
         for cell in sheet[sheet.max_row] :
             cell.fill = redFill
     time.sleep(2)
-    """ MNCQUALIF-10999 """
+    """ MNCQUALIF-10999 check new GIM """
 
     if Tests.MNCQUALIF_10999() :
         sheet.append(("MNCQUALIF-10999", "OK"))
@@ -304,7 +304,7 @@ if __name__ == '__main__' :
         for cell in sheet[sheet.max_row] :
             cell.fill = redFill
     time.sleep(2)
-    """ MNCQUALIF-11000 """
+    """ MNCQUALIF-11000 delete IM """
 
     if Tests.MNCQUALIF_11000() :
         sheet.append(("MNCQUALIF-11000", "OK"))
@@ -315,7 +315,7 @@ if __name__ == '__main__' :
         for cell in sheet[sheet.max_row] :
             cell.fill = redFill
     time.sleep(2)
-    """ MNCQUALIF-11001 """
+    """ MNCQUALIF-11001 delete GIM """
 
     if Tests.MNCQUALIF_11001() :
         sheet.append(("MNCQUALIF-11001", "OK"))
@@ -326,7 +326,7 @@ if __name__ == '__main__' :
         for cell in sheet[sheet.max_row] :
             cell.fill = redFill
     time.sleep(2)
-    """ MNCQUALIF-11009 """
+    """ MNCQUALIF-11009 call normally """
 
     # if Tests.MNCQUALIF_11009() :
     #     sheet.append(("MNCQUALIF-11009", "OK"))
@@ -337,7 +337,7 @@ if __name__ == '__main__' :
     #     for cell in sheet[sheet.max_row] :
     #         cell.fill = redFill
     # time.sleep(2)
-    # """ MNCQUALIF-11005 """
+    """ MNCQUALIF-11005 call from logs """
 
     # if Tests.MNCQUALIF_11005() :
     #     sheet.append(("MNCQUALIF-11005", "OK"))
@@ -348,18 +348,18 @@ if __name__ == '__main__' :
     #     for cell in sheet[sheet.max_row] :
     #         cell.fill = redFill
     # time.sleep(2)
-    # """ MNCQUALIF-11005 """
+    """ MNCQUALIF-11013 blind transfer """
 
-    # if Tests.MNCQUALIF_11005() :
+    # if Tests.MNCQUALIF_11013() :
     #     sheet.append(("MNCQUALIF-11005", "OK"))
     #     for cell in sheet[sheet.max_row] :
     #         cell.fill = greenFill
     # else :
-    #     sheet.append(("MNCQUALIF-11005", "KO"))
+    #     sheet.append(("MNCQUALIF-11013", "KO"))
     #     for cell in sheet[sheet.max_row] :
     #         cell.fill = redFill
     # time.sleep(2)
-    # """ MNCQUALIF-11004 """
+    """ MNCQUALIF-11004 delete calls"""
 
     # if Tests.MNCQUALIF_11004_a() :
     #     sheet.append(("MNCQUALIF-11004 one deletion", "OK"))
@@ -378,9 +378,9 @@ if __name__ == '__main__' :
     #     for cell in sheet[sheet.max_row] :
     #         cell.fill = redFill
     # time.sleep(2)
-    # """ MNCQUALIF-11011 """
+    """ MNCQUALIF-11011 call on hold"""
 
-    # if Tests.MNCQUALIF_11005() :
+    # if Tests.MNCQUALIF_11011() :
     #     sheet.append(("MNCQUALIF-11011", "OK"))
     #     for cell in sheet[sheet.max_row] :
     #         cell.fill = greenFill
