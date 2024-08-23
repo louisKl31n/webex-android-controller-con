@@ -361,23 +361,23 @@ if __name__ == '__main__' :
     # time.sleep(2)
     """ MNCQUALIF-11004 delete calls"""
 
-    # if Tests.MNCQUALIF_11004_a() :
-    #     sheet.append(("MNCQUALIF-11004 one deletion", "OK"))
-    #     for cell in sheet[sheet.max_row] :
-    #         cell.fill = greenFill
-    # else :
-    #     sheet.append(("MNCQUALIF-11004 one deletion", "KO"))
-    #     for cell in sheet[sheet.max_row] :
-    #         cell.fill = redFill
-    # if Tests.MNCQUALIF_11004_b() :
-    #     sheet.append(("MNCQUALIF-11004 all deletion", "OK"))
-    #     for cell in sheet[sheet.max_row] :
-    #         cell.fill = greenFill
-    # else :
-    #     sheet.append(("MNCQUALIF-11004 all deletion", "KO"))
-    #     for cell in sheet[sheet.max_row] :
-    #         cell.fill = redFill
-    # time.sleep(2)
+    if Tests.MNCQUALIF_11004_a() :
+        sheet.append(("MNCQUALIF-11004 one deletion", "OK"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = greenFill
+    else :
+        sheet.append(("MNCQUALIF-11004 one deletion", "KO"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = redFill
+    if Tests.MNCQUALIF_11004_b() :
+        sheet.append(("MNCQUALIF-11004 all deletion", "OK"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = greenFill
+    else :
+        sheet.append(("MNCQUALIF-11004 all deletion", "KO"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = redFill
+    time.sleep(2)
     """ MNCQUALIF-11011 call on hold"""
 
     # if Tests.MNCQUALIF_11011() :
