@@ -328,15 +328,15 @@ if __name__ == '__main__' :
     time.sleep(2)
     """ MNCQUALIF-11009 call normally """
 
-    # if Tests.MNCQUALIF_11009() :
-    #     sheet.append(("MNCQUALIF-11009", "OK"))
-    #     for cell in sheet[sheet.max_row] :
-    #         cell.fill = greenFill
-    # else :
-    #     sheet.append(("MNCQUALIF-11009", "KO"))
-    #     for cell in sheet[sheet.max_row] :
-    #         cell.fill = redFill
-    # time.sleep(2)
+    if Tests.MNCQUALIF_11009() :
+        sheet.append(("MNCQUALIF-11009", "OK"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = greenFill
+    else :
+        sheet.append(("MNCQUALIF-11009", "KO"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = redFill
+    time.sleep(2)
     """ MNCQUALIF-11005 call from logs """
 
     # if Tests.MNCQUALIF_11005() :
