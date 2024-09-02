@@ -865,7 +865,7 @@ class Controller:
         # Connection process inside the Webex application
         connection_button = self.find_by_XPATH('//android.widget.ScrollView/android.view.View[3]/android.widget.Button')
         connection_button.click()
-        email_address_field = self.find_by_XPATH('//android.widget.TextView[@text="Adresse électronique"]/../..')
+        email_address_field = self.find_by_XPATH('//android.widget.TextView[@text="Adresse électronique"]')
         email_address_field.send_keys(email)
         next_button = self.find_by_XPATH('//android.widget.ScrollView/android.view.View/android.widget.Button')
         next_button.click()
