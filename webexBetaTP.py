@@ -279,6 +279,7 @@ if __name__ == '__main__' :
 
 
     Tests.MNCQUALIF_10966_in(deviceName1, email1, token1)
+    time.sleep(5)
     Tests.MNCQUALIF_10966_in(deviceName2, email2, token2)
 
     time.sleep(2)
