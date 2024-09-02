@@ -129,7 +129,7 @@ class Tests :
         step1 = requests.post(web_server+'/call', json={
             'deviceName': deviceName1,
             'token': token1,
-            'incomingNumber': phoneNumberWebexBeta2
+            'destinationNumber': phoneNumberWebexBeta2
             })
         time.sleep(5)
         step2 = requests.post(web_server+'/answer', json={
