@@ -105,6 +105,25 @@ class Tests :
             })
         return(step1.status_code == 200)
 
+    #call from logs
+    def MNCQUALIF_11005() :
+        step1 = requests.post(web_server+'/call-from-logs', json={
+            'deviceName': deviceName1,
+            'token': token1,
+            })
+        time.sleep(5)
+        step2 = requests.post(web_server+'/answer', json={
+            'deviceName': deviceName2,
+            'token': token2,
+            'incomingNumber': phoneNumberWebexBeta1
+            })
+        time.sleep(5)
+        step3 = requests.post(web_server+'/hang-up', json={
+            'deviceName': device_name1,
+            'token': token1,
+            })
+        return(step1.status_code == 200 and step2.status_code == 200 and step3.status_code == 200)
+
     #call normally
     def MNCQUALIF_11009() :    
         step1 = requests.post(web_server+'/call', json={
@@ -124,25 +143,6 @@ class Tests :
             'token': token1,
             })
         return (step1.status_code == 200 and step2.status_code == 200 and step3.status_code == 200)
-
-    #call from logs
-    def MNCQUALIF_11005() :
-        step1 = requests.post(web_server+'/call-from-logs', json={
-            'deviceName': deviceName1,
-            'token': token1,
-            })
-        time.sleep(5)
-        step2 = requests.post(web_server+'/answer', json={
-            'deviceName': deviceName2,
-            'token': token2,
-            'incomingNumber': phoneNumberWebexBeta1
-            })
-        time.sleep(5)
-        step3 = requests.post(web_server+'/hang-up', json={
-            'deviceName': device_name1,
-            'token': token1,
-            })
-        return(step1.status_code == 200 and step2.status_code == 200 and step3.status_code == 200)
 
     #call on hold
     def MNCQUALIF_11011() :
