@@ -19,6 +19,7 @@ transfertTarget = '0789182689'
 redFill = PatternFill(start_color= "FF0000", end_color= "FF0000", fill_type="solid")
 greenFill = PatternFill(start_color= "00FF00", end_color= "00FF00", fill_type="solid")
 
+
 class Tests :
     #login
     def MNCQUALIF_10966_in(deviceName,email,token) :
@@ -64,7 +65,7 @@ class Tests :
             "instantMessage" : "Ouais"
             })
         time.sleep(10)
-        step2 = requests.post(web_server+'/check-new-gim', json={
+        step2 = requests.post(web_server+'/check-new-im', json={
             'deviceName': deviceName1,
             'token': token1,
             'convName': "Test 10999"
@@ -82,7 +83,7 @@ class Tests :
     
     #delete GIM
     def MNCQUALIF_11001() :
-        step1 = requests.post(web_server+'/delete-gim', json={
+        step1 = requests.post(web_server+'/delete-im', json={
             'deviceName': deviceName1,
             'token': token1,
             'convName': "Test 10999"
@@ -360,6 +361,9 @@ if __name__ == '__main__' :
     #     for cell in sheet[sheet.max_row] :
     #         cell.fill = redFill
     # time.sleep(2)
+
+    """needs to go back to webex window"""
+
     """ MNCQUALIF-11004 delete calls"""
 
     if Tests.MNCQUALIF_11004_a() :
