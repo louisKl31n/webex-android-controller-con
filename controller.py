@@ -847,6 +847,27 @@ class Controller:
             return 200
         except :
             return 503
+    
+    def webex_delete_gim(self, conv_name) :
+        webex_activity = {
+            'intentAction':'android.intent.action.MAIN',
+            'intentFlags': ['FLAG_ACTIVITY_CLEAR_TOP','FLAG_ACTIVITY_NEW_TASK'],
+            'component':f'{"com.cisco.wx2.android"}/{"com.webex.teams.TeamsActivity"}'
+        }
+        self.driver.execute_script('mobile:startActivity',webex_activity)
+        try : 
+            actions = ActionChains(self.driver)
+            message_tab = self.find_by_XPATH('//android.widget.TextView[@text="Messages"]')
+            message_tab.click()
+            message = self.find_by_XPATH('//android.widget.LinearLayout[@content-desc="'+ conv_name + ', ,"]')
+            actions.click_and_hold(message).pause(2).release().perform()
+            delete_button = self.find_by_XPATH('//android.widget.TextView[@content-desc="bouton Quitter"]')
+            delete_button.click()
+            confirm_button = self.find_by_XPATH('//android.widget.Button[@resource-id="android:id/button1"]')
+            confirm_button.click()
+            return 200
+        except :
+            return 503
         
     def webex_delete_call(self) :
         webex_activity = {
