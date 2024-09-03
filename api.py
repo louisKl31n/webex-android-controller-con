@@ -449,9 +449,9 @@ def api_deleteCall():
     device = authenticate_request(request)
     if (device != False) : 
         try :
-            if device.webex_delete_call() == 200 : resp = response(200,'im deletion function worked as expected')
-            else : resp = response(404,'message was not deleted')
-        except : resp = response(503,'im deletation function failed')
+            if device.webex_delete_call() == 200 : resp = response(200,'call deletion function worked as expected')
+            else : resp = response(404,'call was not deleted')
+        except : resp = response(503,'call deletation function failed')
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
 
