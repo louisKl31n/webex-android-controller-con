@@ -278,12 +278,6 @@ class Controller:
         return 200
 
     def webex_call_from_logs(self) :
-        webex_activity = {
-            'intentAction':'android.intent.action.MAIN',
-            'intentFlags': ['FLAG_ACTIVITY_CLEAR_TOP','FLAG_ACTIVITY_NEW_TASK'],
-            'component':f'{"com.cisco.wx2.android"}/{"com.webex.teams.TeamsActivity"}'
-        }
-        self.driver.execute_script('mobile:startActivity',webex_activity)
         calls = self.find_by_XPATH('//android.widget.TextView[@text="Appels"]')
         calls.click()
         call_icon = self.find_by_XPATH('//androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.widget.Button')
@@ -438,12 +432,6 @@ class Controller:
         :param target_mail: the mail to use to retreive the member to add
         :param instant_message: the instant message to send
         """
-        webex_activity = {
-            'intentAction':'android.intent.action.MAIN',
-            'intentFlags': ['FLAG_ACTIVITY_CLEAR_TOP','FLAG_ACTIVITY_NEW_TASK'],
-            'component':f'{"com.cisco.wx2.android"}/{"com.webex.teams.TeamsActivity"}'
-        }
-        self.driver.execute_script('mobile:startActivity',webex_activity)
          #Go to instant message creation menu
         messages_menu = self.find_by_id('com.cisco.wx2.android:id/fab_menu_button')
         messages_menu.click()
@@ -474,12 +462,6 @@ class Controller:
             return 404
        
     def webex_check_if_im_received(self, conv_name) :
-        webex_activity = {
-            'intentAction':'android.intent.action.MAIN',
-            'intentFlags': ['FLAG_ACTIVITY_CLEAR_TOP','FLAG_ACTIVITY_NEW_TASK'],
-            'component':f'{"com.cisco.wx2.android"}/{"com.webex.teams.TeamsActivity"}'
-        }
-        self.driver.execute_script('mobile:startActivity',webex_activity)
         try :
         #self.wait_until_element_is_displayed('//android.widget.LinearLayout[@content-desc="qRen001 webex, ,Nouveaux messages"]',3)
             message_tab = self.find_by_XPATH('//android.widget.TextView[@text="Messages"]')
@@ -500,12 +482,6 @@ class Controller:
         :param target_mail: the mail to use to retreive the member to add
         :param message: the instant message to send 
         """
-        webex_activity = {
-            'intentAction':'android.intent.action.MAIN',
-            'intentFlags': ['FLAG_ACTIVITY_CLEAR_TOP','FLAG_ACTIVITY_NEW_TASK'],
-            'component':f'{"com.cisco.wx2.android"}/{"com.webex.teams.TeamsActivity"}'
-        }
-        self.driver.execute_script('mobile:startActivity',webex_activity)
         #Go to group message creation menu
         messages_menu = self.find_by_id('com.cisco.wx2.android:id/fab_menu_button')
         messages_menu.click()
@@ -830,12 +806,6 @@ class Controller:
 
 
     def webex_delete_im(self, conv_name) :
-        webex_activity = {
-            'intentAction':'android.intent.action.MAIN',
-            'intentFlags': ['FLAG_ACTIVITY_CLEAR_TOP','FLAG_ACTIVITY_NEW_TASK'],
-            'component':f'{"com.cisco.wx2.android"}/{"com.webex.teams.TeamsActivity"}'
-        }
-        self.driver.execute_script('mobile:startActivity',webex_activity)
         try : 
             actions = ActionChains(self.driver)
             message_tab = self.find_by_XPATH('//android.widget.TextView[@text="Messages"]')
@@ -849,12 +819,6 @@ class Controller:
             return 503
     
     def webex_delete_gim(self, conv_name) :
-        webex_activity = {
-            'intentAction':'android.intent.action.MAIN',
-            'intentFlags': ['FLAG_ACTIVITY_CLEAR_TOP','FLAG_ACTIVITY_NEW_TASK'],
-            'component':f'{"com.cisco.wx2.android"}/{"com.webex.teams.TeamsActivity"}'
-        }
-        self.driver.execute_script('mobile:startActivity',webex_activity)
         try : 
             actions = ActionChains(self.driver)
             message_tab = self.find_by_XPATH('//android.widget.TextView[@text="Messages"]')
