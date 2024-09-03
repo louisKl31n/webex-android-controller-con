@@ -229,11 +229,12 @@ def api_answer():
     incoming_number = request.json['incomingNumber']
     if(device != False) :
         try :
-            if device.webex_answer(incoming_number) == 200 : response(200,'Call function worked as expected')
+            if device.webex_answer(incoming_number) == 200 : resp = response(200,'Call function worked as expected')
             else : resp = response(503,'Number dispayed doesn\'t match expected number')
         except : resp = response(503,'Answer function failed')
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
+
 
 @app.route('/decline', methods=['POST'])
 def api_decline():
@@ -241,7 +242,7 @@ def api_decline():
     incoming_number = request.json['incomingNumber']
     if(device != False) :
         try :
-            if device.webex_decline(incoming_number) == 200 : response(200,'Call function worked as expected')
+            if device.webex_decline(incoming_number) == 200 : resp = response(200,'Call function worked as expected')
             else : resp = response(503,'Number dispayed doesn\'t match expected number')
         except : resp = response(503,'Decline function failed')
     else : resp = response(401,'Authentication with deviceName and token failed')

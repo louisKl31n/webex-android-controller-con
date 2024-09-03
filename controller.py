@@ -840,6 +840,7 @@ class Controller:
             'component':f'{"com.cisco.wx2.android"}/{"com.webex.teams.TeamsActivity"}'
         }
         self.driver.execute_script('mobile:startActivity',webex_activity)
+
         try : 
             actions = ActionChains(self.driver)
             message_tab = self.find_by_XPATH('//android.widget.TextView[@text="Appels"]')
