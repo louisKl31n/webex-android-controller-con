@@ -83,7 +83,7 @@ class Tests :
     
     #delete GIM
     def MNCQUALIF_11001() :
-        step1 = requests.post(web_server+'/delete-im', json={
+        step1 = requests.post(web_server+'/delete-gim', json={
             'deviceName': deviceName1,
             'token': token1,
             'convName': "Test 10999"

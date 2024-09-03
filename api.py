@@ -431,7 +431,17 @@ def api_deleteIM():
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
 
-
+@app.route('/delete-gim', methods=['POST'])
+def api_deleteGIM():
+    device = authenticate_request(request)
+    conv_name = request.json['convName']
+    if (device != False) : 
+        try :
+            if device.webex_delete_gim(conv_name) == 200 : resp = response(200,'gim deletion function worked as expected')
+            else : resp = response(404,'gim was not deleted')
+        except : resp = response(503,'gim deletation function failed')
+    else : resp = response(401,'Authentication with deviceName and token failed')
+    return resp
 
 @app.route('/delete-call', methods=['POST'])
 def api_deleteCall():
