@@ -847,13 +847,8 @@ class Controller:
             return 503
         
     def webex_delete_call(self) :
-        webex_activity = {
-            'intentAction':'android.intent.action.MAIN',
-            'intentFlags': ['FLAG_ACTIVITY_CLEAR_TOP','FLAG_ACTIVITY_NEW_TASK'],
-            'component':f'{"com.cisco.wx2.android"}/{"com.webex.teams.TeamsActivity"}'
-        }
-        self.driver.execute_script('mobile:startActivity',webex_activity)
-
+        self.driver.close_app()
+        self.driver.launch_app()
         try : 
             actions = ActionChains(self.driver)
             message_tab = self.find_by_XPATH('//android.widget.TextView[@text="Appels"]')
@@ -867,12 +862,6 @@ class Controller:
             return 503
 
     def webex_delete_all_call(self) :
-        webex_activity = {
-            'intentAction':'android.intent.action.MAIN',
-            'intentFlags': ['FLAG_ACTIVITY_CLEAR_TOP','FLAG_ACTIVITY_NEW_TASK'],
-            'component':f'{"com.cisco.wx2.android"}/{"com.webex.teams.TeamsActivity"}'
-        }
-        self.driver.execute_script('mobile:startActivity',webex_activity)
         try : 
             actions = ActionChains(self.driver)
             message_tab = self.find_by_XPATH('//android.widget.TextView[@text="Appels"]')
