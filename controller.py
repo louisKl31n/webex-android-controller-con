@@ -862,6 +862,8 @@ class Controller:
             return 503
 
     def webex_delete_all_call(self) :
+        self.driver.terminate_app("com.cisco.wx2.android")
+        self.driver.activate_app("com.cisco.wx2.android")
         try : 
             actions = ActionChains(self.driver)
             message_tab = self.find_by_XPATH('//android.widget.TextView[@text="Appels"]')
