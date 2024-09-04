@@ -65,7 +65,7 @@ class Tests :
             "instantMessage" : "Ouais"
             })
         time.sleep(10)
-        step2 = requests.post(web_server+'/check-new-im', json={
+        step2 = requests.post(web_server+'/check-new-gim', json={
             'deviceName': deviceName1,
             'token': token1,
             'convName': "Test 10999"

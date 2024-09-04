@@ -420,6 +420,18 @@ def api_checkNewIM():
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
 
+@app.route('/check-new-gim', methods=['POST'])
+def api_checkNewGIM():
+    device = authenticate_request(request)
+    conv_name = request.json['convName']
+    if (device != False) : 
+        try :
+            if device.webex_check_if_gim_received(conv_name) == 200 : resp = response(200,'new gim detection function worked as expected')
+            else : resp = response(404,'new conv was not detected')
+        except : resp = response(503,'new conv detection function failed')
+    else : resp = response(401,'Authentication with deviceName and token failed')
+    return resp
+
 @app.route('/delete-im', methods=['POST'])
 def api_deleteIM():
     device = authenticate_request(request)

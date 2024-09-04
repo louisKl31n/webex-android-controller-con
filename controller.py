@@ -473,6 +473,19 @@ class Controller:
             return 200
         except :
             return 503
+        
+    def webex_check_if_gim_received(self, conv_name) :
+        try :
+        #self.wait_until_element_is_displayed('//android.widget.LinearLayout[@content-desc="qRen001 webex, ,Nouveaux messages"]',3)
+            message_tab = self.find_by_XPATH('//android.widget.TextView[@text="Messages"]')
+            message_tab.click()
+            new_message = self.find_by_XPATH('//android.widget.LinearLayout[@content-desc="' + conv_name + ', ,Nouvel espace"]')
+            new_message.click()
+            back_button = self.find_by_XPATH('//android.widget.ImageButton[@content-desc="retour"]')
+            back_button.click()
+            return 200
+        except :
+            return 503
 
     def webex_send_group_im(self, group_name, target_mail, message) :
         """
