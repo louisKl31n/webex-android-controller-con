@@ -120,7 +120,7 @@ class Tests :
             })
         time.sleep(5)
         step3 = requests.post(web_server+'/hang-up', json={
-            'deviceName': device_name1,
+            'deviceName': deviceName1,
             'token': token1,
             })
         return(step1.status_code == 200 and step2.status_code == 200 and step3.status_code == 200)
@@ -341,15 +341,15 @@ if __name__ == '__main__' :
     time.sleep(2)
     """ MNCQUALIF-11005 call from logs """
 
-    # if Tests.MNCQUALIF_11005() :
-    #     sheet.append(("MNCQUALIF-11005", "OK"))
-    #     for cell in sheet[sheet.max_row] :
-    #         cell.fill = greenFill
-    # else :
-    #     sheet.append(("MNCQUALIF-11005", "KO"))
-    #     for cell in sheet[sheet.max_row] :
-    #         cell.fill = redFill
-    # time.sleep(2)
+    if Tests.MNCQUALIF_11005() :
+        sheet.append(("MNCQUALIF-11005", "OK"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = greenFill
+    else :
+        sheet.append(("MNCQUALIF-11005", "KO"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = redFill
+    time.sleep(2)
     """ MNCQUALIF-11013 blind transfer """
 
     # if Tests.MNCQUALIF_11013() :
