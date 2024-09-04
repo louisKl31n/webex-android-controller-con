@@ -847,8 +847,12 @@ class Controller:
             return 503
         
     def webex_delete_call(self) :
-        self.driver.close_app()
-        self.driver.launch_app()
+        webex_activity = {
+            'intentAction': 'android.intent.action.MAIN',
+            'intentFlags': ['FLAG_ACTIVITY_CLEAR_TOP', 'FLAG_ACTIVITY_NEW_TASK', 'FLAG_ACTIVITY_CLEAR_TASK'],
+            'component': 'com.cisco.wx2.android/com.webex.teams.TeamsActivity'
+        }
+        self.driver.execute_script('mobile:startActivity', webex_activity)
         try : 
             actions = ActionChains(self.driver)
             message_tab = self.find_by_XPATH('//android.widget.TextView[@text="Appels"]')
