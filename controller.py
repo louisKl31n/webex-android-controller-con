@@ -278,6 +278,8 @@ class Controller:
         return 200
 
     def webex_call_from_logs(self) :
+        self.driver.terminate_app("com.cisco.wx2.android")
+        self.driver.activate_app("com.cisco.wx2.android")
         calls = self.find_by_XPATH('//android.widget.TextView[@text="Appels"]')
         calls.click()
         call_icon = self.find_by_XPATH('//androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.widget.Button')
