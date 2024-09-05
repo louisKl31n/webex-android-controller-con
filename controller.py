@@ -252,7 +252,10 @@ class Controller:
         
         :param destinationNumber: the phone number to call
         """
-
+        self.driver.terminate_app("com.cisco.wx2.android")
+        time.sleep(2)
+        self.driver.activate_app("com.cisco.wx2.android")
+        time.sleep(2)
         webex_activity = {
             'intentAction':'android.intent.action.MAIN',
             'intentFlags': ['FLAG_ACTIVITY_CLEAR_TOP','FLAG_ACTIVITY_NEW_TASK'],

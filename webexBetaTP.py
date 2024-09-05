@@ -165,12 +165,12 @@ class Tests :
             })
         time.sleep(5)
         step4 = requests.post(web_server+'/resume', json={
-            'deviceName': device_name2,
+            'deviceName': deviceName2,
             'token': token2,
             })
         time.sleep(5)
         step5 = requests.post(web_server+'/hang-up', json={
-            'deviceName': device_name1,
+            'deviceName': deviceName1,
             'token': token1,
             })
         return (step1.status_code == 200 and step2.status_code == 200 and step3.status_code == 200 and step4.status_code == 200 and step5.status_code == 200)
@@ -350,6 +350,16 @@ if __name__ == '__main__' :
         for cell in sheet[sheet.max_row] :
             cell.fill = redFill
     time.sleep(2)
+    """ MNCQUALIF-11011 call on hold"""
+
+    if Tests.MNCQUALIF_11011() :
+        sheet.append(("MNCQUALIF-11011", "OK"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = greenFill
+    else :
+        sheet.append(("MNCQUALIF-11011", "KO"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = redFill
     """ MNCQUALIF-11013 blind transfer """
 
     # if Tests.MNCQUALIF_11013() :
@@ -370,8 +380,20 @@ if __name__ == '__main__' :
         sheet.append(("MNCQUALIF-11004 one deletion", "OK"))
         for cell in sheet[sheet.max_row] :
             cell.fill = greenFill
+        sheet.append(("MNCQUALIF-11002", "OK"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = greenFill
+        sheet.append(("MNCQUALIF-11003", "OK"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = greenFill
     else :
         sheet.append(("MNCQUALIF-11004 one deletion", "KO"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = redFill
+        sheet.append(("MNCQUALIF-11002", "KO"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = redFill
+        sheet.append(("MNCQUALIF-11003", "KO"))
         for cell in sheet[sheet.max_row] :
             cell.fill = redFill
     if Tests.MNCQUALIF_11004_b() :
@@ -383,15 +405,6 @@ if __name__ == '__main__' :
         for cell in sheet[sheet.max_row] :
             cell.fill = redFill
     time.sleep(2)
-    """ MNCQUALIF-11011 call on hold"""
-
-    # if Tests.MNCQUALIF_11011() :
-    #     sheet.append(("MNCQUALIF-11011", "OK"))
-    #     for cell in sheet[sheet.max_row] :
-    #         cell.fill = greenFill
-    # else :
-    #     sheet.append(("MNCQUALIF-11011", "KO"))
-    #     for cell in sheet[sheet.max_row] :
-    #         cell.fill = redFill
+    
             
     wb.save(filename=filename)
