@@ -150,13 +150,13 @@ class Tests :
         step1 = requests.post(web_server+'/call', json={
         'deviceName': deviceName1,
         'token': token1,
-        'incomingNumber': phoneNumberWebexBeta2
+        'destinationNumber': phoneNumberWebexBeta2
         })
         time.sleep(5)
         step2 = requests.post(web_server+'/answer', json={
             'deviceName': deviceName2,
             'token': token2,
-            'destinationNumber': phoneNumberWebexBeta1
+            'incomingNumber': phoneNumberWebexBeta1
             })
         time.sleep(5)
         step3 = requests.post(web_server+'/hold', json={
