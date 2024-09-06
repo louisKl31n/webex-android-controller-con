@@ -287,7 +287,7 @@ class Controller:
         time.sleep(2)
         calls = self.find_by_XPATH('//android.widget.TextView[@text="Appels"]')
         calls.click()
-        call_icon = self.find_by_XPATH('//android.widget.FrameLayout[@resource-id="com.cisco.wx2.android:id/fragment_container_view"]/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.Button')
+        call_icon = self.find_by_XPATH('//android.view.View[@content-desc="Appel audio, +33789182614, "]/..')
         call_icon.click()
         orange_phone_call_button = self.find_by_id('com.orange.phone:id/dialpad_floating_action_button')
         orange_phone_call_button.click()
