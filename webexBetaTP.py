@@ -156,7 +156,7 @@ class Tests :
         step2 = requests.post(web_server+'/answer', json={
             'deviceName': deviceName2,
             'token': token2,
-            'incomingNumber': phoneNumberWebexBeta1
+            'destinationNumber': phoneNumberWebexBeta1
             })
         time.sleep(5)
         step3 = requests.post(web_server+'/hold', json={
@@ -339,6 +339,16 @@ if __name__ == '__main__' :
         for cell in sheet[sheet.max_row] :
             cell.fill = redFill
     time.sleep(2)
+    """ MNCQUALIF-11011 call on hold"""
+
+    if Tests.MNCQUALIF_11011() :
+        sheet.append(("MNCQUALIF-11011", "OK"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = greenFill
+    else :
+        sheet.append(("MNCQUALIF-11011", "KO"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = redFill
     """ MNCQUALIF-11005 call from logs """
 
     if Tests.MNCQUALIF_11005() :
@@ -350,16 +360,7 @@ if __name__ == '__main__' :
         for cell in sheet[sheet.max_row] :
             cell.fill = redFill
     time.sleep(2)
-    """ MNCQUALIF-11011 call on hold"""
 
-    if Tests.MNCQUALIF_11011() :
-        sheet.append(("MNCQUALIF-11011", "OK"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = greenFill
-    else :
-        sheet.append(("MNCQUALIF-11011", "KO"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = redFill
     """ MNCQUALIF-11013 blind transfer """
 
     # if Tests.MNCQUALIF_11013() :
