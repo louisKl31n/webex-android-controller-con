@@ -235,7 +235,6 @@ def api_answer():
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
 
-
 @app.route('/decline', methods=['POST'])
 def api_decline():
     device = authenticate_request(request)
@@ -316,20 +315,41 @@ def api_BTF():
         response.status_code = 401
     return response
 
-@app.route('/supervised-transfert', methods=['POST'])
-def api_STF():
+@app.route('/initiate-supervised-transfert', methods=['POST'])
+def api_initiateSTF():
     device = authenticate_request(request)
     transfert_target= request.json['transfertTarget']
     if(device != False) :
         try :
-            if (device.webex_supervised_transfert(transfert_target) == 503) :
+            if (device.webex_initiate_supervised_transfert(transfert_target) == 503) :
                 response = jsonify('Webex telephony services unavailable')
                 response.status_code = 503
             else :
-                response = jsonify('Supervised transfert worked as expected')
+                response = jsonify('Initiating supervised transfert worked as expected')
                 response.status_code = 200
         except :
-            response = jsonify('Supervised transfert function failed')
+            response = jsonify('intiating supervised transfert function failed')
+            response.status_code = 503
+        
+    else :
+        response = jsonify('Authentication with deviceName and token failed')
+        response.status_code = 401
+    return response
+
+@app.route('/finalise-supervised-transfert', methods=['POST'])
+def api_finaliseSTF():
+    device = authenticate_request(request)
+    transfert_target= request.json['transfertTarget']
+    if(device != False) :
+        try :
+            if (device.webex_finalise_supervised_transfert(transfert_target) == 503) :
+                response = jsonify('Webex telephony services unavailable')
+                response.status_code = 503
+            else :
+                response = jsonify('Finalising supervised transfert worked as expected')
+                response.status_code = 200
+        except :
+            response = jsonify('Finalising supervised transfert function failed')
             response.status_code = 503
         
     else :
@@ -375,14 +395,25 @@ def api_videocall():
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
 
+@app.route('/end-video-call', methods=['POST'])
+def api_endvideocall():
+    device = authenticate_request(request)
+    if (device != False) : 
+        try :
+            device.webex_end_video_call()
+            resp = response(200,'Video call function worked as expected')
+        except : resp = response(503,'Video call function failed')
+    else : resp = response(401,'Authentication with deviceName and token failed')
+    return resp
+
 @app.route('/join-CallCenter', methods=['POST'])
 def api_joinCallCenter():
     device = authenticate_request(request)
     if (device != False) : 
         try :
             device.webex_join_callcenter()
-            resp = response(200,'Video call function worked as expected')
-        except : resp = response(503,'Video call function failed')
+            resp = response(200,'ending Video call function worked as expected')
+        except : resp = response(503,'ending Video call function failed')
     else : resp = response(401,'Authentication with deviceName and token failed')
     return resp
 

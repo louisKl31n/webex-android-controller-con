@@ -558,6 +558,17 @@ class Controller:
         video_call = self.find_by_XPATH('//androidx.compose.ui.platform.ComposeView[@resource-id="com.cisco.wx2.android:id/call_control_view"]/android.view.View/android.view.View/android.view.View[4]/android.widget.Button')
         video_call.click()
 
+    def webex_end_video_call(self) :
+        """
+        end_video_call function does the process of hangl
+        The call must be ongoing and powered up (on both sides)
+        """
+
+        end_icon = self.find_by_XPATH('//android.widget.ImageButton[@content-desc="Terminer l’appel"]')
+        end_icon.click()
+        force_all_participants = self.find_by_XPATH('//android.widget.LinearLayout[@content-desc="Mettre fin à la réunion pour tout le monde"]')
+        force_all_participants.click()
+
     def webex_blind_transfert(self,transfert_target) :
         """
         blind_transfert does the whole process of blind transfering the call to target number 
@@ -578,9 +589,9 @@ class Controller:
         blind_transfert= self.find_by_XPATH('//android.widget.TextView[@text="Transfert"]')
         blind_transfert.click()
     
-    def webex_supervised_transfert(self,transfert_target) :
+    def webex_initiate_supervised_transfert(self,transfert_target) :
         """
-        supervised_transfert does the whole process of doing a supervised transfert to target number 
+        supervised_transfert inititate process of doing a supervised transfert to target number 
         This function needs the power up state 
         
         :param transfert_target: the phone number the call should be transferted to 
@@ -600,9 +611,8 @@ class Controller:
         #start call to transfert 
         call= self.find_by_XPATH('//android.widget.ImageButton[@content-desc="Appeler"]')
         call.click()
-        #wait pick up then power up the temp call
-        #todo : multhread to pick up during this function 
-        time.sleep(20)
+
+    def webex_finalise_supervised_transfert(self) :
         print("=> powering up temp call")
         self.webex_power_up()
         #finish transfert
