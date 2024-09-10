@@ -213,7 +213,7 @@ class Tests :
         step1 = requests.post(web_server+'/call', json={
             'deviceName': deviceName1,
             'token': token1,
-            'incomingNumber': phoneNumberWebexBeta2
+            'destinationNumber': phoneNumberWebexBeta2
             })
         step2 = requests.post(web_server+'/answer', json={
             'deviceName': deviceName2,
@@ -366,7 +366,7 @@ if __name__ == '__main__' :
     step1 = requests.post(web_server+'/call', json={
         'deviceName': deviceName1,
         'token': token1,
-        'incomingNumber': phoneNumber3
+        'destinationNumber': phoneNumber3
         })
     time.sleep(5)
     step2 = requests.post(web_server+'/answer', json={
@@ -418,7 +418,7 @@ if __name__ == '__main__' :
             cell.fill = redFill
     time.sleep(2)
 
-    """ MNCQUALIF-11014 blind transfer """
+    """ MNCQUALIF-11014 supervised transfer """
 
     if Tests.MNCQUALIF_11014() :
         sheet.append(("MNCQUALIF-11014", "OK"))
