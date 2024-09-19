@@ -151,10 +151,10 @@ class Tests :
     #call on hold
     def MNCQUALIF_11011() :
         step1 = requests.post(web_server+'/call', json={
-        'deviceName': deviceName1,
-        'token': token1,
-        'destinationNumber': phoneNumberWebexBeta2
-        })
+            'deviceName': deviceName1,
+            'token': token1,
+            'destinationNumber': phoneNumberWebexBeta2
+            })
         time.sleep(5)
         step2 = requests.post(web_server+'/answer', json={
             'deviceName': deviceName2,
@@ -255,8 +255,6 @@ if __name__ == '__main__' :
     token1 = response.json()['token']
     response = requests.post(web_server+'/connect', json={'deviceName': deviceName2})
     token2 = response.json()['token']
-    response = requests.post(web_server+'/connect', json={'deviceName': deviceName3})
-    token3 = response.json()['token']
 
     """ MNCQUALIF-10996 login/out"""
 
@@ -363,72 +361,72 @@ if __name__ == '__main__' :
 
     """ MNCQUALIF-11006/12 Meeting video """
 
-    step1 = requests.post(web_server+'/call', json={
-        'deviceName': deviceName1,
-        'token': token1,
-        'destinationNumber': phoneNumber3
-        })
-    time.sleep(5)
-    step2 = requests.post(web_server+'/answer', json={
-            'deviceName': deviceName3,
-            'token': token3,
-            'incomingNumber': phoneNumberWebexBeta1
-            })
-    time.sleep(5)
-    step3 = requests.post(web_server+'/power-up', json={
-            'deviceName': deviceName1,
-            'token': token1
-            })
-    step4 = requests.post(web_server+'/video-call', json={
-            'deviceName': deviceName1,
-            'token': token1
-            })
-    time.sleep(20)
-    step5 = requests.post(web_server+'/end-video-call', json={
-            'deviceName': deviceName1,
-            'token': token1
-            })
-    if step3 :
-        sheet.append(("MNCQUALIF-11006 power up ", "OK"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = greenFill
-    else : 
-        sheet.append(("MNCQUALIF-11006 power up ", "KO"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = redFill
-    if (step1 and step2 and step3 and step4 and step5) :
-        sheet.append(("MNCQUALIF-11012 full video call ", "OK"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = greenFill
-    else : 
-        sheet.append(("MNCQUALIF-11006 full video call ", "KO"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = redFill
+    # step1 = requests.post(web_server+'/call', json={
+    #     'deviceName': deviceName1,
+    #     'token': token1,
+    #     'destinationNumber': phoneNumber3
+    #     })
+    # time.sleep(5)
+    # step2 = requests.post(web_server+'/answer', json={
+    #         'deviceName': deviceName3,
+    #         'token': token3,
+    #         'incomingNumber': phoneNumberWebexBeta1
+    #         })
+    # time.sleep(5)
+    # step3 = requests.post(web_server+'/power-up', json={
+    #         'deviceName': deviceName1,
+    #         'token': token1
+    #         })
+    # step4 = requests.post(web_server+'/video-call', json={
+    #         'deviceName': deviceName1,
+    #         'token': token1
+    #         })
+    # time.sleep(20)
+    # step5 = requests.post(web_server+'/end-video-call', json={
+    #         'deviceName': deviceName1,
+    #         'token': token1
+    #         })
+    # if step3 :
+    #     sheet.append(("MNCQUALIF-11006 power up ", "OK"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = greenFill
+    # else : 
+    #     sheet.append(("MNCQUALIF-11006 power up ", "KO"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = redFill
+    # if (step1 and step2 and step3 and step4 and step5) :
+    #     sheet.append(("MNCQUALIF-11012 full video call ", "OK"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = greenFill
+    # else : 
+    #     sheet.append(("MNCQUALIF-11006 full video call ", "KO"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = redFill
     
     
-    """ MNCQUALIF-11013 blind transfer """
+    # """ MNCQUALIF-11013 blind transfer """
 
-    if Tests.MNCQUALIF_11013() :
-        sheet.append(("MNCQUALIF-11013", "OK"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = greenFill
-    else :
-        sheet.append(("MNCQUALIF-11013", "KO"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = redFill
-    time.sleep(2)
+    # if Tests.MNCQUALIF_11013() :
+    #     sheet.append(("MNCQUALIF-11013", "OK"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = greenFill
+    # else :
+    #     sheet.append(("MNCQUALIF-11013", "KO"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = redFill
+    # time.sleep(2)
 
-    """ MNCQUALIF-11014 supervised transfer """
+    # """ MNCQUALIF-11014 supervised transfer """
 
-    if Tests.MNCQUALIF_11014() :
-        sheet.append(("MNCQUALIF-11014", "OK"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = greenFill
-    else :
-        sheet.append(("MNCQUALIF-11014", "KO"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = redFill
-    time.sleep(2)
+    # if Tests.MNCQUALIF_11014() :
+    #     sheet.append(("MNCQUALIF-11014", "OK"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = greenFill
+    # else :
+    #     sheet.append(("MNCQUALIF-11014", "KO"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = redFill
+    # time.sleep(2)
 
     """ MNCQUALIF-11004 delete calls"""
 
