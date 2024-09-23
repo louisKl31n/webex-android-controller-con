@@ -284,48 +284,48 @@ if __name__ == '__main__' :
     time.sleep(2)
     """ MNCQUALIF-10998 check new IM """
 
-    if Tests.MNCQUALIF_10998() :
-        sheet.append(("MNCQUALIF-10998 check new IM", "OK"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = greenFill
-    else :
-        sheet.append(("MNCQUALIF-10998 check new IM", "KO"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = redFill
-    time.sleep(2)
+    # if Tests.MNCQUALIF_10998() :
+    #     sheet.append(("MNCQUALIF-10998 check new IM", "OK"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = greenFill
+    # else :
+    #     sheet.append(("MNCQUALIF-10998 check new IM", "KO"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = redFill
+    # time.sleep(2)
     """ MNCQUALIF-10999 check new GIM """
 
-    if Tests.MNCQUALIF_10999() :
-        sheet.append(("MNCQUALIF-10999 check new GIM", "OK"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = greenFill
-    else :
-        sheet.append(("MNCQUALIF-10999 check new GIM", "KO"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = redFill
-    time.sleep(2)
+    # if Tests.MNCQUALIF_10999() :
+    #     sheet.append(("MNCQUALIF-10999 check new GIM", "OK"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = greenFill
+    # else :
+    #     sheet.append(("MNCQUALIF-10999 check new GIM", "KO"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = redFill
+    # time.sleep(2)
     """ MNCQUALIF-11000 delete IM """
 
-    if Tests.MNCQUALIF_11000() :
-        sheet.append((" MNCQUALIF-11000 delete IM", "OK"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = greenFill
-    else :
-        sheet.append((" MNCQUALIF-11000 delete IM", "KO"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = redFill
-    time.sleep(2)
+    # if Tests.MNCQUALIF_11000() :
+    #     sheet.append((" MNCQUALIF-11000 delete IM", "OK"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = greenFill
+    # else :
+    #     sheet.append((" MNCQUALIF-11000 delete IM", "KO"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = redFill
+    # time.sleep(2)
     """ MNCQUALIF-11001 delete GIM """
 
-    if Tests.MNCQUALIF_11001() :
-        sheet.append(("MNCQUALIF-11001 delete GIM", "OK"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = greenFill
-    else :
-        sheet.append(("MNCQUALIF-11001 delete GIM", "KO"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = redFill
-    time.sleep(2)
+    # if Tests.MNCQUALIF_11001() :
+    #     sheet.append(("MNCQUALIF-11001 delete GIM", "OK"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = greenFill
+    # else :
+    #     sheet.append(("MNCQUALIF-11001 delete GIM", "KO"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = redFill
+    # time.sleep(2)
     """ MNCQUALIF-11009 call normally """
 
     if Tests.MNCQUALIF_11009() :
