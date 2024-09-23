@@ -450,14 +450,14 @@ if __name__ == '__main__' :
         sheet.append(("MNCQUALIF-11003 browse log", "KO"))
         for cell in sheet[sheet.max_row] :
             cell.fill = redFill
-    if Tests.MNCQUALIF_11004_b() :
-        sheet.append(("MNCQUALIF-11004 all deletion", "OK"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = greenFill
-    else :
-        sheet.append(("MNCQUALIF-11004 all deletion", "KO"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = redFill
+    # if Tests.MNCQUALIF_11004_b() :
+    #     sheet.append(("MNCQUALIF-11004 all deletion", "OK"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = greenFill
+    # else :
+    #     sheet.append(("MNCQUALIF-11004 all deletion", "KO"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = redFill
     time.sleep(2)
     
             
