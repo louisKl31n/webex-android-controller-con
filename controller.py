@@ -935,7 +935,7 @@ class Controller:
         time.sleep(3)
         #expect login, catch rollback 
         try :
-            self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',10)
+            self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',15)
         except :
         # First B2B rollback
             print('=> entering B2B rollback handling')
