@@ -275,7 +275,7 @@ if __name__ == '__main__' :
         for cell in sheet[sheet.max_row] :
             cell.fill = redFill
 
-
+    time.sleep(5)
     Tests.MNCQUALIF_10966_in(deviceName2, email2, token2)
     time.sleep(5)
     Tests.MNCQUALIF_10966_in(deviceName1, email1, token1)
