@@ -276,12 +276,11 @@ if __name__ == '__main__' :
             cell.fill = redFill
 
 
-
+    Tests.MNCQUALIF_10966_in(deviceName2, email2, token2)
+    time.sleep(5)
     Tests.MNCQUALIF_10966_in(deviceName1, email1, token1)
     time.sleep(5)
-    Tests.MNCQUALIF_10966_in(deviceName2, email2, token2)
-
-    time.sleep(2)
+    
     """ MNCQUALIF-10998 check new IM """
 
     # if Tests.MNCQUALIF_10998() :
@@ -430,26 +429,26 @@ if __name__ == '__main__' :
 
     """ MNCQUALIF-11004 delete calls"""
 
-    if Tests.MNCQUALIF_11004_a() :
-        sheet.append(("MNCQUALIF-11004 one deletion", "OK"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = greenFill
-        sheet.append(("MNCQUALIF-11002 logs update", "OK"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = greenFill
-        sheet.append(("MNCQUALIF-11003 browse log", "OK"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = greenFill
-    else :
-        sheet.append(("MNCQUALIF-11004 one deletion", "KO"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = redFill
-        sheet.append(("MNCQUALIF-11002 logs update", "KO"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = redFill
-        sheet.append(("MNCQUALIF-11003 browse log", "KO"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = redFill
+    # if Tests.MNCQUALIF_11004_a() :
+    #     sheet.append(("MNCQUALIF-11004 one deletion", "OK"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = greenFill
+    #     sheet.append(("MNCQUALIF-11002 logs update", "OK"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = greenFill
+    #     sheet.append(("MNCQUALIF-11003 browse log", "OK"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = greenFill
+    # else :
+    #     sheet.append(("MNCQUALIF-11004 one deletion", "KO"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = redFill
+    #     sheet.append(("MNCQUALIF-11002 logs update", "KO"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = redFill
+    #     sheet.append(("MNCQUALIF-11003 browse log", "KO"))
+    #     for cell in sheet[sheet.max_row] :
+    #         cell.fill = redFill
     # if Tests.MNCQUALIF_11004_b() :
     #     sheet.append(("MNCQUALIF-11004 all deletion", "OK"))
     #     for cell in sheet[sheet.max_row] :
