@@ -135,7 +135,7 @@ class Tests :
             'token': token2,
             'destinationNumber': phoneNumberWebexBeta1
             })
-        time.sleep(5)
+        time.sleep(1)
         step2 = requests.post(web_server+'/answer', json={
             'deviceName': deviceName1,
             'token': token1,
@@ -155,7 +155,7 @@ class Tests :
             'token': token2,
             'destinationNumber': phoneNumberWebexBeta1
             })
-        time.sleep(5)
+        time.sleep(1)
         step2 = requests.post(web_server+'/answer', json={
             'deviceName': deviceName1,
             'token': token1,
@@ -185,7 +185,7 @@ class Tests :
             'token': token1,
             'destinationNumber': phoneNumberWebexBeta2
             })
-        time.sleep(5)
+        time.sleep(1)
         step2 = requests.post(web_server+'/answer', json={
             'deviceName': deviceName2,
             'token': token2,
