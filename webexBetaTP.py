@@ -266,17 +266,7 @@ if __name__ == '__main__' :
         sheet.append(("MNCQUALIF-10996 login", "KO"))
         for cell in sheet[sheet.max_row] :
             cell.fill = redFill
-    if Tests.MNCQUALIF_10966_out(deviceName2, token2) :
-        sheet.append(("MNCQUALIF-10996 logout", "OK"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = greenFill
-    else :
-        sheet.append(("MNCQUALIF-10996 logout", "KO"))
-        for cell in sheet[sheet.max_row] :
-            cell.fill = redFill
 
-    time.sleep(5)
-    Tests.MNCQUALIF_10966_in(deviceName2, email2, token2)
     time.sleep(5)
     Tests.MNCQUALIF_10966_in(deviceName1, email1, token1)
     time.sleep(5)
@@ -459,5 +449,16 @@ if __name__ == '__main__' :
     #         cell.fill = redFill
     time.sleep(2)
     
+    """ MNCQUALIF-10996 log out"""
+
+    if Tests.MNCQUALIF_10966_out(deviceName2, token2) :
+        sheet.append(("MNCQUALIF-10996 logout", "OK"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = greenFill
+    else :
+        sheet.append(("MNCQUALIF-10996 logout", "KO"))
+        for cell in sheet[sheet.max_row] :
+            cell.fill = redFill
+
             
     wb.save(filename=filename)
