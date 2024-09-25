@@ -460,5 +460,6 @@ if __name__ == '__main__' :
         for cell in sheet[sheet.max_row] :
             cell.fill = redFill
 
-            
+    Tests.MNCQUALIF_10966_out(deviceName1, token1)    
+
     wb.save(filename=filename)
