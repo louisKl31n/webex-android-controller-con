@@ -9,7 +9,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
 
-TOKEN_FILE = 'token.json'
+TOKEN_FILE = './token.json'
 
 # Charger les credentials OAuth 2.0
 creds = Credentials.from_authorized_user_file(TOKEN_FILE, scopes=['https://mail.google.com/'])
