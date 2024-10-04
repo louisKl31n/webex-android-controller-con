@@ -66,3 +66,13 @@ def send_email_with_attachment(sender, to, subject, body_text, file_path):
     # Envoyer le message
     smtp_conn.sendmail(sender, to, base64.urlsafe_b64decode(raw_message.encode()))
     smtp_conn.quit()
+
+
+sender_email = "qlan001webexbeta@gmail.com"
+destinataire_email = "alan.signor.ext@orange.com"
+sujet_email = "Sujet de l'email avec pièce jointe"
+texte_email = "Voici le corps du message avec une pièce jointe."
+chemin_fichier = "./adbkey"
+
+# Envoi de l'email avec pièce jointe
+send_email_with_attachment(sender_email, destinataire_email, sujet_email, texte_email, chemin_fichier)
