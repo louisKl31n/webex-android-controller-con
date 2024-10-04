@@ -4,11 +4,13 @@ from datetime import datetime
 from openpyxl import Workbook
 from openpyxl.styles import PatternFill
 import time
+from send_mail import *
 
 web_server = "http://127.0.0.1:5000"
 """ Specifying the différent varibable for the devices """
-deviceName1 = 'R3CR405S9DH'
-deviceName2 = 'RFCT111C17X'
+#deviceName1 = 'R3CR405S9DH'
+deviceName1 = 'RFCT111C17X'
+deviceName2 = 'RFCWA0Q3MRV'
 deviceName3 = 'gy95dqpnkfnr99if'
 email1 = 'qlan3webex@gmail.com'
 email2 = 'qren1webex@gmail.com'
@@ -463,3 +465,12 @@ if __name__ == '__main__' :
     Tests.MNCQUALIF_10966_out(deviceName1, token1)    
 
     wb.save(filename=filename)
+
+sender_email = "qlan001webexbeta@gmail.com"
+destinataire_email = "alan.signor.ext@orange.com"
+sujet_email = "Sujet de l'email avec pièce jointe"
+texte_email = "Voici le corps du message avec une pièce jointe."
+chemin_fichier = filename
+
+# Envoi de l'email avec pièce jointe
+send_email_with_attachment(sender_email, destinataire_email, sujet_email, texte_email, chemin_fichier)
