@@ -466,11 +466,11 @@ if __name__ == '__main__' :
 
     wb.save(filename=filename)
 
-sender_email = "qlan001webexbeta@gmail.com"
-destinataire_email = "alan.signor.ext@orange.com"
-sujet_email = "Sujet de l'email avec pièce jointe"
-texte_email = "Voici le corps du message avec une pièce jointe."
-chemin_fichier = filename
+# sender_email = "qlan001webexbeta@gmail.com"
+# destinataire_email = "alan.signor.ext@orange.com"
+# sujet_email = "Sujet de l'email avec pièce jointe"
+# texte_email = "Voici le corps du message avec une pièce jointe."
+# chemin_fichier = filename
 
-# Envoi de l'email avec pièce jointe
-send_email_with_attachment(sender_email, destinataire_email, sujet_email, texte_email, chemin_fichier)
+# # Envoi de l'email avec pièce jointe
+# send_email_with_attachment(sender_email, destinataire_email, sujet_email, texte_email, chemin_fichier)

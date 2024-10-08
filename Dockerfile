@@ -32,7 +32,8 @@ RUN yes | sdkmanager --licenses
 RUN npm install -g appium
 RUN appium driver install uiautomator2
 #Installing Python dependencies
-RUN pip install appium-python-client flask requests common-io-python openpyxl
+RUN pip install appium-python-client flask requests common-io-python openpyxl google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client oauth2client
+
 #Setting working directory
 WORKDIR /app
 COPY . .
