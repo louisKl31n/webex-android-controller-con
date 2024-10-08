@@ -45,7 +45,7 @@ def get_gmail_service():
 def create_message_with_attachment(sender, to, subject, message_text, file_path):
     """Créer un email avec pièce jointe."""
     message = MIMEMultipart()
-    message['to'] = to
+    message['to'] = ', '.join(to)  # Plusieurs destinataires
     message['from'] = sender
     message['subject'] = subject
 
@@ -81,7 +81,7 @@ def send_message(service, user_id, message):
         print(f'An error occurred: {error}')
         return None
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
     # Obtenez le service Gmail avec OAuth2
     service = get_gmail_service()
 
