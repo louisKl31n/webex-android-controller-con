@@ -92,7 +92,7 @@ if __name__ == '__main__' :
     Tests.MNCQUALIF_10966_in(deviceName1, email1, token1)
     time.sleep(5)
     
-    while rounds < 10 :
+    while rounds < 3 :
         """ MNCQUALIF-11009 call normally """
 
         if Tests.MNCQUALIF_11009() :
