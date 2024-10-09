@@ -8,12 +8,14 @@ from send_email import *
 
 web_server = "http://127.0.0.1:5000"
 """ Specifying the différent varibable for the devices """
-deviceName1 = 'RFCWA0Q3MRV'
+deviceName1 = 'R3CR405S9DH'
 deviceName2 = 'RFCT111C17X'
 email1 = 'qlan3webex@gmail.com'
 email2 = 'qren1webex@gmail.com'
 token1 = 0
 token2 = 0
+passed = 0
+failed = 0
 phoneNumber1 = '0789182612'
 phoneNumber2 = '0789182614'
 rounds = 0
@@ -77,10 +79,12 @@ if __name__ == '__main__' :
 
     if Tests.MNCQUALIF_10966_in(deviceName2, email2, token2) :
         sheet.append(("MNCQUALIF-10996 login", "OK"))
+        passed+=1
         for cell in sheet[sheet.max_row] :
             cell.fill = greenFill
     else :
         sheet.append(("MNCQUALIF-10996 login", "KO"))
+        failed+=1
         for cell in sheet[sheet.max_row] :
             cell.fill = redFill
 
@@ -93,10 +97,12 @@ if __name__ == '__main__' :
 
         if Tests.MNCQUALIF_11009() :
             sheet.append(("MNCQUALIF-11009 call normally", "OK"))
+            passed+=1
             for cell in sheet[sheet.max_row] :
                 cell.fill = greenFill
         else :
             sheet.append(("MNCQUALIF-11009 call normally", "KO"))
+            failed+=1
             for cell in sheet[sheet.max_row] :
                 cell.fill = redFill
         time.sleep(3)
@@ -107,10 +113,12 @@ if __name__ == '__main__' :
 
     if Tests.MNCQUALIF_10966_out(deviceName2, token2) :
         sheet.append(("MNCQUALIF-10996 logout", "OK"))
+        passed+=1
         for cell in sheet[sheet.max_row] :
             cell.fill = greenFill
     else :
         sheet.append(("MNCQUALIF-10996 logout", "KO"))
+        failed+=1
         for cell in sheet[sheet.max_row] :
             cell.fill = redFill
 
@@ -124,7 +132,7 @@ if __name__ == '__main__' :
         sender_email = "qlan001webexbeta@gmail.com"
         recipient_email = ["alan.signor.ext@orange.com", "louis.klein@orange.com"]
         subject = "Test mail MVP Teaming mobile"
-        body = "Ceci est un mail automatique avec en pièce jointe le resultat de la dernière execution"
+        body = "Ceci est un mail automatique avec en pièce jointe le resultat de la dernière execution ("+ str(passed)+" passed / "+str(failed)+" failed"
         file_path = filename
 
         # Créer un message avec pièce jointe
