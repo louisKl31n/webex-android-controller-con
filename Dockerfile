@@ -12,6 +12,9 @@ RUN apt-get install -y python3
 RUN apt-get install -y npm
 RUN apt-get install -y usbutils
 RUN apt-get install -y net-tools
+RUN apt-get install cron
+RUN (crontab -l ; echo "*/30 * * * * /usr/local/bin/python /app/webex-android-controller-con >> /var/log/cron_log.txt 2>&1") | crontab -
+RUN /sbin/service cron start
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     wget \
