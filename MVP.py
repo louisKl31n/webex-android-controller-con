@@ -8,15 +8,15 @@ from send_email import *
 
 web_server = "http://127.0.0.1:5000"
 """ Specifying the différent varibable for the devices """
-deviceName1 = 'R3CR405S9DH'
+deviceName1 = 'RFCWA0Q3MRV'
 deviceName2 = 'RFCT111C17X'
-email1 = 'qlan3webex@gmail.com'
+email1 = 'qren2webex@gmail.com'
 email2 = 'qren1webex@gmail.com'
 token1 = 0
 token2 = 0
 passed = 0
 failed = 0
-phoneNumber1 = '0789182612'
+phoneNumber1 = '0789182615'
 phoneNumber2 = '0789182614'
 rounds = 0
 redFill = PatternFill(start_color= "FF0000", end_color= "FF0000", fill_type="solid")
