@@ -915,7 +915,7 @@ class Controller:
         next_button = self.find_by_XPATH('//android.widget.ScrollView/android.view.View/android.widget.Button')
         next_button.click()
         # Connection process inside the Orange B2B webview
-        self.wait_until_element_is_displayed('//android.webkit.WebView[@text="Authentication B2B"]',10)
+        self.wait_until_element_is_displayed('//android.webkit.WebView[@text="Authentication B2B"]',200)
         orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
         orange_portal_id = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
         orange_portal_id.send_keys(email)
@@ -924,7 +924,7 @@ class Controller:
         orange_portal_next = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Suivant"]')
         orange_portal_next.click()
             # wait until the page loads to password view
-        self.wait_until_element_is_displayed('//android.view.View[@text="Saisissez votre mot de passe"]',10)
+        self.wait_until_element_is_displayed('//android.view.View[@text="Saisissez votre mot de passe"]',200)
         self.swipe_vertical(500)
         orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
         orange_portal_password = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
@@ -935,12 +935,12 @@ class Controller:
         time.sleep(3)
         #expect login, catch rollback 
         try :
-            self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',15)
+            self.wait_until_element_is_displayed('(//android.widget.ImageView[@resource-id="com.cisco.wx2.android:id/avatarBackground"])[1]',30)
         except :
         # First B2B rollback
             print('=> entering B2B rollback handling')
                 # wait until the page loads to login view
-            self.wait_until_element_is_displayed('//android.webkit.WebView[@text="Authentication B2B"]',10)
+            self.wait_until_element_is_displayed('//android.webkit.WebView[@text="Authentication B2B"]',100)
             orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
             orange_portal_id = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
             orange_portal_id.send_keys(email)
@@ -948,7 +948,7 @@ class Controller:
             orange_portal_next = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.Button[@text="Suivant"]')
             orange_portal_next.click()
                 # wait until the page loads to password view
-            self.wait_until_element_is_displayed('//android.view.View[@text="Saisissez votre mot de passe"]',10)
+            self.wait_until_element_is_displayed('//android.view.View[@text="Saisissez votre mot de passe"]',100)
             self.swipe_vertical(500)
             orange_portal_webview = self.find_by_XPATH('//android.webkit.WebView[@text="Authentication B2B"]')
             orange_portal_password = self.find_by_XPATH_inside_parent(orange_portal_webview,'//android.widget.EditText')
