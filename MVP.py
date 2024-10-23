@@ -32,7 +32,8 @@ class Tests :
             'password': '1Sac2billes!',
             'token': token,
             })
-        return step1.status_code == 200
+        print(step1)
+        return ((step1.status_code == 200), step1)
 
     #logout
     def MNCQUALIF_10966_out(deviceName,token) :
@@ -40,7 +41,7 @@ class Tests :
             'deviceName': deviceName,
             'token': token,
             })
-        return step1.status_code == 200
+        return ((step1.status_code == 200), step1)
     
     #call normally
     def MNCQUALIF_11009() :    
@@ -60,7 +61,7 @@ class Tests :
             'deviceName': deviceName2,
             'token': token2,
             })
-        return (step1.status_code == 200 and step2.status_code == 200 and step3.status_code == 200)
+        return ((step1.status_code == 200 and step2.status_code == 200 and step3.status_code == 200), step1, step2, step3)
 
 
 if __name__ == '__main__' :
@@ -76,14 +77,14 @@ if __name__ == '__main__' :
     token2 = response.json()['token']
 
     """ MNCQUALIF-10996 login/out"""
-
-    if Tests.MNCQUALIF_10966_in(deviceName2, email2, token2) :
+    MNCQUALIF_10966_in = Tests.MNCQUALIF_10966_in(deviceName2, email2, token2)
+    if MNCQUALIF_10966_in[0] :
         sheet.append(("MNCQUALIF-10996 login", "OK"))
         passed+=1
         for cell in sheet[sheet.max_row] :
             cell.fill = greenFill
     else :
-        sheet.append(("MNCQUALIF-10996 login", "KO"))
+        sheet.append(("MNCQUALIF-10996 login", "KO", MNCQUALIF_10966_in[1].text))
         failed+=1
         for cell in sheet[sheet.max_row] :
             cell.fill = redFill
@@ -94,14 +95,18 @@ if __name__ == '__main__' :
     
     while rounds < 10 :
         """ MNCQUALIF-11009 call normally """
-
-        if Tests.MNCQUALIF_11009() :
+        MNCQUALIF_11009 = Tests.MNCQUALIF_11009()
+        if MNCQUALIF_11009[0] :
             sheet.append(("MNCQUALIF-11009 call normally", "OK"))
             passed+=1
             for cell in sheet[sheet.max_row] :
                 cell.fill = greenFill
         else :
-            sheet.append(("MNCQUALIF-11009 call normally", "KO"))
+            reason = ""
+            for i in range(1,len(MNCQUALIF_11009)) :
+                if MNCQUALIF_11009[i].status_code != 200 :
+                    reason +=  MNCQUALIF_11009[i].text + " "
+            sheet.append(("MNCQUALIF-11009 call normally", "KO", reason))
             failed+=1
             for cell in sheet[sheet.max_row] :
                 cell.fill = redFill
@@ -110,16 +115,17 @@ if __name__ == '__main__' :
         rounds+=1
     
     """ MNCQUALIF-10996 log out"""
-
-    if Tests.MNCQUALIF_10966_out(deviceName2, token2) :
+    MNCQUALIF_10966_out = Tests.MNCQUALIF_10966_out(deviceName2, token2) 
+    if MNCQUALIF_10966_out[0]:
         sheet.append(("MNCQUALIF-10996 logout", "OK"))
         passed+=1
         for cell in sheet[sheet.max_row] :
             cell.fill = greenFill
     else :
-        sheet.append(("MNCQUALIF-10996 logout", "KO"))
+        sheet.append(("MNCQUALIF-10996 logout", "KO", MNCQUALIF_10966_out[1].text))
         failed+=1
         for cell in sheet[sheet.max_row] :
+
             cell.fill = redFill
 
     Tests.MNCQUALIF_10966_out(deviceName1, token1)    
