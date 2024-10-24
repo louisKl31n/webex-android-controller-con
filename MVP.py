@@ -136,7 +136,7 @@ if __name__ == '__main__' :
 
     if service:
         sender_email = "qlan001webexbeta@gmail.com"
-        recipient_email = ["qrenvims1@easymail.orange.com"]
+        recipient_email = ["alan.signor.ext@orange.com","louis.klein@orange.com"]
         subject = "Test mail MVP Teaming mobile"
         body = "Ceci est un mail automatique avec en pièce jointe le resultat de la dernière execution ("+ str(passed)+" passed / "+str(failed)+" failed)"
         file_path = filename
